@@ -1,10 +1,17 @@
 public class Difficulty {
+    /**
+     * This class is for make a dynamic difficulty. You can choose:
+     * number of colors, number of columns, number of rounds and number of hints used
+     */
     private int n_colors;
     private int n_positions;
     private int n_rounds;
     private int n_hints;
 
     public Difficulty(){
+        /**
+         * Constructor: Public constructor method for difficulty with default params
+         */
         this.n_colors = 4;
         this.n_positions = 4;
         this.n_rounds = 10;
@@ -12,6 +19,9 @@ public class Difficulty {
     }
 
     public Difficulty(int n_colors, int n_positions, int n_rounds, int n_hints){
+        /**
+         * Constructor: Public constructor method for difficulty with custom params
+         */
         this.n_colors = n_colors;
         this.n_positions = n_positions;
         this.n_rounds = n_rounds;
@@ -29,6 +39,9 @@ public class Difficulty {
 
     // Another methods
     public int difficulty(){
+        /**
+         * Public function for returning a value of difficulty of the game.
+         */
         int evaluation = (2*n_colors + n_positions) / (2*n_rounds + n_hints);
         return evaluation;
     }
