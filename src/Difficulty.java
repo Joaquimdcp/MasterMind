@@ -1,6 +1,6 @@
 public class Difficulty {
     /**
-     * This class is for make a dynamic difficulty. You can choose:
+     * This class is for making a dynamic difficulty. You can choose:
      * number of colors, number of columns, number of rounds and number of hints used
      */
     private int n_colors;
@@ -40,7 +40,7 @@ public class Difficulty {
     // Another methods
     public int difficulty(){
         /**
-         * Public function for returning a value of difficulty of the game.
+         * Public function for returning the value of difficulty of the game.
          */
         int evaluation = (2*n_colors + n_positions) / (2*n_rounds + n_hints);
         return evaluation;
