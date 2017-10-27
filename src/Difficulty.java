@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Difficulty {
     /**
      * This class is for making a dynamic difficulty. You can choose:
@@ -7,6 +10,7 @@ public class Difficulty {
     private int n_positions;
     private int n_rounds;
     private int n_hints;
+
 
     public Difficulty(){
         /**
@@ -33,6 +37,17 @@ public class Difficulty {
     public int getN_positions(){return n_positions;}
     public int getN_rounds(){return n_rounds;}
     public int getN_hints(){return n_hints;}
+    public Map get_all(){
+        Map information  = new HashMap();
+        information.put("n_colors", n_colors);
+        information.put("n_positions", n_positions);
+        information.put("n_rounds", n_colors);
+        information.put("n_hints", n_hints);
+        return information;
+
+
+
+    }
 
     // Setters
 
