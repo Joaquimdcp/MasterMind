@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class Token{
     /**This class is used to represent a token. Tokens are composed of colour and position**/
-    private int colour;
-    private int position;
+    protected int colour;
+    protected int position;
 
     public Token(){
         /**
