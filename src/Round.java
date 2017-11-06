@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Round {
     /**This class is used to represent a round. Rounds are composed of the number of the round, a list of the guessed
@@ -6,6 +7,47 @@ public class Round {
     private int nRound;
     private ArrayList<GuessToken> tokensGuess;
     private ArrayList<AnswerToken> tokensAnswer;
+
+    //Private functions
+
+    private ArrayList<AnswerToken> answerCode(){
+        /** Private function that returns the answer code of the current round
+         */
+        ArrayList<GuessToken> llSolucio = Board.getRoundGuess(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
+                                                                    //depen de Board canviar la linia
+        ArrayList<Integer> doneSolution = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(),1));
+        ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(),1));
+        ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
+        ArrayList<AnswerToken> resultWhite = new ArrayList<AnswerToken>();
+        for(int i=0; i<tokensGuess.size();++i){
+            if(tokensGuess.get(i).equalsToken(llSolucio.get(i))){
+                AnswerToken b = new AnswerToken(1);
+                resultBlack.add(b);
+                doneMine.set(i, 0);
+                doneSolution.set(i, 0);
+            }
+        }
+        for(int i=0; i<doneSolution.size();++i){
+            if(doneSolution.get(i)==1){
+                boolean notFound = true;
+                for(int j=0; j<doneMine.size() && notFound; ++j){
+                    if(doneMine.get(j)==1){
+                        if(tokensGuess.get(j).equalsToken(llSolucio.get(i))){
+                            AnswerToken w = new AnswerToken(0);
+                            resultWhite.add(w);
+                            doneMine.set(j, 0);
+                            notFound = false;
+                        }
+                    }
+                }
+            }
+        }
+        resultBlack.addAll(resultWhite);
+        return resultBlack;
+    }
+
+
+    //Constructors
 
     public Round(){
         /**
@@ -15,6 +57,7 @@ public class Round {
         this.tokensAnswer = new ArrayList<>();
         this.tokensGuess = new ArrayList<>();
     }
+
     public Round(int nRound){
         /**
          * Constructor: Public constructor method for round with custom param
@@ -25,13 +68,16 @@ public class Round {
     }
 
     //Getters
+
     public int getnRound(){return nRound;}
 
     public ArrayList<AnswerToken> getTokensAnswer() { return tokensAnswer;}
 
     public ArrayList<GuessToken> getTokensGuess() { return tokensGuess;}
 
+
     //Setters
+
     public void setNRound(int n){ this.nRound = nRound;}
 
     public boolean setGuess(ArrayList<GuessToken> tokensGuess){
@@ -55,30 +101,44 @@ public class Round {
         return false;
     }
 
-    public boolean setAnswer(ArrayList<AnswerToken> tokensAnswer){
-        /** Setter of the tokensAnswer: It also makes sure that the Answer is correct
+
+    public boolean setAnswer(){
+        /** Setter of the tokensAnswer: it sets the correct answer
          */
-        ArrayList<GuessToken> llSolucio = Board.getRound(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
-                                                        //depen de Board canviar la linia
-        boolean bien = true;
-        int black= 0;
-        int white = 0;
-        for(int i=0; i<tokensAnswer.size(); ++i){
-            if(tokensAnswer.get(i).getColour()=="Black") ++black;
-            else if(tokensAnswer.get(i).getColour()=="White") ++white;
-        }
-        //COM ES CONSIDEREN ELS REPETITS??!!! mirar normativa del joc
-        for(int i=0; i<tokensGuess.size() && bien; ++i){
-            //considerem que en la sempre es passen les ArrayList de Token ordenades de pos 0 a pos n!!!!!!!!!!
-            //reduir black i white
+        this.tokensAnswer = answerCode();
+        return true;
+    }
 
+    public boolean checkAndSetAnswer(ArrayList<AnswerToken> tokensAnswer){
+        /** Setter of the tokensAnswer: it checks if the answer of the parameter is right,
+         * in that case it is setted and it returns true. If it's not correct it returns false.
+         */
+        ArrayList<AnswerToken> answer = answerCode();
+        if(answer.size()!=tokensAnswer.size())
+            return false;
+        else{
+            boolean allGood = true;
+            for(int i=0; i<answer.size() && allGood; ++i){
+                if(!answer.get(i).equalsToken(tokensAnswer.get(i)))
+                    allGood = false;
+            }
+            return allGood;
+        }
+    }
 
-            if(black<0 || white<0) bien = false;
+    //Other functions
+    public boolean isFinalRound(){
+        /** It returns true if the guessed code of this round is correct.
+         */
+        if(tokensAnswer.size() == tokensGuess.size()){
+            boolean allGood = true;
+            for(int i=0; i<tokensAnswer.size() && allGood; ++i){
+                if(tokensAnswer.get(i).getNumColour()!=1)
+                    allGood = false;
+            }
+            return allGood;
         }
-        if (bien){
-            this.tokensAnswer = tokensAnswer;
-            return true;
-        }
-        return false;
+        else
+            return false;
     }
 }

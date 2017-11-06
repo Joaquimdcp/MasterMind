@@ -12,11 +12,11 @@ public class AnswerToken extends Token{
          */
         super();
     }
-    public AnswerToken(int colour, int position){
+    public AnswerToken(int colour){
         /**
          * Constructor: Public constructor method for token with custom params
          */
-        super(colour, position);
+        super(colour);
     }
     //Getters
     public String getColour(){return nameColours.get(super.colour);}

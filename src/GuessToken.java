@@ -12,11 +12,11 @@ public class GuessToken extends Token{
          */
         super();
     }
-    public GuessToken(int colour, int position){
+    public GuessToken(int colour){
         /**
          * Constructor: Public constructor method for token with custom params
          */
-        super(colour, position);
+        super(colour);
     }
     //Getters
     public String getColour(){return nameColours.get(super.colour);}
