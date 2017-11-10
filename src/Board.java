@@ -6,6 +6,9 @@ public class Board {
     private Timing time;
     private Player codeBreaker;
     private Player codeMaker;
+    //private lista de rounds (< a n_Rounds/trials)
+    //private lista de hints
+    
     
     public Board() {
         this.boardID = 0;
@@ -18,7 +21,11 @@ public class Board {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
-    
+    // Recibo de game: parámetros de Dif
+    //                 rol
+    //                 time
+    //                 CREO HINT CUANDO ME LA PIDAN
+
     public int initGame(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
         this.time = new Timing();
@@ -49,7 +56,7 @@ public class Board {
     }
     
     public boolean playRound() {
-        return true;
+        return false;
     }
     
     public int getRound(int round) {
