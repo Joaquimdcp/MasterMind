@@ -13,6 +13,11 @@ public class User {
     private String password;
     private int id;
     
+    public User() {
+        this.username = defaultUser;
+        this.password = NULL;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password; //will be hashed in the final version
@@ -20,16 +25,19 @@ public class User {
     }
     
     public boolean authUser(User user) {
-        String fileName = "users.txt";
-        List<String> credentials = new ArrayList<>();
-        String username = user.getName();
-        try (Stream<String> stream = Files.lines(Path.get(fileName))) {
-            credentials = stream.filter(line -> line.startsWith(username)).collect(Collectors.toList());
-        } catch (IOException e) {
-            e.printStackTrace(); //error handling
+        if (user.username != "defaultUser") {
+            String fileName = "users.txt";
+            List<String> credentials = new ArrayList<>();
+            String username = user.getName();
+            try (Stream<String> stream = Files.lines(Path.get(fileName))) {
+                credentials = stream.filter(line -> line.startsWith(username)).collect(Collectors.toList());
+            } catch (IOException e) {
+                e.printStackTrace(); //error handling
+            }
+            //credentials verification
+            credentials.forEach(System.out::println);
         }
-        //credentials verification
-        credentials.forEach(System.out::println);
+        return false;
     }
     
     public String getName() {
