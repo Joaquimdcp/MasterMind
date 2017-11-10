@@ -128,7 +128,7 @@ public class Round {
 
     //Other functions
     public boolean isFinalRound(){
-        /** It returns true if the guessed code of this round is correct.
+        /** Public function: It returns true if the guessed code of this round is correct.
          */
         if(tokensAnswer.size() == tokensGuess.size()){
             boolean allGood = true;
