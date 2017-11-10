@@ -6,6 +6,7 @@ public class Board {
     private Timing time;
     private Player codeBreaker;
     private Player codeMaker;
+    //TODO
     //private lista de rounds (< a n_Rounds/trials)
     //private lista de hints
     
@@ -33,21 +34,23 @@ public class Board {
         this.codeMaker = new Player();
         return boardID;
     }
-    
-    public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker) {
-        
+    //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
+    public boolean loadGame() {
+        System.out.println("Game loaded");
+        return true;
     }
     
-    public saveGame() {
-    
+    public boolean saveGame() {
+        System.out.println("Game saved");
+        return true;
     }
     
-    public restartGame() {
-        
+    public boolean restartGame() {
+        return true;
     }
 
-    public endGame() {
-    
+    public boolean endGame() {
+        return true;
     }
         
     public boolean useHint() {
@@ -56,11 +59,11 @@ public class Board {
     }
     
     public boolean playRound() {
-        return false;
+        return true;
     }
     
     public int getRound(int round) {
-        
+        // TODO
         return r;
     }
 }

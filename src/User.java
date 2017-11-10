@@ -26,6 +26,7 @@ public class User {
     }
     
     public boolean authUser() {
+        // TODO
         if (user.username != "defaultUser") {
             String fileName = "users.txt";
             List<String> credentials = new ArrayList<>();
@@ -42,10 +43,13 @@ public class User {
     }
     
     public String getName() {
-        return username;
+        return this.username;
     }
-    
+
+    public int getID() {
+        return this.id;
+    }    
     public void setUser() {
-        //add newUser to the database
+        // TODO: add newUser to the database
     }
 }
