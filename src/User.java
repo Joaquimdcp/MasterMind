@@ -21,10 +21,12 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password; //will be hashed in the final version
-        this.id = LAST_USER_ID + 1; //LAST_USER_ID must be somewhere in the DB
+        //this.id = LAST_USER_ID + 1; //LAST_USER_ID must be somewhere in the DB
+        //en caso de necesitarlo se haría
     }
     
-    public boolean authUser(User user) {
+    public boolean authUser() {
+        // TODO
         if (user.username != "defaultUser") {
             String fileName = "users.txt";
             List<String> credentials = new ArrayList<>();
@@ -41,11 +43,13 @@ public class User {
     }
     
     public String getName() {
-        return username;
+        return this.username;
     }
-    
-    public void setUser(String username, String password) {
-        User newUser = new User(username, password);
-        //add newUser to the database
+
+    public int getID() {
+        return this.id;
+    }    
+    public void setUser() {
+        // TODO: add newUser to the database
     }
 }
