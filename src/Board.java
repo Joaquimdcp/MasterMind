@@ -55,6 +55,7 @@ public class Board {
         
     public boolean useHint() {
         hintsUsed += 1;
+        // TODO: MAX_HINTS a partir de la dificultad
         return hintsUsed > MAX_HINTS;
     }
     
@@ -65,5 +66,10 @@ public class Board {
     public int getRound(int round) {
         // TODO
         return r;
+    }
+
+    public void newHint() {
+        Hint h = new Hint(difficulty);
+        // TODO: decidir cómo comunicar hints al controller/game
     }
 }
