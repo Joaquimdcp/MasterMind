@@ -1,4 +1,3 @@
-import jdk.nashorn.internal.runtime.Timing;
 
 public class Board {
     private int boardID;
