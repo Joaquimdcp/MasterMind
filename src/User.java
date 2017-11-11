@@ -8,13 +8,14 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class User {
     private String defaultUserName = "__defaultUserName__";
     private String username;
     private String password;
-    private String credentials;
+    private String credential;
     private int id;
     
     
@@ -43,16 +44,20 @@ public class User {
         if (users.isEmpty()) {
             System.out.println("User " + this.username + " does not exist.");
             return false;
-        } else {
-            this.credentials = users.get(0);
-            return true;
         }
+        this.credential = users.get(0);
+        return true;
     }
         // Tries to authenticate the user. 
     public boolean authUser() {
-        if (this.username != "" && this.username != null) {
+        if (!this.username.isEmpty() && this.username != null) {
             if (userExists(this.username)) {
-                
+                StringTokenizer credentials = new StringTokenizer(credential, "|");
+                String username = credentials.nextToken();
+                String password = credentials.nextToken();
+                if (username.equals(this.username) && password.equals(this.password)) {
+                    return true;
+                }
             }
         }
         return false;
