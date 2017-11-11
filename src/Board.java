@@ -27,11 +27,12 @@ public class Board {
         this.codeMaker = new Player();
         return boardID;
     }
-    
+    /**
     public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker) {
         
     }
-    
+
+
     public saveGame() {
     
     }
@@ -43,6 +44,7 @@ public class Board {
     public endGame() {
     
     }
+     ***/
         
     public boolean useHint() {
         hintsUsed += 1;

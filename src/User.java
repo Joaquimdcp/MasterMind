@@ -12,7 +12,8 @@ public class User {
     private String username;
     private String password;
     private int id;
-    
+
+
     public User() {
         this.username = defaultUser;
         this.password = NULL;

@@ -12,7 +12,6 @@ public class Timing {
 
     }
 
-
     //GETTERS
     public long get_start_time(){
         return startTime;
