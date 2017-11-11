@@ -82,7 +82,7 @@ public class Round {
 
     //Setters
 
-    public void setNRound(int n) {
+    public void setNRound(int nRound) {
         this.nRound = nRound;
     }
 
