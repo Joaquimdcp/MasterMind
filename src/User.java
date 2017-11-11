@@ -51,5 +51,11 @@ public class User {
     }    
     public void setUser() {
         // TODO: add newUser to the database
+        String name = this.username + this.password;
+        try {
+            Files.write(Paths.get(".\\users.txt"), name.getBytes());
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
