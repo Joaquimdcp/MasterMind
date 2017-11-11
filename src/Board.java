@@ -7,9 +7,10 @@ public class Board {
     private Difficulty difficulty;
     private Timing time;
     private CodeBreaker codeBreaker;
-    private Player codeMaker;
+    private CodeMaker codeMaker;
     private ArrayList<Round> rounds; //(< a n_Rounds/trials)
     private ArrayList<Hint> hints;
+    private int maxHints;
 
     public Board() {
         this.boardID = 0;
@@ -29,40 +30,16 @@ public class Board {
     public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
     }
-    public int initGame() {
-        
+    public int initGame(boolean isIA) {
         this.time = new Timing();
         this.codeBreaker = new CodeBreaker();
-        this.codeMaker = new Player();
+        this.codeMaker = new CodeMaker(isIA);
         return boardID;
     }
-<<<<<<< HEAD
-
-=======
-    /**
-    public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker) {
         
-    }
-
-
-    public saveGame() {
-    
-    }
-    
-    public restartGame() {
-        
-    }
-
-    public endGame() {
-    
-    }
-     ***/
-        
->>>>>>> origin/Difficulty
     public boolean useHint() {
         hintsUsed += 1;
-        // TODO: MAX_HINTS a partir de la dificultad
-        return hintsUsed > MAX_HINTS;
+        return hintsUsed > maxHints;
     }
 
     public boolean playRound() {
@@ -94,7 +71,7 @@ public class Board {
         return true;
     }
 
-    public boolean endGame() {
-        return true;
+    public long endGame() {
+        return time.getSavedTime();
     }
 }
