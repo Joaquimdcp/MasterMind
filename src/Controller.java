@@ -7,21 +7,21 @@ public class Controller {
         currentUser = new User();
     }
 
-    public void initGame();
+    public void initGame() {}
 
-    public void loadGae();
+    public void loadGame() {}
 
-    public void saveGae();
+    public void saveGame() {}
 
-    public void exitGame();
+    public void exitGame() {}
 
-    public void getRanking();
+    public void getRanking() {}
 
-    public void howToPlay();
+    public void howToPlay() {}
 
-    public void getHint();
+    public void getHint() {}
 
-    public void playRound();
+    public void playRound() {}
 
     /** Public function to logIn as a user: if the user exists it returns true and it sets the user,
      * if not it returns false.
@@ -54,5 +54,5 @@ public class Controller {
     public void logOut(){
         currentUser =  User();
     }
-    public void endGame();
+    public void endGame() {}
 }
