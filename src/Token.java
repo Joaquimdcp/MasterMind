@@ -27,5 +27,4 @@ public class Token {
     public int getNumColour() {
         return colour;
     }
-
 }

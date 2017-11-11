@@ -24,5 +24,4 @@ public class GuessToken extends Token {
     public String getColour() {
         return nameColours.get(super.colour);
     }
-
 }
