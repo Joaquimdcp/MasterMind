@@ -42,7 +42,7 @@ public class User {
             e.printStackTrace();
         }
         if (users.isEmpty()) {
-            System.out.println("User " + this.username + " does not exist.");
+            System.out.println("User " + this.username + " does not exist");
             return false;
         }
         this.credential = users.get(0);
@@ -56,6 +56,7 @@ public class User {
                 String username = credentials.nextToken();
                 String password = credentials.nextToken();
                 if (username.equals(this.username) && password.equals(this.password)) {
+                    System.out.println("User " + this.username + " correctly authentified");
                     return true;
                 }
             }
@@ -76,6 +77,7 @@ public class User {
                 e.printStackTrace();
                 return false;
             }
+            System.out.println("User " + this.username + " has been registered");
             return true;
         }
         return false;
