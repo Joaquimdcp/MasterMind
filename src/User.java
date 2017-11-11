@@ -18,10 +18,6 @@ public class User {
     private String credential;
     private int id;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Difficulty
     public User() {
         this.username = defaultUserName;
         this.password = null;

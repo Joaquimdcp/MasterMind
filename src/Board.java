@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> origin/Difficulty
 
 public class Board {
     private int boardID;
