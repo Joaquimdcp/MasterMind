@@ -1,10 +1,12 @@
+import jdk.nashorn.internal.runtime.Timing;
+
 public class Board {
     private int boardID;
     private int hintsUsed;
     private int currentRound;
     private Difficulty difficulty;
     private Timing time;
-    private Player codeBreaker;
+    private CodeBreaker codeBreaker;
     private Player codeMaker;
     
     public Board() {
@@ -22,7 +24,7 @@ public class Board {
     public int initGame(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
         this.time = new Timing();
-        this.codeBreaker = new Player();
+        this.codeBreaker = new CodeBreaker();
         this.codeMaker = new Player();
         return boardID;
     }

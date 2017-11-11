@@ -1,8 +1,9 @@
 import java.util.*;
 
-public class CodeBreaker {
+public class CodeBreaker extends Player{
     private ArrayList<ArrayList<Integer>> population = new ArrayList<ArrayList<Integer>>();
     ArrayList<ArrayList<Integer>> combination = new ArrayList<>();
+    ArrayList<Integer> resp_ini;
 
 
     public static ArrayList<ArrayList<Integer>> permutations() {
@@ -106,35 +107,29 @@ public class CodeBreaker {
         combination.add(i);
     }
 
-    public CodeBreaker(){
+    public ArrayList<Integer> play(ArrayList<Integer> answer){
+        if(IA) {
+            if (round == 0) {
+                play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
+            } else {
+                resp_ini = check_play(answer, play);
+                population = purgue_population(play, resp_ini);
+                play = get_best();
+            }
+        }
+        else{
+            System.out.println("Try your code separated by spaces:");
+            Scanner scanner = new Scanner(System.in);
+            while (scanner.hasNextInt())
+                play.add(scanner.nextInt());
+        }
+        return play;
+    }
+
+    public CodeBreaker(boolean IA){
         population = permutations();
         generate_combinations();
-        ArrayList<Integer> code = new ArrayList<Integer>(Arrays.asList(3, 3, 3,4));
-        ArrayList<Integer> goal = new ArrayList<Integer>();
-        goal.add(-1);
-        goal.add(-1);
-        goal.add(-1);
-        goal.add(-1);
-
-        ArrayList<Integer> play = new ArrayList<Integer>(Arrays.asList(2, 2, 1, 1));
-
-        ArrayList<Integer> resp_ini = check_play(code,play);
-        System.out.println(goal);
-        int i = 0;
-        while(!goal.equals(resp_ini)) {
-            ++i;
-            population = purgue_population(play, resp_ini);
-            System.out.println(population.size());
-            play = get_best();
-            System.out.println(play);
-            resp_ini = check_play(code,play);
-            System.out.println(resp_ini);
-        }
+        play = new ArrayList<Integer>(Arrays.asList(2, 2, 1, 1));
+        this.IA = IA;
     }
-
-
-    public CodeBreaker(int ncolors){
-
-    }
-
 }
