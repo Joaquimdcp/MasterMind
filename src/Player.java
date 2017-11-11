@@ -5,7 +5,7 @@ public class Player {
     int round = 0;
     boolean IA;
 
-    public int get_nround(){
+    public int get_nround() {
         return round;
     }
 }
