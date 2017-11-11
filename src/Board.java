@@ -9,14 +9,13 @@ public class Board {
     //TODO
     //private lista de rounds (< a n_Rounds/trials)
     //private lista de hints
-    
-    
+
     public Board() {
         this.boardID = 0;
         this.hintsUsed = 0;
         this.currentRound = 0;
     }
-    
+
     public Board(int boardID, int hintsUsed, int currentRound) {
         this.boardID = boardID;
         this.hintsUsed = hintsUsed;
@@ -34,17 +33,18 @@ public class Board {
         this.codeMaker = new Player();
         return boardID;
     }
+
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
     public boolean loadGame() {
         System.out.println("Game loaded");
         return true;
     }
-    
+
     public boolean saveGame() {
         System.out.println("Game saved");
         return true;
     }
-    
+
     public boolean restartGame() {
         return true;
     }
@@ -52,17 +52,17 @@ public class Board {
     public boolean endGame() {
         return true;
     }
-        
+
     public boolean useHint() {
         hintsUsed += 1;
         // TODO: MAX_HINTS a partir de la dificultad
         return hintsUsed > MAX_HINTS;
     }
-    
+
     public boolean playRound() {
         return true;
     }
-    
+
     public int getRound(int round) {
         // TODO
         return r;

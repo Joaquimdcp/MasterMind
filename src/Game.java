@@ -5,7 +5,7 @@ public class Game {
     private int difficulty;
     private String gameName;
 
-    public Game(){
+    public Game() {
         this.role = "";
         this.finished = false;
         this.score = 0;
