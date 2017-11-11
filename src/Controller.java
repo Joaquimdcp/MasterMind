@@ -27,8 +27,8 @@ public class Controller {
      * if not it returns false.
      */
     public boolean logIn(String name, String password){
-        User userAux = User(name, password);
-        if(authUser(userAux)){
+        User userAux = new User(name, password);
+        if(userAux.authUser()){
             currentUser = userAux;
             return true;
         }
@@ -40,9 +40,9 @@ public class Controller {
      * If not it sets a new user and returns true.
      */
     public boolean registerUser(String name, String password){
-        User userAux = User(name, password);
-        if(!authUser(userAux)){
-            setUser(name, password);
+        User userAux = new User(name, password);
+        if(!userAux.authUser()){
+            userAux.setUser();
             currentUser = userAux;
             return true;
         }
@@ -52,7 +52,7 @@ public class Controller {
     /** Public function: it logs out the current User.
      */
     public void logOut(){
-        currentUser =  User();
+        currentUser = new User();
     }
     public void endGame() {}
 }
