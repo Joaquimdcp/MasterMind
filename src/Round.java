@@ -13,10 +13,17 @@ public class Round {
     private ArrayList<AnswerToken> answerCode() {
         /** Private function that returns the answer code of the current round
          */
+<<<<<<< HEAD
         ArrayList<GuessToken> llSolucio = Board.getRoundGuess(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
                                                                   //depen de Board canviar la linia
         ArrayList<Integer> doneSolution = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
+=======
+        ArrayList<GuessToken> llSolucio = Board.getRoundGuess(0);   //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
+                                                                    //depen de Board canviar la linia
+        ArrayList<Integer> doneSolution = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(),1));
+        ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(),1));
+>>>>>>> origin/Difficulty
         ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
         ArrayList<AnswerToken> resultWhite = new ArrayList<AnswerToken>();
         for (int i = 0; i < tokensGuess.size(); ++i) {

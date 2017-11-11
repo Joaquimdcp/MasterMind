@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import java.util.ArrayList;
+=======
+>>>>>>> origin/Difficulty
 
 public class Board {
     private int boardID;
@@ -6,7 +9,7 @@ public class Board {
     private int currentRound;
     private Difficulty difficulty;
     private Timing time;
-    private Player codeBreaker;
+    private CodeBreaker codeBreaker;
     private Player codeMaker;
     private ArrayList<Round> rounds; //(< a n_Rounds/trials)
     private ArrayList<Hint> hints;
@@ -32,11 +35,33 @@ public class Board {
     public int initGame() {
         
         this.time = new Timing();
-        this.codeBreaker = new Player();
+        this.codeBreaker = new CodeBreaker();
         this.codeMaker = new Player();
         return boardID;
     }
+<<<<<<< HEAD
 
+=======
+    /**
+    public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker) {
+        
+    }
+
+
+    public saveGame() {
+    
+    }
+    
+    public restartGame() {
+        
+    }
+
+    public endGame() {
+    
+    }
+     ***/
+        
+>>>>>>> origin/Difficulty
     public boolean useHint() {
         hintsUsed += 1;
         // TODO: MAX_HINTS a partir de la dificultad
