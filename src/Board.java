@@ -26,9 +26,11 @@ public class Board {
     //                 rol
     //                 time
     //                 CREO HINT CUANDO ME LA PIDAN
-
-    public int initGame(int n_colors, int n_positions, int n_rounds, int n_hints) {
+    public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
+    }
+    public int initGame() {
+        
         this.time = new Timing();
         this.codeBreaker = new Player();
         this.codeMaker = new Player();
