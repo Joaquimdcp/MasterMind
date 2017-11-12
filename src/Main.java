@@ -28,7 +28,7 @@ public class Main {
 
         System.out.println("Please press L if you want to login or H if you need help:");
         boolean valid = false;
-        String c;
+        String c = "L";
         while(!valid){
             c = s.nextLine();
             if(c=="L" || c=="H") valid = true;
