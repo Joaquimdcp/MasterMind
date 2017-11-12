@@ -12,7 +12,7 @@ public class Game {
     private Board currentBoard;
 
     public Game() {
-        /** Constructor: Public constructor method for Round with default parameters
+        /** Constructor: Public constructor method for Game with default parameters
          */
         this.role = true;
         this.finished = false;
@@ -24,7 +24,7 @@ public class Game {
         this.currentBoard = new Board();
     }
      public Game(boolean role, User currentUser){
-         /** Constructor: Public constructor method for Round with custom parameters
+         /** Constructor: Public constructor method for Game with custom parameters
           */
          this.role = role;
          this.finished = false;
@@ -105,6 +105,19 @@ public class Game {
         return this.currentUser;
     }
 
+    public Round getRound(int n){
+        /**Public function that returns an instance of the round number n (where n is the parameter of the function
+         */
+        return this.currentBoard.getRount(n);
+    }
+
+    public Round getCurrentRound(){
+        /** Public function that returns an instance of the current round
+         */
+        return this.currentBoard.getCurrentRound();
+    }
+
+
     //Other functions
     public void initGame(int nColours, int nPositions, int nRounds, int nHints){
         /** Public function that initiates the Board and all the classes needed to play the first round
@@ -119,24 +132,14 @@ public class Game {
          */
         if(!this.currentBoard.useHint())
             return this.currentBoard.newHint(); //Entenc que retorna hint com un string
+        else
+            return "You've used all your hints";
     }
 
     public boolean playRound(){
         /** Public function used to play a round. It returns true if it is the last round
          */
         return this.currentBoard.playRound(); //entenc que si retorna true es que es la ultima ronda
-    }
-
-    public Round getRound(int n){
-        /**Public function that returns an instance of the round number n (where n is the parameter of the function
-         */
-        return this.currentBoard.getRount(n);
-    }
-
-    public Round getCurrentRound(){
-        /** Public function that returns an instance of the current round
-         */
-        return this.currentBoard.getCurrentRound();
     }
 
     public boolean loadGame(){
