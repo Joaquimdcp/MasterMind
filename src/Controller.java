@@ -88,9 +88,6 @@ public class Controller {
         //FALTA FERLA!!!!!!!!!!!!!!!!!!!!
     }
 
-    public void howToPlay() { //Hauria d'estar directament a persistencia nu??
-    }
-
     public String useHint() {
         /** Public function that returns a hint (if the player has used less hints that it is permitted)
         and increments the counter of number of hints
