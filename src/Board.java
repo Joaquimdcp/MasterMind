@@ -9,7 +9,7 @@ public class Board {
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
     private ArrayList<Round> rounds; //(< a n_Rounds/trials)
-    private ArrayList<Hint> hints;
+    private ArrayList<Hint> hints; // ??
     private int maxHints;
 
     public Board() {
@@ -23,15 +23,14 @@ public class Board {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
-    // Recibo de game: parámetros de Dif
-    //                 rol
-    //                 time
-    //                 CREO HINT CUANDO ME LA PIDAN
+
     public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
+        this.maxHints = n_hints;
     }
     public int initGame(boolean isIA) {
         this.time = new Timing();
+        this.time.set_start_time();
         this.codeBreaker = new CodeBreaker();
         this.codeMaker = new CodeMaker(isIA);
         return boardID;
@@ -43,12 +42,20 @@ public class Board {
     }
 
     public boolean playRound() {
+        if (this.currentRound == 0) {
+            this.codeMaker.make_code();
+        } else {
+
+        }
         return true;
     }
 
-    public int getRound(int round) {
-        // TODO
-        return r;
+    public Round getRound(int round) {
+        return rounds.get(round);
+    }
+
+    public Round getCurrentRound() {
+        return rounds.get(this.currentRound);
     }
 
     public void newHint() {
@@ -68,10 +75,11 @@ public class Board {
     }
 
     public boolean restartGame() {
+        this.time.set_start_time();
         return true;
     }
 
     public long endGame() {
-        return time.getSavedTime();
+        return this.time.getSavedTime();
     }
 }

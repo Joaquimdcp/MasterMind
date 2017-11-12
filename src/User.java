@@ -80,6 +80,7 @@ public class User {
             System.out.println("User " + this.username + " has been registered");
             return true;
         }
+        System.out.println("User " + this.username + " already exists");
         return false;
     }
 
