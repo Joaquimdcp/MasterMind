@@ -3,7 +3,8 @@ import java.util.Collections;
 
 public class Round {
     /**This class is used to represent a round. Rounds are composed of the number of the round, a list of the guessed
-     * tokens and a list of the answer tokens**/
+     * tokens and a list of the answer tokens
+     **/
     private int nRound;
     private ArrayList<GuessToken> tokensGuess;
     private ArrayList<AnswerToken> tokensAnswer;
@@ -50,7 +51,7 @@ public class Round {
 
     public Round() {
         /**
-         * Constructor: Public constructor method for Round with default params
+         * Constructor: Public constructor method for Round with default parameters
          */
         this.nRound = 0;
         this.tokensAnswer = new ArrayList<>();
@@ -59,7 +60,7 @@ public class Round {
 
     public Round(int nRound) {
         /**
-         * Constructor: Public constructor method for round with custom param
+         * Constructor: Public constructor method for round with custom parameters
          */
         this.nRound = nRound;
         this.tokensAnswer = new ArrayList<>();
@@ -69,20 +70,28 @@ public class Round {
     //Getters
 
     public int getnRound() {
+        /**Getter of the number of round that this round represents
+         */
         return nRound;
     }
 
     public ArrayList<AnswerToken> getTokensAnswer() {
+        /** Getter of the answer tokens that this round is composed of
+         */
         return tokensAnswer;
     }
 
     public ArrayList<GuessToken> getTokensGuess() {
+        /** Getter of the guesses tokens that this round is composed of
+         */
         return tokensGuess;
     }
 
     //Setters
 
     public void setNRound(int n) {
+        /**Setter of the number of Round that this round represents
+         */
         this.nRound = nRound;
     }
 

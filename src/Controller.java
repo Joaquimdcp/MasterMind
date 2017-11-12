@@ -48,12 +48,8 @@ public class Controller {
      */
     public boolean registerUser(String name, String password) {
         User userAux = new User(name, password);
-        if (!userAux.authUser()) {
-            userAux.setUser();
-            currentUser = userAux;
-            return true;
-        } else
-            return false;
+        boolean allGood = userAux.setUser();
+        return allGood;
     }
 
     /** Public function: it logs out the current User.
