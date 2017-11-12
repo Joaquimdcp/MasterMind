@@ -61,6 +61,7 @@ public class User {
                 }
             }
         }
+        System.out.println("Wrong credentials");
         return false;
     }
 
@@ -72,7 +73,6 @@ public class User {
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter out = new PrintWriter(bw)) {
                 out.println(newUser);
-                fw.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
