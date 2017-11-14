@@ -55,11 +55,11 @@ public class Controller {
 
 
     //Other functions
-    public void initGame(boolean role, int nColours, int nPositions, int nRounds, int nHints) {
+    public void initGame(boolean breakerIA, int nColours, int nPositions, int nRounds, int nHints) {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
           */
-        this.currentGame = new Game(role, this.currentUser);
+        this.currentGame = new Game(breakerIA, this.currentUser);
         this.currentGame.initGame(nColours, nPositions, nRounds, nHints);
     }
 

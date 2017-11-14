@@ -2,7 +2,7 @@ public class Game {
     /**This class is used to represent a Game. A Game is composed of all the information needed to play: it has a user,
      * a board, and all the information that is needed for the ranking once the game has ended.
      * **/
-    private boolean role;
+    private boolean breakerIA;
     private boolean finished;
     private boolean win;
     private int score;
@@ -14,7 +14,7 @@ public class Game {
     public Game() {
         /** Constructor: Public constructor method for Game with default parameters
          */
-        this.role = true;
+        this.breakerIA = true;
         this.finished = false;
         this.win = false;
         this.score = 0;
@@ -23,10 +23,10 @@ public class Game {
         this.currentUser = new User();
         this.currentBoard = new Board();
     }
-     public Game(boolean role, User currentUser){
+     public Game(boolean breakerIA, User currentUser){
          /** Constructor: Public constructor method for Game with custom parameters
           */
-         this.role = role;
+         this.breakerIA = breakerIA;
          this.finished = false;
          this.win = false;
          this.score = 0;
@@ -37,10 +37,10 @@ public class Game {
      }
 
      //Setters
-    public void setRole (boolean role){
+    public void setRole (boolean breakerIA){
         /** Setter of the role of the human player
          */
-        this.role = role;
+        this.breakerIA = breakerIA;
     }
 
     public void setDifficulty (){
@@ -65,7 +65,7 @@ public class Game {
     public boolean getRole(){
         /** Getter of the role of the human player
          */
-        return this.role;
+        return this.breakerIA;
     }
 
     public boolean getFinished(){
@@ -122,7 +122,7 @@ public class Game {
     public void initGame(int nColours, int nPositions, int nRounds, int nHints){
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
-        currentBoard.initGame(this.role);
+        currentBoard.initGame(this.breakerIA);
         currentBoard.initDificulty(nColours, nPositions, nRounds, nHints);
     }
 

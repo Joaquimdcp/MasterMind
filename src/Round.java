@@ -11,11 +11,9 @@ public class Round {
 
     //Private functions
 
-    private ArrayList<AnswerToken> answerCode() {
+    private ArrayList<AnswerToken> answerCode(ArrayList<GuessToken> llSolucio) {
         /** Private function that returns the answer code of the current round
          */
-        ArrayList<GuessToken> llSolucio = Board.getRoundGuess(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
-                                                                  //depen de Board canviar la linia
         ArrayList<Integer> doneSolution = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
@@ -95,16 +93,15 @@ public class Round {
         this.nRound = nRound;
     }
 
-    public boolean setGuess(ArrayList<GuessToken> tokensGuess) {
+    public boolean setGuess(ArrayList<GuessToken> tokensGuess, int nColours, int nPositions) {
         /** Setter of the tokensGuess: It also makes sure that there as many tokens as the number of positions in the
          * board and that all the tokens are of accepted colours; if one of this requirements is not fulfuilled it
          * returns false
          */
-        int colors[] = Board.getNcolours(); //depen de com s'implmenti a BOARD (entenc [ncolors, nposicions])
-        if (tokensGuess.size() == colors[1]) {
+        if (tokensGuess.size() == nPositions) {
             boolean bien = true;
             for (int i = 0; i < tokensGuess.size() && bien; ++i) {
-                if (tokensGuess.get(i).getNumColour() > colors[0]) {
+                if (tokensGuess.get(i).getNumColour() > nColours) {
                     bien = false;
                 }
             }
@@ -116,18 +113,17 @@ public class Round {
         return false;
     }
 
-    public boolean setAnswer() {
+    public void setAnswer(ArrayList<GuessToken> combinationSolution) {
         /** Setter of the tokensAnswer: it sets the correct answer
          */
-        this.tokensAnswer = answerCode();
-        return true;
+        this.tokensAnswer = answerCode(combinationSolution);
     }
 
-    public boolean checkAndSetAnswer(ArrayList<AnswerToken> tokensAnswer) {
+    public boolean checkAndSetAnswer(ArrayList<AnswerToken> tokensAnswer, ArrayList<GuessToken> combinationSolution) {
         /** Setter of the tokensAnswer: it checks if the answer of the parameter is right,
          * in that case it is setted and it returns true. If it's not correct it returns false.
          */
-        ArrayList<AnswerToken> answer = answerCode();
+        ArrayList<AnswerToken> answer = answerCode(combinationSolution);
         if (answer.size() != tokensAnswer.size())
             return false;
         else {
