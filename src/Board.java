@@ -10,7 +10,7 @@ public class Board {
     private CodeMaker codeMaker;
     private ArrayList<Round> rounds; //(< a n_Rounds/trials)
     private ArrayList<Hint> hints; // ??
-    private int maxHints;
+    private ArrayList<AnswerToken> answer;
 
     public Board() {
         this.boardID = 0;
@@ -26,27 +26,28 @@ public class Board {
 
     public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
-        this.maxHints = n_hints;
     }
     public int initGame(boolean isIA) {
         this.time = new Timing();
         this.time.set_start_time();
         this.codeBreaker = new CodeBreaker();
         this.codeMaker = new CodeMaker(isIA);
+        this.answer = this.codeMaker.make_code();
         return boardID;
     }
         
     public boolean useHint() {
         hintsUsed += 1;
-        return hintsUsed > maxHints;
+        // crear y enseñar hint
+        return hintsUsed > this.difficulty.getN_hints();
     }
 
     public boolean playRound() {
-        if (this.currentRound == 0) {
-            this.codeMaker.make_code();
-        } else {
-
-        }
+        ArrayList<GuessToken> play = codeBreaker.play(this.answer);
+        Round r = new Round(currentRound);
+        r.setGuess(play);
+        boolean b = r.setAnswer();
+        rounds.add(currentRound, r);
         return true;
     }
 
