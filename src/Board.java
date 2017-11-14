@@ -1,19 +1,18 @@
 import java.util.ArrayList;
 
 public class Board {
-    private int boardID;
     private int hintsUsed;
     private int currentRound;
+
     private Difficulty difficulty;
     private Timing time;
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
+    private boolean breakerIA;
     private ArrayList<Round> rounds;
-    private ArrayList<Hint> hints; // la necesito?
-    private ArrayList<AnswerToken> answer;
+    private ArrayList<GuessToken> solution;
 
     public Board() {
-        this.boardID = 0;
         this.hintsUsed = 0;
         this.currentRound = 0;
     }
@@ -24,44 +23,52 @@ public class Board {
         this.currentRound = currentRound;
     }
 
-    public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
-        this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
-    }
-    public int initGame(boolean isIA) {
+    /* Initializes all the basic attributes of the class to play a game */
+    public void initGame(boolean breakerIA, int n_colors, int n_positions, int n_rounds, int n_hints) {
         this.time = new Timing();
+        this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
+        this.breakerIA = breakerIA;
+        this.codeBreaker = new CodeBreaker(breakerIA);
+        this.codeMaker = new CodeMaker(!breakerIA);
+        this.solution = this.codeMaker.make_code();
         this.time.set_start_time();
-        this.codeBreaker = new CodeBreaker(isIA);
-        this.codeMaker = new CodeMaker(isIA);
-        this.answer = this.codeMaker.make_code();
-        return boardID;
     }
-        
+    
+    /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
-        hintsUsed += 1;
         if (this.hintsUsed > (this.difficulty.getN_hints())) {
             Hint h = new Hint(this.difficulty);
             this.hints.add(h);
             System.out.println(h.get_hints());
+            hintsUsed += 1;
             return true;
         }
         return false;
     }
 
+    /* Returns true if the game continues, false if it's the end of the game (either because the code was broken
+        or because there are no more rounds to be played. */
     public boolean playRound() {
-        // play contiene la jugada del codeBreaker (tanto si es IA como si no)
-        ArrayList<GuessToken> play = codeBreaker.play(this.answer, this.currentRound);
-        Round r = new Round();
-        // hace falta cambiar en Round el método setGuess para que Board le pueda pasar n_colors de Difficulty
-        r.setGuess(play, this.difficulty.getN_colors());
-        if (breakerisIA) {
-            r.checkAndSetAnswer(userAnswer);
+        if (this.currentRound <= this.difficulty.getN_rounds()) {
+            // creo una nueva ronda
+            Round r = new Round();
+            // obtengo el código del codeBreaker
+            ArrayList<GuessToken> guessCode = codeBreaker.play(this.answer, this.currentRound);
+            if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
+                if (this.breakerIA) {
+
+                    if(r.checkAndSetAnswer(userAnswerTokens, this.solution)) {
+                    }
+                }
+                else {
+                    r.setAnswer(this.solution);
+                }
+                rounds.add(this.currentRound, r);
+                this.currentRound++;
+                return !(r.isFinalRound());
+            }
         }
-        else {
-            r.setAnswer();
-        }
-        rounds.add(this.currentRound, r);
-        this.currentRound++;
-        return true;
+        return false;
     }
 
     public Round getRound(int round) {
