@@ -50,9 +50,15 @@ public class Board {
     public boolean playRound() {
         // play contiene la jugada del codeBreaker (tanto si es IA como si no)
         ArrayList<GuessToken> play = codeBreaker.play(this.answer, this.currentRound);
-        Round r = new Round(this.currentRound);
+        Round r = new Round();
+        // hace falta cambiar en Round el método setGuess para que Board le pueda pasar n_colors de Difficulty
         r.setGuess(play, this.difficulty.getN_colors());
-        boolean b = r.setAnswer();
+        if (breakerisIA) {
+            r.checkAndSetAnswer(userAnswer);
+        }
+        else {
+            r.setAnswer();
+        }
         rounds.add(this.currentRound, r);
         this.currentRound++;
         return true;
