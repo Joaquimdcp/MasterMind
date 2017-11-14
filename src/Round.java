@@ -91,7 +91,7 @@ public class Round {
         this.nRound = nRound;
     }
 
-    public boolean setGuess(ArrayList<GuessToken> tokensGuess) {
+    public boolean setGuess(ArrayList<GuessToken> tokensGuess, int n_colors) {
         /** Setter of the tokensGuess: It also makes sure that there as many tokens as the number of positions in the
          * board and that all the tokens are of accepted colours; if one of this requirements is not fulfuilled it
          * returns false
