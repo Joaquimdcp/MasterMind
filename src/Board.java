@@ -8,8 +8,8 @@ public class Board {
     private Timing time;
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
-    private ArrayList<Round> rounds; //(< a n_Rounds/trials)
-    private ArrayList<Hint> hints; // ??
+    private ArrayList<Round> rounds;
+    private ArrayList<Hint> hints; // la necesito?
     private ArrayList<AnswerToken> answer;
 
     public Board() {
@@ -30,7 +30,7 @@ public class Board {
     public int initGame(boolean isIA) {
         this.time = new Timing();
         this.time.set_start_time();
-        this.codeBreaker = new CodeBreaker(true);
+        this.codeBreaker = new CodeBreaker(isIA);
         this.codeMaker = new CodeMaker(isIA);
         this.answer = this.codeMaker.make_code();
         return boardID;
@@ -38,30 +38,32 @@ public class Board {
         
     public boolean useHint() {
         hintsUsed += 1;
-        // crear y enseñar hint
-        return hintsUsed > this.difficulty.getN_hints();
+        if (this.hintsUsed > (this.difficulty.getN_hints())) {
+            Hint h = new Hint(this.difficulty);
+            this.hints.add(h);
+            System.out.println(h.get_hints());
+            return true;
+        }
+        return false;
     }
 
     public boolean playRound() {
-        ArrayList<GuessToken> play = codeBreaker.play(this.answer);
-        Round r = new Round(currentRound);
-        r.setGuess(play);
+        // play contiene la jugada del codeBreaker (tanto si es IA como si no)
+        ArrayList<GuessToken> play = codeBreaker.play(this.answer, this.currentRound);
+        Round r = new Round(this.currentRound);
+        r.setGuess(play, this.difficulty.getN_colors());
         boolean b = r.setAnswer();
-        rounds.add(currentRound, r);
+        rounds.add(this.currentRound, r);
+        this.currentRound++;
         return true;
     }
 
     public Round getRound(int round) {
-        return rounds.get(round);
+        return this.rounds.get(round);
     }
 
     public Round getCurrentRound() {
-        return rounds.get(this.currentRound);
-    }
-
-    public void newHint() {
-        //Hint h = new Hint(difficulty);
-        // TODO: decidir cómo comunicar hints al controller/game
+        return this.rounds.get(this.currentRound);
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
