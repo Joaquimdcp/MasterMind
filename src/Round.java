@@ -132,7 +132,11 @@ public class Round {
                 if (!answer.get(i).equalsToken(tokensAnswer.get(i)))
                     allGood = false;
             }
-            return allGood;
+            if (allGood){
+                this.tokensAnswer = tokensAnswer;
+                return true;
+            }
+            return false;
         }
     }
 
