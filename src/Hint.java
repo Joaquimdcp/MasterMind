@@ -2,16 +2,27 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Hint {
+    /**
+     * Hit class is for managing all hints of the game. You can create a hint,
+     * and retrieve the measure of the help in base of which kind of hint did the
+     * user used.
+     */
+
+
     private String text;
     private int nhints;
     private int score;
-    private int tryes;
+    private int attempt;
     private Round round;
     private Round solu;
 
 
 
     private void soft_hint(){
+        /**
+         *  Creates a "soft hint". It only returns a softhint if in the current
+         *  round you have one guess with one right possible color
+         */
         ArrayList<GuessToken> rnd = round.getTokensGuess();
         ArrayList<GuessToken> sl  = solu.getTokensGuess();
 
@@ -29,6 +40,10 @@ public class Hint {
     }
 
     private void mid_hint(){
+        /**
+         *  Creates a "mid hint". It only returns a midhint if in the current
+         *  round you have one guess in the right position.
+         */
         ArrayList<GuessToken> rnd = round.getTokensGuess();
         ArrayList<GuessToken> sl  = solu.getTokensGuess();
         int i = 0;
@@ -44,6 +59,9 @@ public class Hint {
     }
 
     private void hard_hint(){
+        /**
+         *  Creates a "hard hint". The solution of one position
+         */
         Random rn = new Random();
         int col = rn.nextInt() % (round.getTokensGuess()).size();
         this.text = "In position " + col + " you have to put " + ((round.getTokensGuess()).get(col)).getColour();
@@ -51,9 +69,13 @@ public class Hint {
     }
 
     public String get_hints(){
-        tryes += 1;
-        if(score>5 && tryes<2) soft_hint();
-        else if(score>5 && tryes<5) mid_hint();
+        /**
+         *  Creates a hint in base of the difficulty and the attempts,
+         *  returns the hint in String structure
+         */
+        attempt += 1;
+        if(score>5 && attempt<2) soft_hint();
+        else if(score>5 && attempt<5) mid_hint();
         else hard_hint();
 
         return this.text;
@@ -61,15 +83,24 @@ public class Hint {
 
 
     public Hint(Difficulty difficulty, Round round, Round solu) {
+        /**
+         * [CONSTRUCTOR] Creates a Hint instance and it needs:
+         *      difficulty: An instance of difficulty of the game, at the moment.
+         *      round:      An instance of the last round played.
+         *      solu:       An instance of the solution round (0)
+         */
         this.text = "Empty hint";
         this.round = round;
         this.solu = solu;
         this.nhints = 0;
-        this.tryes = 0;
+        this.attempt = 0;
         this.score = difficulty.difficulty();
     }
 
     public static void main(String[] args){
+        /**
+         *  DRIVER
+         */
         System.out.println("HINT DRIVER");
     }
 }
