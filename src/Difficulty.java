@@ -9,7 +9,6 @@ public class Difficulty {
     private int n_colors;
     private int n_positions;
     private int n_rounds;
-    private int n_hints;
 
     public Difficulty() {
         /**
@@ -18,17 +17,15 @@ public class Difficulty {
         this.n_colors = 4;
         this.n_positions = 4;
         this.n_rounds = 10;
-        this.n_hints = 3;
     }
 
-    public Difficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
+    public Difficulty(int n_colors, int n_positions, int n_rounds) {
         /**
          * Constructor: Public constructor method for difficulty with custom params
          */
         this.n_colors = n_colors;
         this.n_positions = n_positions;
         this.n_rounds = n_rounds;
-        this.n_hints = n_hints;
     }
 
     // Getters
@@ -44,16 +41,11 @@ public class Difficulty {
         return n_rounds;
     }
 
-    public int getN_hints() {
-        return n_hints;
-    }
-
     public Map get_all() {
         Map information = new HashMap();
         information.put("n_colors", n_colors);
         information.put("n_positions", n_positions);
         information.put("n_rounds", n_colors);
-        information.put("n_hints", n_hints);
         return information;
 
     }
@@ -65,7 +57,7 @@ public class Difficulty {
         /**
          * Public function for returning the value of difficulty of the game.
          */
-        int evaluation = (2 * n_colors + n_positions);
+        int evaluation = (2 * n_colors + n_positions)/n_rounds;
         return evaluation;
     }
 }

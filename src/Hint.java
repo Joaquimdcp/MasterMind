@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Hint {
     /**
@@ -13,8 +14,8 @@ public class Hint {
     private int nhints;
     private int score;
     private int attempt;
-    private Round round;
-    private Round solu;
+    private ArrayList<GuessToken> rnd;
+    private ArrayList<GuessToken> sl;
 
 
 
@@ -23,8 +24,6 @@ public class Hint {
          *  Creates a "soft hint". It only returns a softhint if in the current
          *  round you have one guess with one right possible color
          */
-        ArrayList<GuessToken> rnd = round.getTokensGuess();
-        ArrayList<GuessToken> sl  = solu.getTokensGuess();
 
         for(GuessToken r: rnd){
             for(GuessToken s: sl){
@@ -44,8 +43,6 @@ public class Hint {
          *  Creates a "mid hint". It only returns a midhint if in the current
          *  round you have one guess in the right position.
          */
-        ArrayList<GuessToken> rnd = round.getTokensGuess();
-        ArrayList<GuessToken> sl  = solu.getTokensGuess();
         int i = 0;
         while(rnd.size()>i && sl.size()>i){
             GuessToken s = sl.get(i);
@@ -63,8 +60,8 @@ public class Hint {
          *  Creates a "hard hint". The solution of one position
          */
         Random rn = new Random();
-        int col = rn.nextInt() % (round.getTokensGuess()).size();
-        this.text = "In position " + col + " you have to put " + ((round.getTokensGuess()).get(col)).getColour();
+        int col = rn.nextInt() % rnd.size();
+        this.text = "In position " + col + " you have to put " + (rnd.get(col)).getColour();
         this.nhints+=5;
     }
 
@@ -82,7 +79,7 @@ public class Hint {
     }
 
 
-    public Hint(Difficulty difficulty, Round round, Round solu) {
+    public Hint(Difficulty difficulty, ArrayList<GuessToken> round, ArrayList<GuessToken> solu) {
         /**
          * [CONSTRUCTOR] Creates a Hint instance and it needs:
          *      difficulty: An instance of difficulty of the game, at the moment.
@@ -90,8 +87,8 @@ public class Hint {
          *      solu:       An instance of the solution round (0)
          */
         this.text = "Empty hint";
-        this.round = round;
-        this.solu = solu;
+        this.rnd = round;
+        this.sl = solu;
         this.nhints = 0;
         this.attempt = 0;
         this.score = difficulty.difficulty();
@@ -102,5 +99,36 @@ public class Hint {
          *  DRIVER
          */
         System.out.println("HINT DRIVER");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Method Options: ");
+        System.out.println("1: Constructor");
+        System.out.println("2: Get Hint");
+        int option = sc.nextInt();
+        switch (option){
+            case 1:
+                System.out.println("Constructor");
+                System.out.println("Do you want to set a custom or default Difficulty?");
+                String command = sc.nextLine();
+                if(command.equals("custom")){
+                    System.out.println("How many colors do you want to play with? (");
+                    int ncolors = sc.nextInt();
+                    int npositions = 4;
+                    System.out.println("How many rounds do you want to play? (");
+                    int nrounds = sc.nextInt();
+                    Difficulty difficult = new Difficulty(ncolors,npositions,nrounds);
+                }
+                else{
+                    Difficulty difficulty = new Difficulty();
+                }
+
+            case 2:
+                System.out.println("Constructor");
+
+
+        }
+
+
+
+
     }
 }
