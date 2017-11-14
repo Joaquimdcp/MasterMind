@@ -16,7 +16,7 @@ public class Timing {
         return startTime;
     }
 
-    public long get_saved_time() {
+    public long getSavedTime() {
         return savedTime;
     }
 

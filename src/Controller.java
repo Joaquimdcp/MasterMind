@@ -48,8 +48,7 @@ public class Controller {
      */
     public boolean registerUser(String name, String password) {
         User userAux = new User(name, password);
-        if (!userAux.authUser()) {
-            userAux.setUser();
+        if (userAux.setUser()) {
             currentUser = userAux;
             return true;
         } else

@@ -30,7 +30,7 @@ public class Board {
     public int initGame(boolean isIA) {
         this.time = new Timing();
         this.time.set_start_time();
-        this.codeBreaker = new CodeBreaker();
+        this.codeBreaker = new CodeBreaker(true);
         this.codeMaker = new CodeMaker(isIA);
         this.answer = this.codeMaker.make_code();
         return boardID;
@@ -60,7 +60,7 @@ public class Board {
     }
 
     public void newHint() {
-        Hint h = new Hint(difficulty);
+        //Hint h = new Hint(difficulty);
         // TODO: decidir cómo comunicar hints al controller/game
     }
 

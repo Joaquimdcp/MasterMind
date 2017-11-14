@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class User {
     public boolean setUser() {
         if (!userExists(this.username)) {
             String newUser = this.username + "|" + this.password;
-            try (FileWriter fw = new FileWriter(".\\users.txt", true);
+            try (FileWriter fw = new FileWriter("users.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter out = new PrintWriter(bw)) {
                 out.println(newUser);
