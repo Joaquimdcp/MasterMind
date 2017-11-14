@@ -65,7 +65,7 @@ public class Difficulty {
         /**
          * Public function for returning the value of difficulty of the game.
          */
-        int evaluation = (2 * n_colors + n_positions) / (2 * n_rounds + n_hints);
+        int evaluation = (2 * n_colors + n_positions);
         return evaluation;
     }
 }

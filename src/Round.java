@@ -13,12 +13,15 @@ public class Round {
     private ArrayList<AnswerToken> answerCode() {
         /** Private function that returns the answer code of the current round
          */
-        ArrayList<GuessToken> llSolucio = Board.getRoundGuess(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
+        ArrayList<GuessToken> llSolucio; //Board.getRoundGuess(0); //depen de BOARD -> NOMES VULL ELS GUESSTOKEN
                                                                   //depen de Board canviar la linia
+
+
         ArrayList<Integer> doneSolution = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
         ArrayList<AnswerToken> resultWhite = new ArrayList<AnswerToken>();
+        /**
         for (int i = 0; i < tokensGuess.size(); ++i) {
             if (tokensGuess.get(i).equalsToken(llSolucio.get(i))) {
                 AnswerToken b = new AnswerToken(1);
@@ -43,7 +46,9 @@ public class Round {
             }
         }
         resultBlack.addAll(resultWhite);
+         **/
         return resultBlack;
+
     }
 
     //Constructors
@@ -91,6 +96,7 @@ public class Round {
          * board and that all the tokens are of accepted colours; if one of this requirements is not fulfuilled it
          * returns false
          */
+        /**
         int colors[] = Board.getNcolours(); //depen de com s'implmenti a BOARD (entenc [ncolors, nposicions])
         if (tokensGuess.size() == colors[1]) {
             boolean bien = true;
@@ -104,6 +110,7 @@ public class Round {
                 return true;
             }
         }
+         **/
         return false;
     }
 

@@ -70,7 +70,7 @@ public class User {
     public boolean setUser() {
         if (!userExists(this.username)) {
             String newUser = this.username + "|" + this.password;
-            try (FileWriter fw = new FileWriter(".\\users.txt", true);
+            try (FileWriter fw = new FileWriter("users.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter out = new PrintWriter(bw)) {
                 out.println(newUser);
