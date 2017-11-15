@@ -4,7 +4,6 @@ import java.io.BufferedWriter;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class User {
     // Returns true if the user was found in the DB and sets the user credentials
     // Returns false otherwise
     private boolean userExists(String username) {
-        String fileName = ".\\users.txt";
+        String fileName = "users.txt";
         List<String> users = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
