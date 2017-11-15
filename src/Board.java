@@ -8,7 +8,6 @@ public class Board {
     private Timing time;
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
-    private boolean breakerIA;
     private boolean victory;
     private ArrayList<Round> rounds;
     private ArrayList<GuessToken> solution;
@@ -18,19 +17,17 @@ public class Board {
         this.currentRound = 0;
     }
 
-    public Board(int boardID, int hintsUsed, int currentRound) {
-        this.boardID = boardID;
+    public Board(int hintsUsed, int currentRound) {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
     public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
-        this.difficulty = new Difficulty(nColours, nPositions, nRounds, nHints);
+        this.difficulty = new Difficulty(nColors, nPositions, nRounds, nHints);
     }
     /* Initializes all the basic attributes of the class to play a game */
     public void initGame(boolean breakerIA) {
         this.time = new Timing();
         this.victory = false;
-        this.breakerIA = breakerIA;
         this.codeBreaker = new CodeBreaker(breakerIA);
         this.codeMaker = new CodeMaker(!breakerIA);
         this.solution = this.codeMaker.make_code();
@@ -59,17 +56,8 @@ public class Board {
             ArrayList<GuessToken> guessCode = codeBreaker.play(this.answer, this.currentRound);
             // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
-                // Get answer (black and white) from codeMaker
-                // ArrayList<AnswerToken> answerCode
-                // If the codeBreaker is IA
-                if (this.breakerIA) {
-                    // 
-                    if (r.checkAndSetAnswer(userAnswerTokens, this.solution)) {
-                    }
-                }
-                else {
-                    r.setAnswer(this.solution);
-                }
+                // Set the answer, add the round to the list of rounds, check if the codeBreaker won
+                r.setAnswer(this.solution);
                 rounds.add(this.currentRound, r);
                 this.currentRound++;
                 this.victory = r.isFinalRound();
