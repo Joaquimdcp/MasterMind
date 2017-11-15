@@ -27,8 +27,8 @@ public class Timing {
     }
 
     public long set_save_time() {
-        this.startTime = System.currentTimeMillis() / 1000L;
-        return startTime;
+        this.savedTime = System.currentTimeMillis() / 1000L;
+        return savedTime;
     }
 
 }
