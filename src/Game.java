@@ -108,7 +108,7 @@ public class Game {
     public Round getRound(int n){
         /**Public function that returns an instance of the round number n (where n is the parameter of the function
          */
-        return this.currentBoard.getRount(n);
+        return this.currentBoard.getRound(n);
     }
 
     public Round getCurrentRound(){

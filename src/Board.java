@@ -9,6 +9,7 @@ public class Board {
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
     private boolean breakerIA;
+    private boolean victory;
     private ArrayList<Round> rounds;
     private ArrayList<GuessToken> solution;
 
@@ -22,11 +23,13 @@ public class Board {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
-
+    public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
+        this.difficulty = new Difficulty(nColours, nPositions, nRounds, nHints);
+    }
     /* Initializes all the basic attributes of the class to play a game */
-    public void initGame(boolean breakerIA, int n_colors, int n_positions, int n_rounds, int n_hints) {
+    public void initGame(boolean breakerIA) {
         this.time = new Timing();
-        this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
+        this.victory = false;
         this.breakerIA = breakerIA;
         this.codeBreaker = new CodeBreaker(breakerIA);
         this.codeMaker = new CodeMaker(!breakerIA);
@@ -50,14 +53,18 @@ public class Board {
         or because there are no more rounds to be played. */
     public boolean playRound() {
         if (this.currentRound <= this.difficulty.getN_rounds()) {
-            // creo una nueva ronda
+            // Create new Round
             Round r = new Round();
-            // obtengo el código del codeBreaker
+            // Get guess from codeBreaker
             ArrayList<GuessToken> guessCode = codeBreaker.play(this.answer, this.currentRound);
+            // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
+                // Get answer (black and white) from codeMaker
+                // ArrayList<AnswerToken> answerCode
+                // If the codeBreaker is IA
                 if (this.breakerIA) {
-
-                    if(r.checkAndSetAnswer(userAnswerTokens, this.solution)) {
+                    // 
+                    if (r.checkAndSetAnswer(userAnswerTokens, this.solution)) {
                     }
                 }
                 else {
@@ -65,18 +72,27 @@ public class Board {
                 }
                 rounds.add(this.currentRound, r);
                 this.currentRound++;
-                return !(r.isFinalRound());
+                this.victory = r.isFinalRound();
+                return !this.victory;
             }
         }
         return false;
     }
 
+    public boolean hasPlayerWon() {
+        return this.victory;
+    }
+    
     public Round getRound(int round) {
         return this.rounds.get(round);
     }
 
     public Round getCurrentRound() {
         return this.rounds.get(this.currentRound);
+    }
+
+    public Difficulty getDifficulty() {
+        return this.difficulty;
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
@@ -96,6 +112,7 @@ public class Board {
     }
 
     public long endGame() {
+        this.time.set_save_time();
         return this.time.getSavedTime();
     }
 }

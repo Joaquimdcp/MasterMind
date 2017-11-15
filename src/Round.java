@@ -90,7 +90,7 @@ public class Round {
 
     //Setters
 
-    public void setNRound(int n) {
+    public void setNRound(int nRound) {
         /**Setter of the number of Round that this round represents
          */
         this.nRound = nRound;
