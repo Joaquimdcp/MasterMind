@@ -1,8 +1,9 @@
+import javax.rmi.CORBA.Stub;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Hint {
+public class TestHint {
     /**
      * Hit class is for managing all hints of the game. You can create a hint,
      * and retrieve the measure of the help in base of which kind of hint did the
@@ -79,7 +80,7 @@ public class Hint {
     }
 
 
-    public Hint(Difficulty difficulty, ArrayList<GuessToken> round, ArrayList<GuessToken> solu) {
+    public TestHint(StubDifficulty difficulty, ArrayList<GuessToken> round, ArrayList<GuessToken> solu) {
         /**
          * [CONSTRUCTOR] Creates a Hint instance and it needs:
          *      difficulty: An instance of difficulty of the game, at the moment.
