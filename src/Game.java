@@ -46,7 +46,7 @@ public class Game {
     public void setDifficulty (){
         /** Setter of the difficulty of the game
          */
-        this.difficulty = Board.getDifficulty();
+        this.difficulty = currentBoard.getDifficulty();
     }
 
     public void setGameName(String name){

@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Board {
     private int hintsUsed;
     private int currentRound;
-
     private Difficulty difficulty;
+    private int nHints;
     private Timing time;
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
@@ -22,7 +22,8 @@ public class Board {
         this.currentRound = currentRound;
     }
     public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
-        this.difficulty = new Difficulty(nColors, nPositions, nRounds, nHints);
+        this.nHints = nHints;
+        this.difficulty = new Difficulty(nColors, nPositions, nRounds);
     }
     /* Initializes all the basic attributes of the class to play a game */
     public void initGame(boolean breakerIA) {
@@ -36,9 +37,9 @@ public class Board {
     
     /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
-        if (this.hintsUsed > (this.difficulty.getN_hints())) {
-            Hint h = new Hint(this.difficulty);
-            this.hints.add(h);
+        if (this.hintsUsed > this.nHints) {
+            ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+            Hint h = new Hint(this.difficulty, currentGuess, solution);
             System.out.println(h.get_hints());
             hintsUsed += 1;
             return true;
@@ -53,11 +54,12 @@ public class Board {
             // Create new Round
             Round r = new Round();
             // Get guess from codeBreaker
-            ArrayList<GuessToken> guessCode = codeBreaker.play(this.answer, this.currentRound);
+            r.setAnswer(this.solution);
+            ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
+            ArrayList<GuessToken> guessCode = codeBreaker.play(answerCode, this.currentRound);
             // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
-                r.setAnswer(this.solution);
                 rounds.add(this.currentRound, r);
                 this.currentRound++;
                 this.victory = r.isFinalRound();
