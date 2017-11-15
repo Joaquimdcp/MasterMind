@@ -109,12 +109,17 @@ public class CodeBreaker extends Player {
         combination.add(i);
     }
 
-    public ArrayList<GuessToken> play(ArrayList<Integer> answer) {
+    public ArrayList<GuessToken> play(ArrayList<GuessToken> answer) {
+        ArrayList<Integer> int_answer = new ArrayList<Integer>();
+        for(GuessToken a: answer){
+            int_answer.add(a.getNumColour());
+        }
+
         if (IA) {
             if (round == 0) {
                 play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
             } else {
-                resp_ini = check_play(answer, play);
+                resp_ini = check_play(int_answer, play);
                 population = purgue_population(play, resp_ini);
                 play = get_best();
             }
