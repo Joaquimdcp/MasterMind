@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Board {
-    private int hintsUsed;
     private int currentRound;
     private Difficulty difficulty;
+    private int hintsUsed;
     private int nHints;
     private Timing time;
     private CodeBreaker codeBreaker;
@@ -39,16 +39,18 @@ public class Board {
     
     /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
-        if (this.hintsUsed > this.nHints) {
-            ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
-            Hint h = new Hint(this.difficulty, currentGuess, solution);
-            System.out.println(h.get_hints());
+        if (this.hintsUsed < this.nHints) {
             hintsUsed += 1;
             return true;
         }
         return false;
     }
-
+    
+    public String getHint() {
+        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+        Hint h = new Hint(this.difficulty, currentGuess, solution);
+        return h.get_hints();
+    }
     /* Returns true if the game continues, false if it's the end of the game (either because the code was broken
         or because there are no more rounds to be played. */
     public boolean playRound() {
@@ -71,18 +73,22 @@ public class Board {
         return false;
     }
 
+    /* Returns true if the player has won */
     public boolean hasPlayerWon() {
         return this.victory;
     }
     
+    /* Returns the round with number 'round' */
     public Round getRound(int round) {
         return this.rounds.get(round);
     }
 
+    /* Returns the current Round */
     public Round getCurrentRound() {
         return this.rounds.get(this.currentRound);
     }
 
+    /* Returns the difficulty of the Board */
     public Difficulty getDifficulty() {
         return this.difficulty;
     }
