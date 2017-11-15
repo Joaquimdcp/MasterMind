@@ -46,7 +46,7 @@ public class Board {
         return false;
     }
     
-    public String getHint() {
+    public String newHint() {
         ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
         Hint h = new Hint(this.difficulty, currentGuess, solution);
         return h.get_hints();

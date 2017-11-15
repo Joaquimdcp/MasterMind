@@ -41,7 +41,6 @@ public class User {
             e.printStackTrace();
         }
         if (users.isEmpty()) {
-            System.out.println("User " + this.username + " does not exist");
             return false;
         }
         this.credential = users.get(0);
@@ -61,7 +60,6 @@ public class User {
                 }
             }
         }
-        System.out.println("Wrong credentials");
         return false;
     }
 
@@ -77,10 +75,8 @@ public class User {
                 e.printStackTrace();
                 return false;
             }
-            System.out.println("User " + this.username + " has been registered");
             return true;
         }
-        System.out.println("User " + this.username + " already exists");
         return false;
     }
 
