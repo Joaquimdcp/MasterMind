@@ -18,6 +18,7 @@ public class Round {
         ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
         ArrayList<AnswerToken> resultWhite = new ArrayList<AnswerToken>();
+        /**
         for (int i = 0; i < tokensGuess.size(); ++i) {
             if (tokensGuess.get(i).equalsToken(llSolucio.get(i))) {
                 AnswerToken b = new AnswerToken(1);
@@ -42,7 +43,9 @@ public class Round {
             }
         }
         resultBlack.addAll(resultWhite);
+         **/
         return resultBlack;
+
     }
 
     //Constructors
@@ -87,7 +90,7 @@ public class Round {
 
     //Setters
 
-    public void setNRound(int n) {
+    public void setNRound(int nRound) {
         /**Setter of the number of Round that this round represents
          */
         this.nRound = nRound;
@@ -110,6 +113,7 @@ public class Round {
                 return true;
             }
         }
+        
         return false;
     }
 

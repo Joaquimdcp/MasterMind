@@ -46,7 +46,7 @@ public class Game {
     public void setDifficulty (){
         /** Setter of the difficulty of the game
          */
-        this.difficulty = Board.getDifficulty();
+        this.difficulty = currentBoard.getDifficulty();
     }
 
     public void setGameName(String name){
@@ -108,7 +108,7 @@ public class Game {
     public Round getRound(int n){
         /**Public function that returns an instance of the round number n (where n is the parameter of the function
          */
-        return this.currentBoard.getRount(n);
+        return this.currentBoard.getRound(n);
     }
 
     public Round getCurrentRound(){

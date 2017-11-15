@@ -33,7 +33,7 @@ public class User {
     // Returns true if the user was found in the DB and sets the user credentials
     // Returns false otherwise
     private boolean userExists(String username) {
-        String fileName = ".\\users.txt";
+        String fileName = "users.txt";
         List<String> users = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
@@ -69,7 +69,7 @@ public class User {
     public boolean setUser() {
         if (!userExists(this.username)) {
             String newUser = this.username + "|" + this.password;
-            try (FileWriter fw = new FileWriter(".\\users.txt", true);
+            try (FileWriter fw = new FileWriter("users.txt", true);
                     BufferedWriter bw = new BufferedWriter(fw);
                     PrintWriter out = new PrintWriter(bw)) {
                 out.println(newUser);

@@ -109,7 +109,7 @@ public class CodeBreaker extends Player {
         combination.add(i);
     }
 
-    public ArrayList<Integer> play(ArrayList<Integer> answer) {
+    public ArrayList<GuessToken> play(ArrayList<Integer> answer) {
         if (IA) {
             if (round == 0) {
                 play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
@@ -124,7 +124,12 @@ public class CodeBreaker extends Player {
             while (scanner.hasNextInt())
                 play.add(scanner.nextInt());
         }
-        return play;
+        ArrayList<GuessToken> result = new ArrayList<>();
+        for(int i: play){
+            GuessToken t = new GuessToken(i);
+            result.add(t);
+        }
+        return result;
     }
 
     public CodeBreaker(boolean IA) {
