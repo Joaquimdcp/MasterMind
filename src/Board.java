@@ -21,6 +21,8 @@ public class Board {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
+    
+    /* Initializes the difficulty of the game */
     public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
         this.nHints = nHints;
         this.difficulty = new Difficulty(nColors, nPositions, nRounds);
