@@ -42,11 +42,13 @@ public class BoardDriver {
 
     }
 
-    private static void testHasPlayerWon() {
+    private static void testHasPlayerWon(boolean victory) {
         Board tablero = new Board();
         tablero.setVictory(victory);
         if (tablero.hasPlayerWon()) {
-            System.out.println("THe ");
+            System.out.println("The player won");
+        } else  {
+            System.out.println("The player did not win");
         }
     }
 
@@ -56,12 +58,29 @@ public class BoardDriver {
         System.out.println("The number of hints has been set");
     }
 
+    private static void testSetDifficulty(Difficulty diff) {
+        Board tablero = new Board();
+        tablero.setDifficulty(diff);
+        System.out.println("The difficulty has been set");
+    }
+
+    private static void testSetRound(int index, Round round) {
+        Board tablero = new Board();
+        tablero.setRound(index, round);
+        System.out.println("The round has been set");
+    }
+
     private static void testGetRound() {
+        Board tablero = new Board();
+        Round testRound = new Round();
+        tablero.setRound(round, testRound);
+        Round resultRound = tablero.getRound(round);
+        System.out.println();
 
     }
 
     private static void testGetCurrentRound() {
-
+        Board tablero = new Board();
     }
 
     private static void testGetDifficulty() {

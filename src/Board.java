@@ -78,12 +78,20 @@ public class Board {
         return this.victory;
     }
 
+    public void setVictory(boolean victory) {
+        this.victory = victory;
+    }
+
     public void setNHints(int nHints) {
         this.nHints = nHints;
     }
 
     public void setDifficulty(Difficulty diff) {
         this.difficulty = diff;
+    }
+
+    public void setRound(int index, Round round) {
+        this.rounds.add(index, round);
     }
     
     /* Returns the round with number 'round' */
@@ -101,6 +109,7 @@ public class Board {
         return this.difficulty;
     }
 
+    /* Returns the current score of the game */
     public int getScore() {
         int score = this.difficulty.difficulty();
         int time = (int)this.time.set_saved_time();
