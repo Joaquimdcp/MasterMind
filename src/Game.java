@@ -23,8 +23,7 @@ public class Game {
         this.currentUser = new User();
         this.currentBoard = new Board();
     }
-    
-    public Game(boolean breakerIA, User currentUser){
+     public Game(boolean breakerIA, User currentUser){
          /** Constructor: Public constructor method for Game with custom parameters
           */
          this.breakerIA = breakerIA;
@@ -47,7 +46,7 @@ public class Game {
     public void setDifficulty (){
         /** Setter of the difficulty of the game
          */
-        this.difficulty = currentBoard.getDifficulty();
+        this.difficulty = currentBoard.getDifficulty().difficulty();
     }
 
     public void setGameName(String name){
@@ -124,7 +123,7 @@ public class Game {
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
         currentBoard.initGame(this.breakerIA);
-        currentBoard.initDificulty(nColours, nPositions, nRounds, nHints);
+        currentBoard.initDifficulty(nColours, nPositions, nRounds, nHints);
     }
 
     public String useHint(){
@@ -167,7 +166,7 @@ public class Game {
         this.finished = true;
         this.win = this.currentBoard.hasPlayerWon();
         this.score = this.currentBoard.getScore();
-        this.difficulty = this.currentBoard.getDifficulty();
+        this.difficulty = this.currentBoard.getDifficulty().difficulty();
         this.currentBoard = new Board();
     }
 }
