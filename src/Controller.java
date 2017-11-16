@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Controller {
     /**This class is the controller of the domain
@@ -20,6 +21,12 @@ public class Controller {
         /**Setter of the name of the Game that is being played
          */
         this.currentGame.setGameName(name);
+    }
+
+    public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
+        /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
+         */
+        return this.currentGame.setGuessTokensRound(gt);
     }
 
     //Getters
