@@ -19,7 +19,7 @@ public class HintDriver {
         ArrayList<StubGuessToken> round = new ArrayList<>();
         ArrayList<StubGuessToken> sol = new ArrayList<>();
         TestHint h = new TestHint(d,round,sol);
-        h.get_hints();
+        System.out.println("The result is: " + h.get_hints());
         System.out.println("Tested all OK");
 
     }
