@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class CodeBreaker extends Player {
+public class TestCodeBreaker extends Player{
     /**
      *
      *  Methods and atributes for Player when he/she is using as Code Breaker
@@ -130,9 +130,9 @@ public class CodeBreaker extends Player {
         combination.add(i);
     }
 
-    public ArrayList<GuessToken> play(ArrayList<GuessToken> answer) {
+    public ArrayList<StubGuessToken> play(ArrayList<StubGuessToken> answer) {
         ArrayList<Integer> int_answer = new ArrayList<Integer>();
-        for(GuessToken a: answer){
+        for(StubGuessToken a: answer){
             int_answer.add(a.getNumColour());
         }
 
@@ -151,15 +151,15 @@ public class CodeBreaker extends Player {
             while (scanner.hasNextInt())
                 play.add(scanner.nextInt());
         }
-        ArrayList<GuessToken> result = new ArrayList<>();
+        ArrayList<StubGuessToken> result = new ArrayList<>();
         for(int i: play){
-            GuessToken t = new GuessToken(i);
+            StubGuessToken t = new StubGuessToken(i);
             result.add(t);
         }
         return result;
     }
 
-    public CodeBreaker(boolean IA) {
+    public TestCodeBreaker(boolean IA) {
         population = permutations();
         generate_combinations();
         play = new ArrayList<Integer>(Arrays.asList(2, 2, 1, 1));
