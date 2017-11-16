@@ -27,8 +27,8 @@ public class User {
         this.password = password;
     }
 
-    // Returns true if the user was found in the DB and sets the user credentials
-    // Returns false otherwise
+    /* Returns true if the user was found in the DB and sets the user credentials
+        Returns false otherwise */
     private boolean userExists(String username) {
         String fileName = "users.txt";
         List<String> users = new ArrayList<>();
@@ -44,7 +44,7 @@ public class User {
         return true;
     }
 
-    // Tries to authenticate the user. 
+    /* Returns true if the user was correctly authentified */
     public boolean authUser() {
         if (!this.username.isEmpty() && this.username != null) {
             if (userExists(this.username)) {
@@ -59,7 +59,7 @@ public class User {
         return false;
     }
 
-    // Adds the user to the DB - returns true if the user was added correctly
+    /* Returns true if the user was correctly added to the DB */
     public boolean setUser() {
         if (!userExists(this.username)) {
             String newUser = this.username + "|" + this.password;
