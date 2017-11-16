@@ -1,20 +1,38 @@
 import java.util.Scanner;
 
 public class UserDriver {
-    public void testConstructor() {
-
+    private static void testConstructor(String username, String password) {
+        System.out.println("Creating default instance");
+        User defaultUser = new User();
+        System.out.println("Default instance created");
+        System.out.println("Creating basic instance");
+        User usuario = new User(username, password);
+        System.out.println("Basic instance created");
     }
 
-    public void testGetName() {
-
+    private static void testGetName(String username, String password) {
+        User usuario = new User(username, password);
+        System.out.println("The username is " + usuario.getName());
     }
 
-    public void testAuthUser() {
-
+    private static void testSetUser(String username, String password) {
+        System.out.println("Creating new user");
+        User usuario = new User(username, password);
+        if (usuario.setUser()) {
+            System.out.println("User " + username + " has been registered");
+        } else {
+            System.out.println("User " + username + " already exists");
+            System.out.println("Please try again");
+        }
     }
 
-    public void testSetUser() {
-        
+    private static void testAuthUser(String username, String password) {
+        User usuario = new User(username, password);
+        if (usuario.authUser()) {
+            System.out.println("You're now logged in");
+        } else {
+            System.out.println("Wrong credentials");
+        }
     }
 
     public static void main(String[] args) {
@@ -22,7 +40,6 @@ public class UserDriver {
         String password;
         Scanner s = new Scanner(System.in);
         String choice;
-        User usuario;
         boolean quit = false;
         String exitChoice = "";
 
@@ -32,33 +49,32 @@ public class UserDriver {
             username = s.nextLine();
             System.out.println("[*] Please enter the password");
             password = s.nextLine();
-            usuario = new User(username, password);
-            System.out.println("R: Register user " + username);
-            System.out.println("L: Login with user " + username);
+            System.out.println("C: Constructor method");
+            System.out.println("N: getName method");
+            System.out.println("R: Register user " + username + " (setUser method)");
+            System.out.println("L: Login with user " + username + " (authUser method)");
             System.out.println("Press any other key to exit");
             choice = s.nextLine();
             switch (choice) {
+                case "C":
+                    testConstructor(username, password);
+                    System.out.println("'X' to exit, press any other key to continue");
+                    exitChoice = s.nextLine();
+                    break;
+                case "N":
+                    testGetName(username, password);
+                    System.out.println("'X' to exit, press any other key to continue");
+                    exitChoice = s.nextLine();
+                    break;
                 case "R":
-                    if (usuario.setUser()) {
-                        System.out.println("User " + username + " has been registered");
-                        System.out.println("You can now login to your account");
-                        System.out.println("'X' to exit, press any other key to continue");
-                        exitChoice = s.nextLine();
-                        
-                    }
-                    else {
-                        System.out.println("User " + username + " already exists");
-                        System.out.println("Please try again");
-                    }
+                    testSetUser(username, password);
+                    System.out.println("'X' to exit, press any other key to continue");
+                    exitChoice = s.nextLine();
                     break;
                 case "L":
-                    if (usuario.authUser()) {
-                        System.out.println("You're now logged in");
-                        System.out.println("'X' to exit, press any other key to continue");
-                        exitChoice = s.nextLine();
-                    } else {
-                        System.out.println("Wrong credentials");
-                    }
+                    testAuthUser(username, password);
+                    System.out.println("'X' to exit, press any other key to continue");
+                    exitChoice = s.nextLine();
                     break;
                 default:
                     quit = true;
