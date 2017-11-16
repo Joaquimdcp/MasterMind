@@ -44,51 +44,111 @@ public class RoundDriver {
                     case 3:
                         out.println("Enter the round that you want to modify");
                         i = in.nextInt();
-                        out.println("Enter the new number of round");
-                        num = in.nextInt();
-                        if(num>=0){
-                            aux.get(i).setNRound(num);
-                            out.println("New number of round setted");
+                        if(i<aux.size() && i>=0) {
+                            out.println("Enter the new number of round");
+                            num = in.nextInt();
+                            if(num>=0) {
+                                aux.get(i).setNRound(num);
+                                out.println("New number of round setted");
+                            }
+                            else
+                                out.println("This is not a valid number of round");
                         }
+                        else
+                            out.println("This is not a valid number of round");
+                        break;
                     case 4:
                         out.println("Enter the round where you want to set the guess tokens");
                         round = in.nextInt();
-                        out.println("Enter the number of positions");
-                        int npos = in.nextInt();
-                        out.println("Enter the number of possible colors");
-                        int ncol = in.nextInt();
-                        ArrayList<GuessToken> auxG = new ArrayList<GuessToken>();
-                        for(i=0; i<npos; ++i){
-                            out.println("Enter the number of the color of the token " + Integer.toString(i));
-                            int color = in.nextInt();
-                            auxG.add(new GuessToken(color));
+                        if(round<aux.size() && round>=0) {
+                            out.println("Enter the number of positions");
+                            int npos = in.nextInt();
+                            if(npos>=0) {
+                                out.println("Enter the number of possible colors");
+                                int ncol = in.nextInt();
+                                if(ncol>=0) {
+                                    ArrayList<GuessToken> auxG = new ArrayList<GuessToken>();
+                                    for (i = 0; i < npos; ++i) {
+                                        out.println("Enter the number of the color of the token " + Integer.toString(i));
+                                        int color = in.nextInt();
+                                        auxG.add(new GuessToken(color));
+                                    }
+                                    if (aux.get(round).setGuess(auxG, ncol, npos))
+                                        out.println("Guess tokens have been setted");
+                                    else
+                                        out.println("There has been an error");
+                                }
+                                else
+                                    out.println("This is not a correct number of possible colors");
+                            }
+                            else
+                                out.println("This is not a valid number of possible colours");
                         }
-                        if(aux.get(round).setGuess(auxG, ncol, npos))
-                            out.println("Guess tokens have been setted");
                         else
-                            out.println("There has been an error");
+                            out.println("This is not a valid number of round");
                         break;
                     case 5:
                         out.println("Enter the round where you want to set the answer tokens");
                         round = in.nextInt();
-                        if(round<=aux.size() && round>=0) {
+                        if(round<aux.size() && round>=0) {
                             out.println("Enter the round that is the solution of the code");
                             int sol = in.nextInt();
-                            aux.get(round).setAnswer(aux.get(sol).getTokensGuess());
-                            out.println("The answer tokens have been setted");
+                            if(sol<aux.size() && sol>=0 && aux.get(sol).getTokensGuess().size()>0) {
+                                aux.get(round).setAnswer(aux.get(sol).getTokensGuess());
+                                out.println("The answer tokens have been setted");
+                                /**NOT WORKING SET ANSWER TOKENS
+                                 * for(i=0; i<aux.get(round).getTokensAnswer().size(); ++i){
+                                    out.println(aux.get(round).getTokensAnswer().get(i).getNumColour());
+                                }*/
+                            }
+                            else
+                                out.println("This is not a valid round or it doesn't have any guess tokens");
                         }
+                        else
+                            out.println("This is not a valid round");
                         break;
                     case 6:
                         out.println("Enter the number of the round");
                         i = in.nextInt();
-                        out.println("The number of the round is: " + aux.get(i).getnRound());
+                        if(i<aux.size() && i>=0)
+                            out.println("The number of the round is: " + aux.get(i).getnRound());
+                        else
+                            out.println("This is not a valid number of round");
                         break;
                     case 7:
                         out.println("Enter the number of the round");
                         i = in.nextInt();
-                        for(int j=0; j<aux.get(i).getTokensAnswer().size();++j){
-                            out.println("The token number "+ Integer.toString(j)+" is "+aux.get(i).getTokensAnswer().get(j).getColour());
+                        if(i<aux.size() && i>=0) {
+                            for (int j = 0; j < aux.get(i).getTokensAnswer().size(); ++j) {
+                                out.println("The token number " + Integer.toString(j) + " is " + aux.get(i).getTokensAnswer().get(j).getColour());
+                            }
                         }
+                        else
+                            out.println("This is not a valid number of round");
+                        break;
+                    case 8:
+                        out.println("Enter the number of the round");
+                        i = in.nextInt();
+                        if(i<aux.size() && i>=0) {
+                            for (int j = 0; j < aux.get(i).getTokensGuess().size(); ++j) {
+                                out.println("The token number " + Integer.toString(j) + " is " + aux.get(i).getTokensGuess().get(j).getColour());
+                            }
+                        }
+                        else
+                            out.println("This is not a valid number of round");
+                        break;
+                    case 9:
+                        out.println("Enter the number of the round");
+                        i = in.nextInt();
+                        if(i<aux.size() && i>=0) {
+                            if(aux.get(i).isFinalRound())
+                                out.println("This is a final round");
+                            else
+                                out.println("This is not a final round");
+                        }
+                        else
+                            out.println("This is not a valid number of round");
+                        break;
                 }
             }
             else{
