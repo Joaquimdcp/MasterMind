@@ -18,7 +18,6 @@ public class Round {
         ArrayList<Integer> doneMine = new ArrayList<Integer>(Collections.nCopies(tokensGuess.size(), 1));
         ArrayList<AnswerToken> resultBlack = new ArrayList<AnswerToken>();
         ArrayList<AnswerToken> resultWhite = new ArrayList<AnswerToken>();
-        /**
         for (int i = 0; i < tokensGuess.size(); ++i) {
             if (tokensGuess.get(i).equalsToken(llSolucio.get(i))) {
                 AnswerToken b = new AnswerToken(1);
@@ -43,7 +42,6 @@ public class Round {
             }
         }
         resultBlack.addAll(resultWhite);
-         **/
         return resultBlack;
 
     }
@@ -104,7 +102,7 @@ public class Round {
         if (tokensGuess.size() == nPositions) {
             boolean bien = true;
             for (int i = 0; i < tokensGuess.size() && bien; ++i) {
-                if (tokensGuess.get(i).getNumColour() > nColours) {
+                if (tokensGuess.get(i).getNumColour() >= nColours) {
                     bien = false;
                 }
             }
@@ -118,30 +116,9 @@ public class Round {
     }
 
     public void setAnswer(ArrayList<GuessToken> combinationSolution) {
-        /** Setter of the tokensAnswer: it sets the correct answer
+        /** Setter of the tokensAnswer: it sets the correct answer of the current round
          */
         this.tokensAnswer = answerCode(combinationSolution);
-    }
-
-    public boolean checkAndSetAnswer(ArrayList<AnswerToken> tokensAnswer, ArrayList<GuessToken> combinationSolution) {
-        /** Setter of the tokensAnswer: it checks if the answer of the parameter is right,
-         * in that case it is setted and it returns true. If it's not correct it returns false.
-         */
-        ArrayList<AnswerToken> answer = answerCode(combinationSolution);
-        if (answer.size() != tokensAnswer.size())
-            return false;
-        else {
-            boolean allGood = true;
-            for (int i = 0; i < answer.size() && allGood; ++i) {
-                if (!answer.get(i).equalsToken(tokensAnswer.get(i)))
-                    allGood = false;
-            }
-            if (allGood){
-                this.tokensAnswer = tokensAnswer;
-                return true;
-            }
-            return false;
-        }
     }
 
     //Other functions

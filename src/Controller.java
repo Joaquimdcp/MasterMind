@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Controller {
     /**This class is the controller of the domain
@@ -22,6 +23,12 @@ public class Controller {
         this.currentGame.setGameName(name);
     }
 
+    public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
+        /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
+         */
+        return this.currentGame.setGuessTokensRound(gt);
+    }
+
     //Getters
     public User getCurrentUser(){
         /**Getter of the current user
@@ -35,11 +42,11 @@ public class Controller {
         return this.currentGame;
     }
 
-    //public Ranking getCurrentRanking(){
+    public Ranking getCurrentRanking(){
         /** Getter of the current ranking
          */
-    //    return this.currentRanking;
-    //}
+        return this.currentRanking;
+    }
 
     public Round getRound(int n){
         /**Public function that returns an instance of the round number n (where n is the parameter of the function
@@ -63,6 +70,30 @@ public class Controller {
         this.currentGame.initGame(nColours, nPositions, nRounds, nHints);
     }
 
+    public String useHint() {
+        /** Public function that returns a hint (if the player has used less hints that it is permitted)
+         and increments the counter of number of hints
+         */
+        return this.currentGame.useHint();
+    }
+
+    public String playRound() {
+        /**Public function to play a round. It also controls if it's the last round (either because the game has been
+         * won or because it is the last trial)
+         */
+        if(!this.currentGame.playRound()){
+            this.currentGame.endGame();
+            if(this.currentGame.getWin()){
+                return "Game won";
+                updateRanking();////////////////////////////
+            }
+            else
+                return "Game ended but not won";
+        }
+        else
+            return "Round played normally";
+    }
+
     public boolean loadGame() {
         /**Public function to load a game
          */
@@ -75,41 +106,16 @@ public class Controller {
         return this.currentGame.saveGame();
     }
 
+    public boolean restartGame(){
+        /**Public function to restart a game
+         */
+        return this.currentGame.restartGame();
+    }
+
     public void exitGame() {
         /** Public function to exit a game: it will erase the current game
          */
         this.currentGame = new Game();
-    }
-
-    public void getRanking() {
-        /** Public function that returns the ranking
-         */
-
-        //FALTA FERLA!!!!!!!!!!!!!!!!!!!!
-    }
-
-    public String useHint() {
-        /** Public function that returns a hint (if the player has used less hints that it is permitted)
-        and increments the counter of number of hints
-        */
-        return this.currentGame.useHint();
-    }
-
-    public String playRound() {
-        /**Public function to play a round. It also controls if it's the last round (either because the game has been
-         * won or because it is the last trial)
-         */
-        if(this.currentGame.playRound()){
-            this.currentGame.endGame();
-            if(this.currentGame.getWin()){
-                return "Game won";
-                //ACTUALITZAR RANKING!!!!!!!!!!!!!!!!!!!
-            }
-            else
-                return "Game ended but not won";
-        }
-        else
-            return "Round played normally";
     }
 
     public boolean logIn(String name, String password) {

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Board {
-    private int hintsUsed;
     private int currentRound;
     private Difficulty difficulty;
+    private int hintsUsed;
     private int nHints;
     private Timing time;
     private CodeBreaker codeBreaker;
@@ -34,21 +34,23 @@ public class Board {
         this.codeBreaker = new CodeBreaker(breakerIA);
         this.codeMaker = new CodeMaker(!breakerIA);
         this.solution = this.codeMaker.make_code();
-        this.time.set_start_time();
+        this.time.set_saved_time();
     }
 
     /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
-        if (this.hintsUsed > this.nHints) {
-            ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
-            Hint h = new Hint(this.difficulty, currentGuess, solution);
-            System.out.println(h.get_hints());
+        if (this.hintsUsed < this.nHints) {
             hintsUsed += 1;
             return true;
         }
         return false;
     }
 
+    public String newHint() {
+        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+        Hint h = new Hint(this.difficulty, currentGuess, solution);
+        return h.get_hints();
+    }
     /* Returns true if the game continues, false if it's the end of the game (either because the code was broken
         or because there are no more rounds to be played. */
     public boolean playRound() {
@@ -57,8 +59,8 @@ public class Board {
             Round r = new Round();
             // Get guess from codeBreaker
             r.setAnswer(this.solution);
-            ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
-            ArrayList<GuessToken> guessCode = codeBreaker.play(answerCode, this.currentRound);
+            //ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
+            ArrayList<GuessToken> guessCode = codeBreaker.play(this.solution);
             // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
@@ -71,40 +73,64 @@ public class Board {
         return false;
     }
 
+    /* Returns true if the player has won */
     public boolean hasPlayerWon() {
         return this.victory;
     }
 
+    public void setVictory(boolean victory) {
+        this.victory = victory;
+    }
+
+    public void setNHints(int nHints) {
+        this.nHints = nHints;
+    }
+
+    public void setDifficulty(Difficulty diff) {
+        this.difficulty = diff;
+    }
+
+    public void setRound(int index, Round round) {
+        this.rounds.add(index, round);
+    }
+
+    /* Returns the round with number 'round' */
     public Round getRound(int round) {
         return this.rounds.get(round);
     }
 
+    /* Returns the current Round */
     public Round getCurrentRound() {
         return this.rounds.get(this.currentRound);
     }
 
-    public int getDifficulty() {
-        return this.difficulty.difficulty();
+    /* Returns the difficulty of the Board */
+    public Difficulty getDifficulty() {
+        return this.difficulty;
+    }
+
+    /* Returns the current score of the game */
+    public int getScore() {
+        int score = this.difficulty.difficulty();
+        int time = (int)this.time.set_saved_time();
+        return score / time;
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
     public boolean loadGame() {
-        System.out.println("Game loaded");
         return true;
     }
 
     public boolean saveGame() {
-        System.out.println("Game saved");
         return true;
     }
 
     public boolean restartGame() {
-        this.time.set_start_time();
+        System.out.println("Game restarted");
         return true;
     }
 
     public long endGame() {
-        this.time.set_save_time();
-        return this.time.getSavedTime();
+        return this.time.set_saved_time();
     }
 }

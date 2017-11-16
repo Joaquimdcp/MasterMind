@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Game {
     /**This class is used to represent a Game. A Game is composed of all the information needed to play: it has a user,
      * a board, and all the information that is needed for the ranking once the game has ended.
@@ -46,7 +48,7 @@ public class Game {
     public void setDifficulty (){
         /** Setter of the difficulty of the game
          */
-        this.difficulty = currentBoard.getDifficulty();
+        this.difficulty = currentBoard.getDifficulty().difficulty();
     }
 
     public void setGameName(String name){
@@ -59,6 +61,12 @@ public class Game {
         /** Setter of the user that is gonna play this game
          */
         this.currentUser = currentUser;
+    }
+
+    public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
+        /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
+         */
+        return this.currentBoard.setGuessTokensRound(gt);
     }
 
     //Getter
@@ -123,7 +131,7 @@ public class Game {
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
         currentBoard.initGame(this.breakerIA);
-        currentBoard.initDificulty(nColours, nPositions, nRounds, nHints);
+        currentBoard.initDifficulty(nColours, nPositions, nRounds, nHints);
     }
 
     public String useHint(){
@@ -166,7 +174,7 @@ public class Game {
         this.finished = true;
         this.win = this.currentBoard.hasPlayerWon();
         this.score = this.currentBoard.getScore();
-        this.difficulty = this.currentBoard.getDifficulty();
+        this.difficulty = this.currentBoard.getDifficulty().difficulty();
         this.currentBoard = new Board();
     }
 }
