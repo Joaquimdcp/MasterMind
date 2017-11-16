@@ -21,7 +21,7 @@ public class Board {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
-    
+
     /* Initializes the difficulty of the game */
     public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
         this.nHints = nHints;
@@ -36,7 +36,7 @@ public class Board {
         this.solution = this.codeMaker.make_code();
         this.time.set_saved_time();
     }
-    
+
     /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
         if (this.hintsUsed < this.nHints) {
@@ -45,7 +45,7 @@ public class Board {
         }
         return false;
     }
-    
+
     public String newHint() {
         ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
         Hint h = new Hint(this.difficulty, currentGuess, solution);
@@ -93,7 +93,7 @@ public class Board {
     public void setRound(int index, Round round) {
         this.rounds.add(index, round);
     }
-    
+
     /* Returns the round with number 'round' */
     public Round getRound(int round) {
         return this.rounds.get(round);
