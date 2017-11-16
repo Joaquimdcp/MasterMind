@@ -59,8 +59,8 @@ public class Board {
             Round r = new Round();
             // Get guess from codeBreaker
             r.setAnswer(this.solution);
-            ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
-            ArrayList<GuessToken> guessCode = codeBreaker.play(answerCode, this.currentRound);
+            //ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
+            ArrayList<GuessToken> guessCode = codeBreaker.play(this.solution);
             // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
@@ -99,6 +99,11 @@ public class Board {
     /* Returns the difficulty of the Board */
     public Difficulty getDifficulty() {
         return this.difficulty;
+    }
+
+    public int getScore() {
+        int score = this.difficulty.difficulty();
+        return score / this.time.set_saved_time();
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)

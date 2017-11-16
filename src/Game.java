@@ -23,7 +23,8 @@ public class Game {
         this.currentUser = new User();
         this.currentBoard = new Board();
     }
-     public Game(boolean breakerIA, User currentUser){
+    
+    public Game(boolean breakerIA, User currentUser){
          /** Constructor: Public constructor method for Game with custom parameters
           */
          this.breakerIA = breakerIA;
