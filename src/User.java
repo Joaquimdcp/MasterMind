@@ -24,9 +24,7 @@ public class User {
 
     public User(String username, String password) {
         this.username = username;
-        this.password = password; //will be hashed in the final version
-        //this.id = LAST_USER_ID + 1; //LAST_USER_ID must be somewhere in the DB
-        //en caso de necesitarlo se haría
+        this.password = password;
     }
 
     // Returns true if the user was found in the DB and sets the user credentials
@@ -54,7 +52,6 @@ public class User {
                 String username = credentials.nextToken();
                 String password = credentials.nextToken();
                 if (username.equals(this.username) && password.equals(this.password)) {
-                    System.out.println("User " + this.username + " correctly authentified");
                     return true;
                 }
             }
