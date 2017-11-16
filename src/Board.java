@@ -1,66 +1,96 @@
 import java.util.ArrayList;
 
 public class Board {
-    private int boardID;
-    private int hintsUsed;
     private int currentRound;
     private Difficulty difficulty;
+    private int hintsUsed;
+    private int nHints;
     private Timing time;
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
-    private ArrayList<Round> rounds; //(< a n_Rounds/trials)
-    private ArrayList<Hint> hints; // ??
-    private int maxHints;
+    private boolean victory;
+    private ArrayList<Round> rounds;
+    private ArrayList<GuessToken> solution;
 
     public Board() {
-        this.boardID = 0;
         this.hintsUsed = 0;
         this.currentRound = 0;
     }
 
-    public Board(int boardID, int hintsUsed, int currentRound) {
-        this.boardID = boardID;
+    public Board(int hintsUsed, int currentRound) {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
-
-    public void initDifficulty(int n_colors, int n_positions, int n_rounds, int n_hints) {
-        this.difficulty = new Difficulty(n_colors, n_positions, n_rounds, n_hints);
-        this.maxHints = n_hints;
+    
+    /* Initializes the difficulty of the game */
+    public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
+        this.nHints = nHints;
+        this.difficulty = new Difficulty(nColors, nPositions, nRounds);
     }
-    public int initGame(boolean isIA) {
+    /* Initializes all the basic attributes of the class to play a game */
+    public void initGame(boolean breakerIA) {
         this.time = new Timing();
+        this.victory = false;
+        this.codeBreaker = new CodeBreaker(breakerIA);
+        this.codeMaker = new CodeMaker(!breakerIA);
+        this.solution = this.codeMaker.make_code();
         this.time.set_start_time();
-        this.codeBreaker = new CodeBreaker();
-        this.codeMaker = new CodeMaker(isIA);
-        return boardID;
     }
-        
+    
+    /* Returns true if the hint was used, false if all the hints available have been used already */
     public boolean useHint() {
-        hintsUsed += 1;
-        return hintsUsed > maxHints;
-    }
-
-    public boolean playRound() {
-        if (this.currentRound == 0) {
-            this.codeMaker.make_code();
-        } else {
-
+        if (this.hintsUsed < this.nHints) {
+            hintsUsed += 1;
+            return true;
         }
-        return true;
+        return false;
+    }
+    
+    public String newHint() {
+        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+        Hint h = new Hint(this.difficulty, currentGuess, solution);
+        return h.get_hints();
+    }
+    /* Returns true if the game continues, false if it's the end of the game (either because the code was broken
+        or because there are no more rounds to be played. */
+    public boolean playRound() {
+        if (this.currentRound <= this.difficulty.getN_rounds()) {
+            // Create new Round
+            Round r = new Round();
+            // Get guess from codeBreaker
+            r.setAnswer(this.solution);
+            ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
+            ArrayList<GuessToken> guessCode = codeBreaker.play(answerCode, this.currentRound);
+            // If the guess is valid
+            if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
+                // Set the answer, add the round to the list of rounds, check if the codeBreaker won
+                rounds.add(this.currentRound, r);
+                this.currentRound++;
+                this.victory = r.isFinalRound();
+                return !this.victory;
+            }
+        }
+        return false;
     }
 
+    /* Returns true if the player has won */
+    public boolean hasPlayerWon() {
+        return this.victory;
+    }
+    
+    /* Returns the round with number 'round' */
     public Round getRound(int round) {
-        return rounds.get(round);
+        return this.rounds.get(round);
     }
 
+    /* Returns the current Round */
     public Round getCurrentRound() {
-        return rounds.get(this.currentRound);
+        return this.rounds.get(this.currentRound);
     }
 
-    public void newHint() {
-        Hint h = new Hint(difficulty);
-        // TODO: decidir cómo comunicar hints al controller/game
+    /* Returns the difficulty of the Board */
+    public Difficulty getDifficulty() {
+        return this.difficulty;
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
@@ -80,6 +110,7 @@ public class Board {
     }
 
     public long endGame() {
+        this.time.set_save_time();
         return this.time.getSavedTime();
     }
 }

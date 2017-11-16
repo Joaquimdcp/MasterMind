@@ -1,34 +1,26 @@
 public class Timing {
+    /**
+     *  Manage the timming of the game
+     */
     long startTime;
     long savedTime;
 
-    public Timing(int startTime, int savedTime) {
-        this.savedTime = savedTime;
-        this.startTime = startTime;
-    }
-
+    // Constructor
     public Timing() {
-
+        this.savedTime = -1;
+        this.startTime = System.currentTimeMillis() / 1000L;
     }
+
 
     //GETTERS
-    public long get_start_time() {
-        return startTime;
+    public long time() {
+        return System.currentTimeMillis()-this.startTime+savedTime;
     }
 
-    public long get_saved_time() {
-        return savedTime;
-    }
-
-    //SETTERS
-    public long set_start_time() {
-        this.startTime = System.currentTimeMillis() / 1000L;
-        return startTime;
-    }
-
-    public long set_save_time() {
-        this.startTime = System.currentTimeMillis() / 1000L;
-        return startTime;
+    public long set_saved_time() {
+        this.savedTime = System.currentTimeMillis()-this.startTime+savedTime;
+        this.startTime = 0;
+        return this.savedTime;
     }
 
 }
