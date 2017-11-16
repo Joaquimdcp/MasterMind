@@ -103,7 +103,8 @@ public class Board {
 
     public int getScore() {
         int score = this.difficulty.difficulty();
-        return score / this.time.set_saved_time();
+        int time = (int)this.time.set_saved_time();
+        return score / time;
     }
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
@@ -112,6 +113,11 @@ public class Board {
     }
 
     public boolean saveGame() {
+        return true;
+    }
+
+    public boolean restartGame() {
+        System.out.println("Game restarted");
         return true;
     }
 
