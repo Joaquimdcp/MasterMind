@@ -71,7 +71,7 @@ public class RoundDriver {
                     case 5:
                         out.println("Enter the round where you want to set the answer tokens");
                         round = in.nextInt();
-                        if(round>=aux.size()) {
+                        if(round<=aux.size() && round>=0) {
                             out.println("Enter the round that is the solution of the code");
                             int sol = in.nextInt();
                             aux.get(round).setAnswer(aux.get(sol).getTokensGuess());
