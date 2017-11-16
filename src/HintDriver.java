@@ -1,6 +1,30 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HintDriver {
+
+    private static void DriverConstructor(){
+        System.out.println("Constructor");
+        StubDifficulty d = new StubDifficulty();
+        ArrayList<StubGuessToken> round = new ArrayList<>();
+        ArrayList<StubGuessToken> sol = new ArrayList<>();
+        TestHint h = new TestHint(d,round,sol);
+        System.out.println("Tested all OK");
+
+    }
+
+    private static void DriverGetHint(){
+        System.out.println("Constructor");
+        StubDifficulty d = new StubDifficulty();
+        ArrayList<StubGuessToken> round = new ArrayList<>();
+        ArrayList<StubGuessToken> sol = new ArrayList<>();
+        TestHint h = new TestHint(d,round,sol);
+        h.get_hints();
+        System.out.println("Tested all OK");
+
+    }
+
+
     public static void main(String[] args){
         /**
          *  DRIVER
@@ -13,10 +37,9 @@ public class HintDriver {
         int option = sc.nextInt();
         switch (option){
             case 1:
-                System.out.println("Constructor");
+                DriverConstructor();
             case 2:
-                System.out.println("Constructor");
-
+                DriverGetHint();
         }
     }
 }
