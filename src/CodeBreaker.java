@@ -1,10 +1,22 @@
 import java.util.*;
 
 public class CodeBreaker extends Player {
+    /**
+     *
+     *  Methods and atributes for Player when he/she is using as Code Breaker
+     *  we allow to play with the keyboard or using IA
+     *
+     */
     private ArrayList<ArrayList<Integer>> population = new ArrayList<ArrayList<Integer>>();
     ArrayList<ArrayList<Integer>> combination = new ArrayList<>();
     ArrayList<Integer> resp_ini;
 
+
+    /**
+     * Create all possible combinations of guess in our game. We use
+     * integers instead instances of Guess for made it more easy, and more efficient
+     * using immersion technique recursive.
+     */
     public static ArrayList<ArrayList<Integer>> permutations() {
         int[] colors = { 0, 0, 0, 0 };
         ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
@@ -12,6 +24,9 @@ public class CodeBreaker extends Player {
         return result;
     }
 
+    /**
+     * Inmersion function for create all the population
+     */
     static void inmersion(int[] num, int ini, ArrayList<ArrayList<Integer>> result) {
         if (ini >= num.length)
             result.add(convertArrayToList(num));
@@ -23,6 +38,9 @@ public class CodeBreaker extends Player {
         }
     }
 
+    /**
+     * Convert a simple array of integers to arraylist
+     */
     private static ArrayList<Integer> convertArrayToList(int[] num) {
         ArrayList<Integer> combination = new ArrayList<Integer>();
         for (int h = 0; h < num.length; h++)
@@ -30,6 +48,9 @@ public class CodeBreaker extends Player {
         return combination;
     }
 
+    /**
+     * Check the guess played by user and return a response with the verdict.
+     */
     private static ArrayList<Integer> check_play(ArrayList<Integer> code, ArrayList<Integer> breaker) {
 
         ArrayList<Integer> result = new ArrayList<Integer>();
@@ -109,12 +130,17 @@ public class CodeBreaker extends Player {
         combination.add(i);
     }
 
-    public ArrayList<GuessToken> play(ArrayList<Integer> answer) {
+    public ArrayList<GuessToken> play(ArrayList<GuessToken> answer) {
+        ArrayList<Integer> int_answer = new ArrayList<Integer>();
+        for(GuessToken a: answer){
+            int_answer.add(a.getNumColour());
+        }
+
         if (IA) {
             if (round == 0) {
                 play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
             } else {
-                resp_ini = check_play(answer, play);
+                resp_ini = check_play(int_answer, play);
                 population = purgue_population(play, resp_ini);
                 play = get_best();
             }

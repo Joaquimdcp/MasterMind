@@ -4,7 +4,7 @@ public class Controller {
      **/
     User currentUser;
     Game currentGame;
-    Ranking currentRanking;
+    //Ranking currentRanking;
 
     //Constructor
     public Controller() {
@@ -12,7 +12,7 @@ public class Controller {
          */
         this.currentUser = new User();
         this.currentGame = new Game();
-        this.currentRanking = new Ranking();
+        //this.currentRanking = new Ranking();
     }
 
     //Setters
@@ -35,11 +35,11 @@ public class Controller {
         return this.currentGame;
     }
 
-    public Ranking getCurrentRanking(){
+    //public Ranking getCurrentRanking(){
         /** Getter of the current ranking
          */
-        return this.currentRanking;
-    }
+    //    return this.currentRanking;
+    //}
 
     public Round getRound(int n){
         /**Public function that returns an instance of the round number n (where n is the parameter of the function

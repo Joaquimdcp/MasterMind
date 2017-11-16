@@ -6,15 +6,20 @@ public class CodeMaker extends Player {
         this.IA = IA;
     }
 
-    public ArrayList<Integer> make_code() {
-        ArrayList<Integer> result = new ArrayList<>();
+    public ArrayList<GuessToken> make_code() {
+        ArrayList<GuessToken> result = new ArrayList<>();
         if (IA) {
+            for(int i: play){
+                GuessToken t = new GuessToken(i);
+                result.add(t);
+            }
+            return result;
+
         } else {
             System.out.println("Enter your code separated by spaces:");
             Scanner scanner = new Scanner(System.in);
             while (scanner.hasNextInt())
-                result.add(scanner.nextInt());
-
+                result.add(new GuessToken(scanner.nextInt()));
         }
         return result;
     }
