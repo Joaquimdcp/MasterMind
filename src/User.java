@@ -16,7 +16,6 @@ public class User {
     private String username;
     private String password;
     private String credential;
-    private int id;
 
     public User() {
         this.username = defaultUserName;
@@ -82,9 +81,5 @@ public class User {
 
     public String getName() {
         return this.username;
-    }
-
-    public int getID() {
-        return this.id;
     }
 }

@@ -1,6 +1,22 @@
 import java.util.Scanner;
 
 public class UserDriver {
+    public void testConstructor() {
+
+    }
+
+    public void testGetName() {
+
+    }
+
+    public void testAuthUser() {
+
+    }
+
+    public void testSetUser() {
+        
+    }
+
     public static void main(String[] args) {
         String username;
         String password;
