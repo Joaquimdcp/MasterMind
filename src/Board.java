@@ -118,12 +118,10 @@ public class Board {
 
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
     public boolean loadGame() {
-        System.out.println("Game loaded");
         return true;
     }
 
     public boolean saveGame() {
-        System.out.println("Game saved");
         return true;
     }
 
