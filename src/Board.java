@@ -117,6 +117,11 @@ public class Board {
         return true;
     }
 
+    public boolean restartGame() {
+        System.out.println("Game restarted");
+        return true;
+    }
+
     public long endGame() {
         return this.time.set_saved_time();
     }
