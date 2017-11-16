@@ -96,10 +96,6 @@ public class RoundDriver {
                             if(sol<aux.size() && sol>=0 && aux.get(sol).getTokensGuess().size()>0) {
                                 aux.get(round).setAnswer(aux.get(sol).getTokensGuess());
                                 out.println("The answer tokens have been setted");
-                                /**NOT WORKING SET ANSWER TOKENS
-                                 * for(i=0; i<aux.get(round).getTokensAnswer().size(); ++i){
-                                    out.println(aux.get(round).getTokensAnswer().get(i).getNumColour());
-                                }*/
                             }
                             else
                                 out.println("This is not a valid round or it doesn't have any guess tokens");
