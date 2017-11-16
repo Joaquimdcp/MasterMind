@@ -96,9 +96,14 @@ public class Board {
         return this.rounds.get(this.currentRound);
     }
 
+<<<<<<< HEAD
     /* Returns the difficulty of the Board */
     public Difficulty getDifficulty() {
         return this.difficulty;
+=======
+    public int getDifficulty() {
+        return this.difficulty.difficulty();
+>>>>>>> 6ba431af856ae95d1bf8dfa9f0a6e794e8abe1d6
     }
 
     public int getScore() {
