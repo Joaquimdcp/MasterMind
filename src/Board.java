@@ -34,7 +34,7 @@ public class Board {
         this.codeBreaker = new CodeBreaker(breakerIA);
         this.codeMaker = new CodeMaker(!breakerIA);
         this.solution = this.codeMaker.make_code();
-        this.time.set_start_time();
+        this.time.set_saved_time();
     }
     
     /* Returns true if the hint was used, false if all the hints available have been used already */
@@ -77,6 +77,14 @@ public class Board {
     public boolean hasPlayerWon() {
         return this.victory;
     }
+
+    public void setNHints(int nHints) {
+        this.nHints = nHints;
+    }
+
+    public void setDifficulty(Difficulty diff) {
+        this.difficulty = diff;
+    }
     
     /* Returns the round with number 'round' */
     public Round getRound(int round) {
@@ -104,13 +112,7 @@ public class Board {
         return true;
     }
 
-    public boolean restartGame() {
-        this.time.set_start_time();
-        return true;
-    }
-
     public long endGame() {
-        this.time.set_save_time();
-        return this.time.getSavedTime();
+        return this.time.set_saved_time();
     }
 }

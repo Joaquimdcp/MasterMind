@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class UserDriver {
+    
     private static void testConstructor(String username, String password) {
         System.out.println("Creating default instance");
         User defaultUser = new User();
