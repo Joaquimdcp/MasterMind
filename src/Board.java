@@ -90,8 +90,20 @@ public class Board {
         this.difficulty = diff;
     }
 
+    public void setSolution(ArrayList<GuessToken> solution) {
+        this.solution = solution;
+    }
+
     public void setRound(int index, Round round) {
         this.rounds.add(index, round);
+    }
+
+    public void setCurrentRound(int round) {
+        this.currentRound = round;
+    }
+
+    public void setTime(Timing time) {
+        this.time = time;
     }
 
     /* Returns the round with number 'round' */
