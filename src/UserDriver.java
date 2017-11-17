@@ -45,7 +45,7 @@ public class UserDriver {
         String exitChoice = "";
 
         System.out.println("Welcome to the User class");
-        while (!quit) {
+        while(!quit) {
             System.out.println("[+] Please enter the username");
             username = s.nextLine();
             System.out.println("[*] Please enter the password");
@@ -59,28 +59,22 @@ public class UserDriver {
             switch (choice) {
                 case "C":
                     testConstructor(username, password);
-                    System.out.println("'X' to exit, press any other key to continue");
-                    exitChoice = s.nextLine();
                     break;
                 case "N":
                     testGetName(username, password);
-                    System.out.println("'X' to exit, press any other key to continue");
-                    exitChoice = s.nextLine();
                     break;
                 case "R":
                     testSetUser(username, password);
-                    System.out.println("'X' to exit, press any other key to continue");
-                    exitChoice = s.nextLine();
                     break;
                 case "L":
                     testAuthUser(username, password);
-                    System.out.println("'X' to exit, press any other key to continue");
-                    exitChoice = s.nextLine();
                     break;
                 default:
                     quit = true;
                     break;
             }
+            System.out.println("'X' to exit, press any other key to continue testing");
+            exitChoice = s.nextLine();
             if (exitChoice.equals("X")) {
                 quit = true;
             }
