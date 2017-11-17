@@ -20,11 +20,17 @@ public class Token {
     }
 
     public boolean equalsToken(Token a) {
+        /**
+         * Public function that returns true if the two tokens have the same color number
+         */
         return a.getNumColour() == this.colour;
     }
 
     //Getters
     public int getNumColour() {
+        /**
+         * Public functions that returns the number of the token
+         */
         return colour;
     }
 }
