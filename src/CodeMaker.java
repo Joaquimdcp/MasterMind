@@ -1,26 +1,21 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
-public class CodeMaker extends Player {
-    public CodeMaker(boolean IA) {
-        this.IA = IA;
+public class CodeMaker {
+    public CodeMaker() {
+
     }
 
     public ArrayList<GuessToken> make_code() {
         ArrayList<GuessToken> result = new ArrayList<>();
-        if (IA) {
-            for(int i: play){
-                GuessToken t = new GuessToken(i);
-                result.add(t);
-            }
-            return result;
+        Random rand = new Random();
 
-        } else {
-            System.out.println("Enter your code separated by spaces:");
-            Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNextInt())
-                result.add(new GuessToken(scanner.nextInt()));
+        for (int i=0; i<4; i++) {
+            GuessToken t = new GuessToken(rand.nextInt(5));
+            result.add(t);
         }
         return result;
     }
+
 }

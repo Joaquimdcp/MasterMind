@@ -12,13 +12,13 @@ public class BoardDriver {
 
     private static void testInitDifficulty() {
         Board tablero = new Board();
-        tablero.initDifficulty(4, 6, 10, 5);
+        tablero.initDifficulty(4, 6);
         System.out.println("The difficulty has been set");
     }
 
     private static void testInitGame() {
         Board tablero = new Board();
-        tablero.initGame(true);
+        tablero.initGame();
         System.out.println("The board has been initialized");
     }
 
@@ -36,7 +36,7 @@ public class BoardDriver {
         Board tablero = new Board();
         Round r = new Round(1);
         Difficulty diff = new Difficulty();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setDifficulty(diff);
         tablero.setSolution(cm.make_code());
         r.setGuess(cm.make_code(), 4, 6);
@@ -48,7 +48,7 @@ public class BoardDriver {
     private static void testPlayRound() {
         Board tablero = new Board();
         Difficulty diff = new Difficulty();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setDifficulty(diff);
         tablero.setCurrentRound(1);
         tablero.setSolution(cm.make_code());
@@ -84,7 +84,7 @@ public class BoardDriver {
 
     private static void testSetSolution() {
         Board tablero = new Board();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setSolution(cm.make_code());
         System.out.println("The solution has been set");
     }

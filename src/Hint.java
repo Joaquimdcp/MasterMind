@@ -71,8 +71,8 @@ public class Hint {
          *  returns the hint in String structure
          */
         attempt += 1;
-        if(score>5 && attempt<2) soft_hint();
-        else if(score>5 && attempt<5) mid_hint();
+        if(score>50 && attempt<2) soft_hint();
+        else if(score>50 && attempt<5) mid_hint();
         else hard_hint();
 
         return this.text;

@@ -24,16 +24,16 @@ public class Board {
     }
 
     /* Initializes the difficulty of the game */
-    public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
+    public void initDifficulty(int nRounds, int nHints) {
         this.nHints = nHints;
-        this.difficulty = new Difficulty(nColors, nPositions, nRounds);
+        this.difficulty = new Difficulty(nRounds);
     }
     /* Initializes all the basic attributes of the class to play a game */
-    public void initGame(boolean breakerIA) {
+    public void initGame() {
         this.time = new Timing();
         this.victory = false;
-        this.codeBreaker = new CodeBreaker(breakerIA);
-        this.codeMaker = new CodeMaker(!breakerIA);
+        this.codeBreaker = new CodeBreaker();
+        this.codeMaker = new CodeMaker();
         this.solution = this.codeMaker.make_code();
         this.time.set_saved_time();
     }

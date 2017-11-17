@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class CodeBreakerDriver {
 
+
     private static void play_after_create(TestCodeBreaker cb){
         System.out.println("You have to enter the code that you want to solve");
         ArrayList<StubGuessToken> solution = new ArrayList<>();
@@ -26,39 +27,30 @@ public class CodeBreakerDriver {
             }
             System.out.println("Invalid token try again");
         }
-        if(true){
-            System.out.println("Enter number of rounds");
-            Scanner sc = new Scanner(System.in);
-            int rounds = sc.nextInt();
-            for(int j = 0; j<rounds; j++){
-                ArrayList<StubGuessToken> round = cb.play(solution);
-                System.out.println(j);
-                for(StubGuessToken s: round){
-                    System.out.print(s.getColour());
-                }
-                if(round.equals(solution)){
-                    break;
-                }
+
+        System.out.println("Enter number of rounds");
+        Scanner sc = new Scanner(System.in);
+        int rounds = sc.nextInt();
+        for(int j = 0; j<rounds; j++){
+            ArrayList<StubGuessToken> round = cb.play(solution);
+            System.out.println("Round" + j);
+            for(StubGuessToken s: round){
+                System.out.print(s.getColour());
             }
+            System.out.println();
         }
+
 
     }
 
 
     private static void CodeBreakerDriver(){
         System.out.println("Driving Code Breaker Constructor");
-        System.out.println("You have to pass a parameter for indicate if you want to play as computer(C) or human(H)");
+        TestCodeBreaker  cb = new TestCodeBreaker();
+        System.out.println("Instance created");
+
+        System.out.println("Do you want to play with this instance? (1-YES 2-NO)");
         Scanner sc = new Scanner(System.in);
-        String option = sc.nextLine();
-        boolean ia = true;
-        if(option.equals("C")) {
-            ia = true;
-        }
-        else{
-            ia = false;
-        }
-        TestCodeBreaker  cb = new TestCodeBreaker(ia);
-        System.out.println("Do you want to play with this instance? (1-YES 2-NO");
         int choose = sc.nextInt();
         switch (choose){
             case 1:
@@ -66,6 +58,13 @@ public class CodeBreakerDriver {
             case 2:
                 System.out.println("Bye!");
         }
+    }
+
+    private static void playDriver(){
+        System.out.println("You have to create an instance of Code Breaker first");
+        TestCodeBreaker  cb = new TestCodeBreaker();
+        System.out.println("Instance created");
+        play_after_create(cb);
     }
 
     public static void main(String[] args){
@@ -79,7 +78,7 @@ public class CodeBreakerDriver {
             case 1:
                 CodeBreakerDriver();
             case 2:
-                System.out.println("Bye!");
+                playDriver();
         }
     }
 }

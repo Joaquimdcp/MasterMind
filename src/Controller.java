@@ -4,6 +4,7 @@ import java.util.Map;
 public class Controller {
     /**This class is the controller of the domain
      **/
+
     User currentUser;
     Game currentGame;
     Ranking currentRanking;
