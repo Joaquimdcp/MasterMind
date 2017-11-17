@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Board {
     private int currentRound;
@@ -15,11 +16,15 @@ public class Board {
     public Board() {
         this.hintsUsed = 0;
         this.currentRound = 0;
+        this.rounds = new ArrayList<Round>();
+        this.solution = new ArrayList<GuessToken>();
     }
 
     public Board(int hintsUsed, int currentRound) {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
+        this.rounds = new ArrayList<Round>();
+        this.solution = new ArrayList<GuessToken>();
     }
 
     /* Initializes the difficulty of the game */
@@ -56,13 +61,13 @@ public class Board {
     public boolean playRound() {
         if (this.currentRound <= this.difficulty.getN_rounds()) {
             // Create new Round
-            Round r = new Round();
-            // Get guess from codeBreaker
-            r.setAnswer(this.solution);
+            Round r = new Round(currentRound+1);
             //ArrayList<AnswerToken> answerCode = r.getTokensAnswer();
             ArrayList<GuessToken> guessCode = codeBreaker.play(this.solution);
             // If the guess is valid
             if (r.setGuess(guessCode, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
+                // Get guess from codeBreaker
+                r.setAnswer(this.solution);
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
                 rounds.add(this.currentRound, r);
                 this.currentRound++;
