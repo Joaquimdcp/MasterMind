@@ -1,0 +1,79 @@
+Prova 1
+    Descripció: Inicialitzar Dificultat
+    Objectius: Veure que podem inicialitzar dificultat amb diferents paràmetres.
+
+    Altres elements integrats a la prova
+    Driver de Board
+
+    Iteració 1
+    Entrada:
+        10 10
+    Sortida: -
+    Resultat de la prova: ok
+
+    Iteració 2
+    PRE: Número de rondes positiu
+    Entrada:
+        0 10
+    Sortida: -
+    Resultat de la prova: ok
+
+    Iteració 3
+    PRE: Número de rondes positiu
+    Entrada:
+        10 0
+    Sortida: -
+    Resultat de la prova: ok
+
+Prova 2
+    Descripció: Inicialitzar Joc
+    Objectius: Veure la inicialitzacó del joc.
+
+    Altres elements integrats a la prova
+    Driver de Board
+
+    Entrada: -
+    Sortida -
+    Resultat de la prova ok
+
+
+Prova 3
+    Descripció: Nova pista
+    Objectius: Veure si funciona la assignacio de noves pistes
+
+    Altres elements integrats a la prova
+    Driver de Board
+
+    Entrada:
+        inicialitzem dificultat: 1 1
+        posem ronda actual: 0
+        inicialitzem ronda: Round per defècte
+        demanem Pista
+
+    Sortida: Text
+    Resultat de la prova ok
+
+Prova 4
+    Descripció: Nova pista
+    Objectius: Veure si funciona la assignacio de noves pistes
+
+    Altres elements integrats a la prova
+    Driver de Board
+
+    Entrada:
+        inicialitzem dificultat: 1 1
+        posem ronda actual: 0
+        inicialitzem ronda: Round per defècte
+        demanem Pista
+
+    Sortida: Text
+    Resultat de la prova ok
+
+Prova 5
+    Descripció: Mirar si el jugador ha guanyat
+
+    Entrada:
+        <setVictory False>
+
+    Sortida:
+        False
