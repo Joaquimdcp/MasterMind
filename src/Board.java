@@ -69,7 +69,23 @@ public class Board {
                 // Get guess from codeBreaker
                 r.setAnswer(this.solution);
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
-                rounds.add(this.currentRound, r);
+                rounds.add(this.currentRound+1, r);
+                this.currentRound++;
+                this.victory = r.isFinalRound();
+                return !this.victory;
+            }
+        }
+        return false;
+    }
+
+    public boolean setGuessTokensRound(ArrayList<GuessToken> gt) {
+        if (this.currentRound <= this.difficulty.getN_rounds()) {
+            // Create new Round
+            Round r = new Round(currentRound+1);
+            // If the guess is valid
+            if (r.setGuess(gt, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
+                r.setAnswer(this.solution);
+                rounds.add(this.currentRound+1, r);
                 this.currentRound++;
                 this.victory = r.isFinalRound();
                 return !this.victory;
