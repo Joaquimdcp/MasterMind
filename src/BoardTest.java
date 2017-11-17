@@ -7,7 +7,6 @@ class BoardTest {
     void initDifficulty() {
         Board tester = new Board();
         tester.initDifficulty(10, 0);
-        tester.initDifficulty(-1, 0);
         tester.initDifficulty(0, 0);
         tester.initDifficulty(1, 1);
         tester.initDifficulty(1, 0);
@@ -44,9 +43,6 @@ class BoardTest {
         tester.initDifficulty(1,1);
         tester.initGame();
         assertTrue(tester.playRound());
-        //assertFalse(tester.playRound());
-
-
     }
 
     @org.junit.jupiter.api.Test
