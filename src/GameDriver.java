@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameDriver {
-    static Game game = new Game();
-    static PrintStream out = System.out;
-    static Scanner in = new Scanner(System.in);
 
     private static void DriverConstructorDefault(){
         game = new Game();

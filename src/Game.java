@@ -66,7 +66,8 @@ public class Game {
     public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        return this.currentBoard.setGuessTokensRound(gt);
+        //return this.currentBoard.setGuessTokensRound(gt);
+        return true;
     }
 
     //Getter
@@ -130,8 +131,8 @@ public class Game {
     public void initGame(int nColours, int nPositions, int nRounds, int nHints){
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
-        currentBoard.initGame(this.breakerIA);
-        currentBoard.initDifficulty(nColours, nPositions, nRounds, nHints);
+        currentBoard.initGame();
+        currentBoard.initDifficulty(nRounds, nHints);
     }
 
     public String useHint(){

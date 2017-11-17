@@ -49,7 +49,7 @@ public class BoardStub {
 
     /* Returns the difficulty of the Board */
     public Difficulty getDifficulty() {
-        Difficulty d = new Difficulty(4, 5, 6);
+        Difficulty d = new Difficulty( 6);
         return d;
     }
 

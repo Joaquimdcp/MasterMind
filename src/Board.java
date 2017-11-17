@@ -10,34 +10,30 @@ public class Board {
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
     private boolean victory;
-    private ArrayList<Round> rounds;
-    private ArrayList<GuessToken> solution;
+    private ArrayList<Round> rounds = new ArrayList<Round>();
+    private ArrayList<GuessToken> solution = new ArrayList<GuessToken>();
 
     public Board() {
         this.hintsUsed = 0;
         this.currentRound = 0;
-        this.rounds = new ArrayList<Round>();
-        this.solution = new ArrayList<GuessToken>();
     }
 
     public Board(int hintsUsed, int currentRound) {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
-        this.rounds = new ArrayList<Round>();
-        this.solution = new ArrayList<GuessToken>();
     }
 
     /* Initializes the difficulty of the game */
-    public void initDifficulty(int nColors, int nPositions, int nRounds, int nHints) {
+    public void initDifficulty(int nRounds, int nHints) {
         this.nHints = nHints;
-        this.difficulty = new Difficulty(nColors, nPositions, nRounds);
+        this.difficulty = new Difficulty(nRounds);
     }
     /* Initializes all the basic attributes of the class to play a game */
-    public void initGame(boolean breakerIA) {
+    public void initGame() {
         this.time = new Timing();
         this.victory = false;
-        this.codeBreaker = new CodeBreaker(breakerIA);
-        this.codeMaker = new CodeMaker(!breakerIA);
+        this.codeBreaker = new CodeBreaker();
+        this.codeMaker = new CodeMaker();
         this.solution = this.codeMaker.make_code();
         this.time.set_saved_time();
     }
@@ -115,8 +111,8 @@ public class Board {
         this.solution = solution;
     }
 
-    public void setRound(int index, Round round) {
-        this.rounds.add(index, round);
+    public void setRound(Round round) {
+        this.rounds.add(this.currentRound, round);
     }
 
     public void setCurrentRound(int round) {

@@ -12,13 +12,13 @@ public class BoardDriver {
 
     private static void testInitDifficulty() {
         Board tablero = new Board();
-        tablero.initDifficulty(4, 6, 10, 5);
+        tablero.initDifficulty(4, 6);
         System.out.println("The difficulty has been set");
     }
 
     private static void testInitGame() {
         Board tablero = new Board();
-        tablero.initGame(true);
+        tablero.initGame();
         System.out.println("The board has been initialized");
     }
 
@@ -36,19 +36,19 @@ public class BoardDriver {
         Board tablero = new Board();
         Round r = new Round(1);
         Difficulty diff = new Difficulty();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setDifficulty(diff);
         tablero.setSolution(cm.make_code());
         r.setGuess(cm.make_code(), 4, 6);
         tablero.setCurrentRound(1);
-        tablero.setRound(1, r);
+        tablero.setRound(r);
         System.out.println("The hint is " + tablero.newHint());
     }
 
     private static void testPlayRound() {
         Board tablero = new Board();
         Difficulty diff = new Difficulty();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setDifficulty(diff);
         tablero.setCurrentRound(1);
         tablero.setSolution(cm.make_code());
@@ -84,15 +84,15 @@ public class BoardDriver {
 
     private static void testSetSolution() {
         Board tablero = new Board();
-        CodeMaker cm = new CodeMaker(true);
+        CodeMaker cm = new CodeMaker();
         tablero.setSolution(cm.make_code());
         System.out.println("The solution has been set");
     }
 
-    private static void testSetRound(int index) {
+    private static void testSetRound() {
         Board tablero = new Board();
         Round round = new Round();
-        tablero.setRound(index, round);
+        tablero.setRound(round);
         System.out.println("The round has been set");
     }
 
@@ -112,16 +112,17 @@ public class BoardDriver {
     private static void testGetRound(int round) {
         Board tablero = new Board();
         Round testRound = new Round(round);
-        tablero.setRound(round, testRound);
+        tablero.setCurrentRound(round);
+        tablero.setRound(testRound);
         Round resultRound = tablero.getRound(round);
         System.out.println("You got the round " + resultRound.getnRound());
     }
 
     private static void testGetCurrentRound() {
         Board tablero = new Board();
-        tablero.setCurrentRound(1);
+        tablero.setCurrentRound(0);
         Round testRound = new Round(1);
-        tablero.setRound(1, testRound);
+        tablero.setRound(testRound);
         System.out.println("The current round is " + tablero.getCurrentRound().getnRound());
     }
 
@@ -251,9 +252,7 @@ public class BoardDriver {
                     testSetSolution();
                     break;
                 case "SR":
-                    System.out.println("Please enter the round number to set");
-                    int index = s.nextInt();
-                    testSetRound(index);
+                    testSetRound();
                     break;
                 case "SC":
                     System.out.println("Please enter the round number to set to be current");
