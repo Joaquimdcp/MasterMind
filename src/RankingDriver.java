@@ -49,6 +49,7 @@ public class RankingDriver {
             choice = s.nextLine();
             switch (choice) {
                 case "C":
+                    System.out.println("Enter size of ranking");
                     int size = s.nextInt();
                     testConstructor(size);
                     break;
