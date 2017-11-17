@@ -10,21 +10,17 @@ public class Board {
     private CodeBreaker codeBreaker;
     private CodeMaker codeMaker;
     private boolean victory;
-    private ArrayList<Round> rounds;
-    private ArrayList<GuessToken> solution;
+    private ArrayList<Round> rounds = new ArrayList<Round>();
+    private ArrayList<GuessToken> solution = new ArrayList<GuessToken>();
 
     public Board() {
         this.hintsUsed = 0;
         this.currentRound = 0;
-        this.rounds = new ArrayList<Round>();
-        this.solution = new ArrayList<GuessToken>();
     }
 
     public Board(int hintsUsed, int currentRound) {
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
-        this.rounds = new ArrayList<Round>();
-        this.solution = new ArrayList<GuessToken>();
     }
 
     /* Initializes the difficulty of the game */
@@ -99,8 +95,8 @@ public class Board {
         this.solution = solution;
     }
 
-    public void setRound(int index, Round round) {
-        this.rounds.add(index, round);
+    public void setRound(Round round) {
+        this.rounds.add(this.currentRound, round);
     }
 
     public void setCurrentRound(int round) {

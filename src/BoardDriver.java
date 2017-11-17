@@ -41,7 +41,7 @@ public class BoardDriver {
         tablero.setSolution(cm.make_code());
         r.setGuess(cm.make_code(), 4, 6);
         tablero.setCurrentRound(1);
-        tablero.setRound(1, r);
+        tablero.setRound(r);
         System.out.println("The hint is " + tablero.newHint());
     }
 
@@ -89,10 +89,10 @@ public class BoardDriver {
         System.out.println("The solution has been set");
     }
 
-    private static void testSetRound(int index) {
+    private static void testSetRound() {
         Board tablero = new Board();
         Round round = new Round();
-        tablero.setRound(index, round);
+        tablero.setRound(round);
         System.out.println("The round has been set");
     }
 
@@ -112,16 +112,17 @@ public class BoardDriver {
     private static void testGetRound(int round) {
         Board tablero = new Board();
         Round testRound = new Round(round);
-        tablero.setRound(round, testRound);
+        tablero.setCurrentRound(round);
+        tablero.setRound(testRound);
         Round resultRound = tablero.getRound(round);
         System.out.println("You got the round " + resultRound.getnRound());
     }
 
     private static void testGetCurrentRound() {
         Board tablero = new Board();
-        tablero.setCurrentRound(1);
+        tablero.setCurrentRound(0);
         Round testRound = new Round(1);
-        tablero.setRound(1, testRound);
+        tablero.setRound(testRound);
         System.out.println("The current round is " + tablero.getCurrentRound().getnRound());
     }
 
@@ -251,9 +252,7 @@ public class BoardDriver {
                     testSetSolution();
                     break;
                 case "SR":
-                    System.out.println("Please enter the round number to set");
-                    int index = s.nextInt();
-                    testSetRound(index);
+                    testSetRound();
                     break;
                 case "SC":
                     System.out.println("Please enter the round number to set to be current");
