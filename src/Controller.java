@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Controller {
     /**This class is the controller of the domain
      **/
     User currentUser;
     Game currentGame;
-    //Ranking currentRanking;
+    Ranking currentRanking;
 
     //Constructor
     public Controller() {
@@ -13,7 +14,7 @@ public class Controller {
          */
         this.currentUser = new User();
         this.currentGame = new Game();
-        //this.currentRanking = new Ranking();
+        this.currentRanking = new Ranking();
     }
 
     //Setters
@@ -42,10 +43,10 @@ public class Controller {
         return this.currentGame;
     }
 
-    public Ranking getCurrentRanking(){
+    public Map<String, Integer> getCurrentRanking(){
         /** Getter of the current ranking
          */
-        return this.currentRanking;
+        return this.currentRanking.getRanking();
     }
 
     public Round getRound(int n){
@@ -84,8 +85,8 @@ public class Controller {
         if(!this.currentGame.playRound()){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
+                this.currentRanking.updateRanking(this.currentUser.getName(), this.currentGame.getScore());
                 return "Game won";
-                updateRanking();////////////////////////////
             }
             else
                 return "Game ended but not won";
