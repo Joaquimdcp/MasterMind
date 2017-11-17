@@ -14,18 +14,18 @@ public class Difficulty {
         /**
          * Constructor: Public constructor method for difficulty with default params
          */
-        this.n_colors = 4;
+        this.n_colors = 6;
         this.n_positions = 4;
         this.n_rounds = 10;
     }
 
-    public Difficulty(int n_colors, int n_positions, int n_rounds) {
+    public Difficulty(int n_rounds) {
         /**
          * Constructor: Public constructor method for difficulty with custom params
          */
-        this.n_colors = n_colors;
-        this.n_positions = n_positions;
         this.n_rounds = n_rounds;
+        this.n_colors = 6;
+        this.n_positions = 4;
     }
 
     // Getters
@@ -57,7 +57,7 @@ public class Difficulty {
         /**
          * Public function for returning the value of difficulty of the game.
          */
-        int evaluation = (2 * n_colors + n_positions)/n_rounds;
+        int evaluation = 10*((10 * n_colors + 7*n_positions)/(n_rounds+1));
         return evaluation;
     }
 }

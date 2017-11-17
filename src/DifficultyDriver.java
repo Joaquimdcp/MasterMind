@@ -11,13 +11,9 @@ public class DifficultyDriver {
     private static void DriverConstructorCustom(){
         System.out.println("Custom Constructor");
         Scanner sc = new Scanner(System.in);
-        System.out.println("Insert the number of colors");
-        int ncolors = sc.nextInt();
-        System.out.println("Insert the number of positions");
-        int npositions = sc.nextInt();
         System.out.println("Insert the number of rounds");
         int nrounds = sc.nextInt();
-        Difficulty d = new Difficulty(ncolors,npositions,nrounds);
+        Difficulty d = new Difficulty(nrounds);
         System.out.println("Tested all OK");
     }
 
@@ -61,16 +57,22 @@ public class DifficultyDriver {
         switch (option){
             case 1:
                 DriverConstructor();
+                break;
             case 2:
                 DriverConstructorCustom();
+                break;
             case 3:
                 DriverGetColors();
+                break;
             case 4:
                 DriverGetPositions();
+                break;
             case 5:
                 DriverGetRounds();
+                break;
             case 6:
                 DriverGetAll();
+                break;
         }
     }
 }

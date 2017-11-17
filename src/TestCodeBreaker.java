@@ -1,12 +1,14 @@
 import java.util.*;
 
-public class TestCodeBreaker extends Player{
+public class TestCodeBreaker{
     /**
      *
      *  Methods and atributes for Player when he/she is using as Code Breaker
      *  we allow to play with the keyboard or using IA
      *
      */
+    private ArrayList<Integer> play;
+    private int round = 0;
     private ArrayList<ArrayList<Integer>> population = new ArrayList<ArrayList<Integer>>();
     ArrayList<ArrayList<Integer>> combination = new ArrayList<>();
     ArrayList<Integer> resp_ini;
@@ -136,20 +138,13 @@ public class TestCodeBreaker extends Player{
             int_answer.add(a.getNumColour());
         }
 
-        if (IA) {
-            if (round == 0) {
-                play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
-                round++;
-            } else {
-                resp_ini = check_play(int_answer, play);
-                population = purgue_population(play, resp_ini);
-                play = get_best();
-            }
+        if (round == 0) {
+            play = new ArrayList<>(Arrays.asList(1, 1, 2, 2));
+            round++;
         } else {
-            System.out.println("Try your code separated by spaces:");
-            Scanner scanner = new Scanner(System.in);
-            while (scanner.hasNextInt())
-                play.add(scanner.nextInt());
+            resp_ini = check_play(int_answer, play);
+            population = purgue_population(play, resp_ini);
+            play = get_best();
         }
         ArrayList<StubGuessToken> result = new ArrayList<>();
         for(int i: play){
@@ -159,10 +154,9 @@ public class TestCodeBreaker extends Player{
         return result;
     }
 
-    public TestCodeBreaker(boolean IA) {
+    public TestCodeBreaker() {
         population = permutations();
         generate_combinations();
         play = new ArrayList<Integer>(Arrays.asList(2, 2, 1, 1));
-        this.IA = IA;
     }
 }

@@ -53,6 +53,7 @@ public class TestHint {
                 this.text = "Your position " + i + " is correct.";
                 return this.text;
             }
+            i++;
         }
         this.text = "Sorry, no hints for you";
         return this.text;
@@ -75,14 +76,14 @@ public class TestHint {
          *  returns the hint in String structure
          */
         attempt += 1;
-        if(score>5 && attempt<2) return soft_hint();
-        else if(score>5 && attempt<5) return mid_hint();
+        if(score>50 && attempt<2) return soft_hint();
+        else if(score>50 && attempt<5) return mid_hint();
         return hard_hint();
 
     }
 
 
-    public TestHint(StubDifficulty difficulty, ArrayList<StubGuessToken> round, ArrayList<StubGuessToken> solu) {
+    public TestHint(Difficulty difficulty, ArrayList<StubGuessToken> round, ArrayList<StubGuessToken> solu) {
         /**
          * [CONSTRUCTOR] Creates a Hint instance and it needs:
          *      difficulty: An instance of difficulty of the game, at the moment.
