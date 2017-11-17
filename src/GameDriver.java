@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameDriver {
+    static Game game = new Game();
+    static PrintStream out = System.out;
+    static Scanner in = new Scanner(System.in);
 
     private static void DriverConstructorDefault(){
         game = new Game();
@@ -216,7 +219,7 @@ public class GameDriver {
 
         while (keepAsking) {
             out.println();
-           /** out.println("What do you wanna do?");
+            out.println("What do you wanna do?");
             out.println("1: Create new Game with default constructor");
             out.println("2: Create new Game with custom parameters");
             out.println("3: Set the role");
@@ -240,7 +243,7 @@ public class GameDriver {
             out.println("21: Save the game");
             out.println("22: Restart the game");
             out.println("23: End the game");
-            out.println("Press any other key to exit the program");*/
+            out.println("Press any other key to exit the program");
             if (in.hasNextInt()) {
 
                 switch (in.nextInt()) {
