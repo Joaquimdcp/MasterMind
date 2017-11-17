@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GuessToken extends Token {
-    /**This class is used to represent a guess token. GuessTokens are composed of colour, a position and an array
+    /**This class is used to represent a guess token. GuessTokens are composed of colour and an array
      * of the possible colours**/
     private static List<String> nameColours = Arrays.asList("Red", "Blue", "Green", "Yellow", "Purple", "Orange", "Brown", "Pink");
 

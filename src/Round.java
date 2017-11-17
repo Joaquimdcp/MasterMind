@@ -118,7 +118,8 @@ public class Round {
     public void setAnswer(ArrayList<GuessToken> combinationSolution) {
         /** Setter of the tokensAnswer: it sets the correct answer of the current round
          */
-        this.tokensAnswer = answerCode(combinationSolution);
+        if(this.tokensGuess.size()>0)
+            this.tokensAnswer = answerCode(combinationSolution);
     }
 
     //Other functions

@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AnswerToken extends Token {
-    /**This class is used to represent an answer token. AnswerTokens are composed of colour, a position and an array
+    /**This class is used to represent an answer token. AnswerTokens are composed of colour and an array
      * of the possible colours**/
     private static List<String> nameColours = Arrays.asList("White", "Black");
 
