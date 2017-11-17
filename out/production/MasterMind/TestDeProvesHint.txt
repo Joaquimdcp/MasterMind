@@ -1,0 +1,54 @@
+Prova 1
+Descripció: Constructora Hint
+Objectius: Veure que la constructora de Hint no falla al ser instànciada
+
+Altres elements integrats a la prova
+Driver de Timing
+Entrada: Intància de difficultad (Not None), Llista de GuessToken (Roig | Roig | Groc | Groc), Llista de GuessToken ( Verd | Verd | Blau | Blau)
+Sortida: Instància de Hint
+Resultat de la prova: ok
+
+Prova 2 Comprovar pista fàcil
+Descripció: Hint
+Objectius: Veure que la hint és la correcta
+
+Altres elements integrats a la prova
+Driver de Timing
+Entrada: Intància de difficultad (Not None) amb score baixa (round = 150), Llista de GuessToken (Roig | Roig | Groc | Groc), Llista de GuessToken ( Verd | Verd | Blau | Blau)
+Sortida: Pista que revela la posició d'una jugada.
+Resultat de la prova: ok
+
+Prova 3 Comprovar pista mid
+Descripció: Constructora Hint
+Objectius: Veure que la hint és la correcta
+
+Altres elements integrats a la prova
+Driver de Hint
+Stub Difficultat
+Entrada: Intància de difficultad (Not None) amb score mid (round = 10), Llista de GuessToken (Roig | Roig | Groc | Groc), Llista de GuessToken ( Verd | Verd | Blau | Blau)
+Sortida: Pista que revela una posició ben col·locada si existeix
+Resultat de la prova: ok
+
+Prova 4 Comprovar pista hard
+Descripció: Constructora Hint
+Objectius: Veure que la hint és la correcta
+
+Altres elements integrats a la prova
+Driver de Hint
+Stub Difficultat
+Entrada: Intància de difficultad (Not None) amb score alta (round = 1), Llista de GuessToken (Roig | Roig | Groc | Groc), Llista de GuessToken ( Verd | Verd | Blau | Blau)
+Sortida: Pista que revela un color encertat si existeix
+Resultat de la prova: ok
+
+
+Prova 5 Comprovar disminució
+Descripció: Constructora Hint
+Objectius: Veure que la hint és la correcta i disminueix.
+
+Altres elements integrats a la prova
+*Repetir aquest pas diferents cops i veure com la pista cada cop es més fàcil*
+Driver de Hint
+Stub Difficultat
+Entrada: Intància de difficultad (Not None) amb score alta (round = 1), Llista de GuessToken (Roig | Roig | Groc | Groc), Llista de GuessToken ( Verd | Verd | Blau | Blau)
+Sortida: Pista que revela un color encertat si existeix
+Resultat de la prova: ok

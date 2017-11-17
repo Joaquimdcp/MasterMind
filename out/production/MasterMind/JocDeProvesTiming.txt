@@ -1,0 +1,31 @@
+Prova 1
+Descripció: Constructora Timing
+Objectius: Veure que la constructora de Timing no falla al ser instànciada
+
+Altres elements integrats a la prova
+Driver de Timing
+Entrada: -
+Sortida: Instància de Timing
+Resultat de la prova: ok
+
+
+Prova 2
+Descripció: Obtenir temps de partida
+Objectius: Obtenir temps de partida
+
+Altres elements integrats a la prova
+Driver de Timing
+Entrada: -
+Sortida: Timing de partida amb format UNIX timestamp
+Resultat de la prova: ok
+
+
+Prova 3
+Descripció: Guardar temps
+Objectius: Assignar un interval de temps de guardat
+
+Altres elements integrats a la prova
+Driver de Timing
+Entrada: -
+Sortida: Timing de partida fins guardat amb format UNIX timestamp
+Resultat de la prova: ok

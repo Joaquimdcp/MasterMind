@@ -1,0 +1,21 @@
+Prova 1
+Descripció: Constructora de Code Maker
+Objectius: Veure que la constructora de code Maker no falla al ser instànciada
+
+Altres elements integrats a la prova
+Driver de Code Maker
+StubGuessToken
+Entrada: -
+Sortida: Instància de Code Maker
+Resultat de la prova: ok
+
+Prova 2
+Descripció: Generació codi Code Maker
+Objectius: Veure que la generació de codi de code Maker no falla al ser utilitzada.
+
+Altres elements integrats a la prova
+Driver de Code Maker
+StubGuessToken
+Entrada: -
+Sortida: ArrayList amb 4 Guess Token aleatòries
+Resultat de la prova: ok

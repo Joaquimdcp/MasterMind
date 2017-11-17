@@ -1,0 +1,36 @@
+Prova 1
+Descripció: Constructora Dificultat
+Objectius: Veure que la constructora de Dificultat no falla al ser instànciada
+
+Altres elements integrats a la prova
+Driver de Dificultat
+PRE: Número de rondes positiu
+Entrada: 10
+Sortida: Instància de Dificultat
+Resultat de la prova: ok
+
+Prova 2
+Descripció: Score Dificultat
+Objectius: Veure que la difiultat varia segons el número de rondes
+PRE: Número de rondes positiu
+
+Altres elements integrats a la prova
+Driver de Dificultat
+*Augmentar en 10 unitats cada cop el numero de rondes*
+
+Iteration 1
+Entrada: 10
+Sortida: Instància de Dificultat  amb un .dificutat() que retorna cada cop més.
+Resultat de la prova: ok
+
+Iteration 2
+Entrada: 20
+Sortida: Instància de Dificultat  amb un .dificutat() que retorna cada cop més.
+Resultat de la prova: ok
+
+Iteration 3
+Entrada: 30
+Sortida: Instància de Dificultat  amb un .dificutat() que retorna cada cop més.
+Resultat de la prova: ok
+
+..

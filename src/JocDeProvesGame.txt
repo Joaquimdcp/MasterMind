@@ -1,0 +1,41 @@
+Prova 1
+    Descripció: Constructora Game
+    Objectius: Veure que els parametres afegits durant la construcció de la instància es retenen
+
+    Altres elements integrats a la prova
+    Driver de Game
+    Entrada: <True> <User qualsevol> (constructora)
+    Sortida: <True> (getRole)
+    Resultat de la prova: ok
+
+Prova 2
+    Descripció: Dificultat
+    Objectius: Veure que la dificultat d'actualitza
+
+    Altres elements integrats a la prova
+    Driver de Game
+    Sortinda: <Dificultat 1> (getDifficult)
+    Entrada:
+    Sortida: <Dificultat 2> (getDifficult)
+    Resultat de la prova: ok
+
+Prova 3
+    Descripció: Dificultat
+    Objectius: Veure que la dificultat d'actualitza
+
+    Altres elements integrats a la prova
+    Driver de Game
+    Sortinda: <Dificultat 1> (getDifficult)
+    Entrada:
+    Sortida: <Dificultat 2> (getDifficult)
+    Resultat de la prova: ok
+
+Prova 4
+    Descripció: EndGame
+    Objectius: Veure que la dificultat d'actualitza
+
+    Altres elements integrats a la prova
+    Driver de Game
+    Entrada: -
+    Sortida: <Tots els parametres s'han d'haver actualitzat>
+    Resultat de la prova: ok
