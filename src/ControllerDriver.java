@@ -1,5 +1,7 @@
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class ControllerDriver {
@@ -47,8 +49,10 @@ public class ControllerDriver {
     }
 
     private static void DrivergetCurrentRanking(){
-        controller.getCurrentRanking();
-        //QUE RETORNA???
+        Map<String, Integer> r = controller.getCurrentRanking();
+        for(Map.Entry entry : r.entrySet()){
+            out.println("Username: " + entry.getKey()+"  Score: "+Integer.toString(r.get(entry.getKey())));
+        }
     }
 
     private static void DrivergetRound(){
