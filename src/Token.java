@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Arrays;
 
-public abstract class Token {
+public class Token {
     /**This class is used to represent a token. Tokens are composed of colour and position**/
     protected int colour;
 
