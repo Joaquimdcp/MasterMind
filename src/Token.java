@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.Arrays;
 
 public class Token {
-    /**This class is used to represent a token. Tokens are composed of colour and position**/
+    /**This class is used to represent a token. Tokens are composed of colour**/
     protected int colour;
 
     public Token() {
