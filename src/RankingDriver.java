@@ -12,13 +12,13 @@ public class RankingDriver {
 
     private static void testUpdateRanking() {
         Ranking testRanking = new Ranking();
-        Scanner r = new Scanner(System.in);
         String choice;
         String username;
         int score;
         boolean exit = false;
         while(!exit) {
             System.out.println("'N' to add a new entry, any other key to exit this test");
+            Scanner r = new Scanner(System.in);
             choice = r.nextLine();
             if (choice.equals("N")) {
                 System.out.println("[+] Please enter the username");
@@ -34,7 +34,6 @@ public class RankingDriver {
                 exit = true;
             }
         }
-        r.close();
     }
 
     public static void main(String[] args) {
@@ -50,6 +49,7 @@ public class RankingDriver {
             choice = s.nextLine();
             switch (choice) {
                 case "C":
+                    System.out.println("Enter size of ranking");
                     int size = s.nextInt();
                     testConstructor(size);
                     break;
