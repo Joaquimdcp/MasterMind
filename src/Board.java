@@ -138,7 +138,6 @@ public class Board {
     }
 
     public boolean restartGame() {
-        System.out.println("Game restarted");
         return true;
     }
 
