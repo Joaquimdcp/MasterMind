@@ -30,11 +30,7 @@ public class ControllerDriver {
             int t = in.nextInt();
             a.add(new GuessToken(t));
         }
-        boolean b = controller.setGuessTokensRound(a);
-        if(b)
-            out.println("Guess tokens of the next round setted correctly");
-        else
-            out.println("There has been an error setting the guess tokens of the next round");
+        out.println(controller.setGuessTokensRound(a));
     }
 
     private static void DrivergetCurrentUser(){
@@ -190,79 +186,78 @@ public class ControllerDriver {
             out.println();
             out.println("What do you wanna do?");
             out.println("1: Create a new Controller with default constructor");
-            out.println("3: Set name of the game");
-            out.println("4: Set the Guess Tokens of the next Round");
-            out.println("5: Get the current user");
-            out.println("6: Get the current game");
-            out.println("7: Get the current ranking");
-            out.println("8: Get an specific round");
-            out.println("9: Get the current round");
-            out.println("10: Initialize the game");
-            out.println("11: Use a hint");
-            out.println("12: Play a round");
-            out.println("13: Load a game");
-            out.println("14: Save the game");
-            out.println("15: Restart the game");
-            out.println("16: Exit the game");
-            out.println("17: Log in a user");
-            out.println("18: Register a user");
-            out.println("19: Log out the user");
+            out.println("2: Set name of the game");
+            out.println("3: Set the Guess Tokens of the next Round");
+            out.println("4: Get the current user");
+            out.println("5: Get the current game");
+            out.println("6: Get the current ranking");
+            out.println("7: Get an specific round");
+            out.println("8: Get the current round");
+            out.println("9: Initialize the game");
+            out.println("10: Use a hint");
+            out.println("11: Play a round");
+            out.println("12: Load a game");
+            out.println("13: Save the game");
+            out.println("14: Restart the game");
+            out.println("15: Exit the game");
+            out.println("16: Log in a user");
+            out.println("17: Register a user");
+            out.println("18: Log out the user");
             out.println("Press any other key to exit the program");
             if (in.hasNextInt()) {
                 switch (in.nextInt()) {
                     case 1:
                         DriverConstructorDefault();
                         break;
-
-                    case 3:
+                    case 2:
                         DriverSetGameName();
                         break;
-                    case 4:
+                    case 3:
                         DriversetGuessTokensRound();
                         break;
-                    case 5:
+                    case 4:
                         DrivergetCurrentUser();
                         break;
-                    case 6:
+                    case 5:
                         DrivergetCurrentGame();
                         break;
-                    case 7:
+                    case 6:
                         DrivergetCurrentRanking();
                         break;
-                    case 8:
+                    case 7:
                         DrivergetRound();
                         break;
-                    case 9:
+                    case 8:
                         DrivergetCurrentRound();
                         break;
-                    case 10:
+                    case 9:
                         DriverinitGame();
                         break;
-                    case 11:
+                    case 10:
                         DriveruseHint();
                         break;
-                    case 12:
+                    case 11:
                         DriverplayRound();
                         break;
-                    case 13:
+                    case 12:
                         DriverloadGame();
                         break;
-                    case 14:
+                    case 13:
                         DriversaveGame();
                         break;
-                    case 15:
+                    case 14:
                         DriverrestartGame();
                         break;
-                    case 16:
+                    case 15:
                         DriverexitGame();
                         break;
-                    case 17:
+                    case 16:
                         DriverlogIn();
                         break;
-                    case 18:
+                    case 17:
                         DriverregisterUser();
                         break;
-                    case 19:
+                    case 18:
                         DriverlogOut();
                         break;
                 }

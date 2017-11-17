@@ -24,10 +24,20 @@ public class Controller {
         this.currentGame.setGameName(name);
     }
 
-    public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
+    public String setGuessTokensRound(ArrayList<GuessToken> gt){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        return this.currentGame.setGuessTokensRound(gt);
+        if(!this.currentGame.setGuessTokensRound(gt)){
+            this.currentGame.endGame();
+            if(this.currentGame.getWin()){
+                this.currentRanking.updateRanking(this.currentUser.getName(), this.currentGame.getScore());
+                return "Game won";
+            }
+            else
+                return "Game ended but not won";
+        }
+        else
+            return "Round played normally";
     }
 
     //Getters
@@ -101,7 +111,7 @@ public class Controller {
         return this.currentGame.loadGame();
     }
 
-    public boolean saveGame() {
+    public boolean saveGame() {exitGame();
         /**Public function to save a game
          */
         return this.currentGame.saveGame();
