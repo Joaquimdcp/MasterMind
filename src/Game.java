@@ -145,9 +145,9 @@ public class Game {
     }
 
     public boolean playRound(){
-        /** Public function used to play a round. It returns true if it is the last round
+        /** Public function used to play a round. It returns false if it is the last round
          */
-        return this.currentBoard.playRound(); //entenc que si retorna true es que es la ultima ronda
+        return this.currentBoard.playRound();
     }
 
     public boolean loadGame(){
