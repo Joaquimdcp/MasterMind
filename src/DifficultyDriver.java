@@ -40,39 +40,41 @@ public class DifficultyDriver {
 
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         /**
          *  DRIVER
          */
-        System.out.println("HINT DRIVER");
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Method Options: ");
-        System.out.println("1: Difficulty()");
-        System.out.println("2: Difficulty(...)");
-        System.out.println("3: getN_Colors()");
-        System.out.println("4: getN_Positions()");
-        System.out.println("5: getN_Rounds()");
-        System.out.println("6: get_all()");
-        int option = sc.nextInt();
-        switch (option){
-            case 1:
-                DriverConstructor();
-                break;
-            case 2:
-                DriverConstructorCustom();
-                break;
-            case 3:
-                DriverGetColors();
-                break;
-            case 4:
-                DriverGetPositions();
-                break;
-            case 5:
-                DriverGetRounds();
-                break;
-            case 6:
-                DriverGetAll();
-                break;
+        while (true) {
+            System.out.println("HINT DRIVER");
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Method Options: ");
+            System.out.println("1: Difficulty()");
+            System.out.println("2: Difficulty(...)");
+            System.out.println("3: getN_Colors()");
+            System.out.println("4: getN_Positions()");
+            System.out.println("5: getN_Rounds()");
+            System.out.println("6: get_all()");
+            int option = sc.nextInt();
+            switch (option) {
+                case 1:
+                    DriverConstructor();
+                    break;
+                case 2:
+                    DriverConstructorCustom();
+                    break;
+                case 3:
+                    DriverGetColors();
+                    break;
+                case 4:
+                    DriverGetPositions();
+                    break;
+                case 5:
+                    DriverGetRounds();
+                    break;
+                case 6:
+                    DriverGetAll();
+                    break;
+            }
         }
     }
 }
