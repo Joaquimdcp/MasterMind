@@ -6,15 +6,17 @@ public class Ranking {
     int mininumScore;
     int rankingSize;
 
+    /* Creates a new ranking with 10 entries */
     public Ranking() {
-        this.rankingSize = 3;
-        this.rankingMap = new LinkedHashMap<String, Integer>(this.rankingSize);
+        this.rankingSize = 10;
+        this.rankingMap = new LinkedHashMap<String, Integer>();
         this.mininumScore = 0;
     }
 
+    /* Creates a new ranking with number of entries equal to size */
     public Ranking(int size) {
         this.rankingSize = size;
-        this.rankingMap = new LinkedHashMap<String, Integer>(this.rankingSize);
+        this.rankingMap = new LinkedHashMap<String, Integer>();
         this.mininumScore = 0;
     }
 
@@ -22,7 +24,18 @@ public class Ranking {
     private void setMin() {
         this.mininumScore = Collections.min(rankingMap.values());
     }
+
+    /* Returns the lowest score or 0 if the ranking has empty entries */
+    public int getMin() {
+        return this.mininumScore;
+    }
+
+    /* Returns the current amount of entries in the ranking */
+    public int getCurrentSize() {
+        return this.rankingMap.size();
+    }
     
+
     private LinkedHashMap<String, Integer> sortHashMapByValues(LinkedHashMap<String, Integer> passedMap) {
         List<String> mapKeys = new ArrayList<>(passedMap.keySet());
         List<Integer> mapValues = new ArrayList<>(passedMap.values());
@@ -52,12 +65,13 @@ public class Ranking {
         return sortedMap;
     }
 
+    /* Sets the ranking with a sorted copy by score in descending order of itself */
     private LinkedHashMap<String, Integer> sortRanking() {
         this.rankingMap = sortHashMapByValues(this.rankingMap);
         return this.rankingMap;
     }
 
-    /* Updates the ranking with the new score for the user */
+    /* Updates the ranking with the new entry, if it belongs in */
     public void updateRanking(String username, int score) {
         if (rankingMap.size() < this.rankingSize) {
             rankingMap.put(username, score);            
@@ -82,10 +96,12 @@ public class Ranking {
         }
     }
 
+    /* Returns the ranking sorted by score in descending order */
     public LinkedHashMap<String, Integer> getRanking() {
         return this.sortRanking();
     }
 
+    /* For testing purposes 
     public void printRanking() {
         for (Map.Entry<String, Integer> entry : this.rankingMap.entrySet()) {
             String key = entry.getKey();
@@ -95,13 +111,15 @@ public class Ranking {
     }
 
     public static void main(String[] args) {
-        Ranking r = new Ranking();
+        Ranking r = new Ranking(5);
         r.updateRanking("Amanda", 25);
         r.updateRanking("Jazz", 300);
         r.updateRanking("Matias", 100);
         r.updateRanking("Quim", 50);
-        r.updateRanking("Maria", 200);
         r.sortRanking();
         r.printRanking();
+        System.out.println(r.getMin());
+        System.out.println(r.getCurrentSize());
     }
+    */
 }
