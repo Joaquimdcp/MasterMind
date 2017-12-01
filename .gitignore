@@ -35,7 +35,7 @@ cmake-build-debug/
 ## Plugin-specific files:
 
 # IntelliJ
-
+/out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -128,5 +128,5 @@ $RECYCLE.BIN/
 
 # End of https://www.gitignore.io/api/java,linux,windows,intellij
 
-
-
+*.txt
+*.class
