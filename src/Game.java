@@ -10,7 +10,7 @@ public class Game {
     private int score;
     private int difficulty;
     private String gameName;
-    private User currentUser;
+    private String currentUserName;
     private Board currentBoard;
 
     public Game() {
@@ -22,10 +22,10 @@ public class Game {
         this.score = 0;
         this.difficulty = 0;
         this.gameName = "__defaultGameName__";
-        this.currentUser = new User();
+        this.currentUserName = "__default__";
         this.currentBoard = new Board();
     }
-     public Game(boolean breakerIA, User currentUser){
+     public Game(boolean breakerIA, String currentUser){
          /** Constructor: Public constructor method for Game with custom parameters
           */
          this.breakerIA = breakerIA;
@@ -34,7 +34,7 @@ public class Game {
          this.score = 0;
          this.difficulty = 0;
          this.gameName = "__defaultGameName__";
-         this.currentUser = currentUser;
+         this.currentUserName = currentUser;
          this.currentBoard = new Board();
      }
 
@@ -55,12 +55,6 @@ public class Game {
         /** Setter of the name of the Game
          */
         this.gameName = name;
-    }
-
-    public void setCurrentUser(User currentUser){
-        /** Setter of the user that is gonna play this game
-         */
-        this.currentUser = currentUser;
     }
 
     public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
@@ -108,10 +102,10 @@ public class Game {
         return this.gameName;
     }
 
-    public User getCurrentUser(){
+    public String getCurrentUser(){
         /** Getter that returns the instance of the player that is playing this Game
          */
-        return this.currentUser;
+        return this.currentUserName;
     }
 
     public Round getRound(int n){

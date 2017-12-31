@@ -1,3 +1,5 @@
+import persistencia.ControllerPersistencia;
+
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -5,17 +7,19 @@ public class Controller {
     /**This class is the controller of the domain
      **/
 
-    User currentUser;
+    String currentUserName;
     Game currentGame;
     Ranking currentRanking;
+    ControllerPersistencia contPers;
 
     //Constructor
     public Controller() {
         /** Constructor: Public constructor method for the controller with default parameters
          */
-        this.currentUser = new User();
+        this.currentUserName = "__default__";
         this.currentGame = new Game();
         this.currentRanking = new Ranking();
+        this.contPers = new ControllerPersistencia();
     }
 
     //Setters
@@ -31,7 +35,7 @@ public class Controller {
         if(!this.currentGame.setGuessTokensRound(gt)){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
-                this.currentRanking.updateRanking(this.currentUser.getName(), this.currentGame.getScore());
+                this.currentRanking.updateRanking(this.currentUserName, this.currentGame.getScore());
                 return "Game won";
             }
             else
@@ -42,10 +46,10 @@ public class Controller {
     }
 
     //Getters
-    public User getCurrentUser(){
+    public String getCurrentUser(){
         /**Getter of the current user
          */
-        return this.currentUser;
+        return this.currentUserName;
     }
 
     public Game getCurrentGame(){
@@ -78,7 +82,7 @@ public class Controller {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
           */
-        this.currentGame = new Game(breakerIA, this.currentUser);
+        this.currentGame = new Game(breakerIA, this.currentUserName);
         this.currentGame.initGame(nColours, nPositions, nRounds, nHints);
     }
 
@@ -96,7 +100,7 @@ public class Controller {
         if(!this.currentGame.playRound()){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
-                this.currentRanking.updateRanking(this.currentUser.getName(), this.currentGame.getScore());
+                this.currentRanking.updateRanking(this.currentUserName, this.currentGame.getScore());
                 return "Game won";
             }
             else
@@ -134,9 +138,8 @@ public class Controller {
         /** Public function to logIn as a user: if the user exists it returns true and it sets the user,
          * if not it returns false.
          */
-        User userAux = new User(name, password);
-        if(userAux.authUser()){
-            this.currentUser = userAux;
+        if(contPers.logInUser(name, password)){
+            this.currentUserName = name;
             return true;
         }
         else
@@ -147,9 +150,8 @@ public class Controller {
         /** Public function to create a new user: it checks if the user exists, if it does it returns false.
          * If not it sets a new user and returns true.
          */
-        User userAux = new User(name, password);
-        if(userAux.setUser()){
-            this.currentUser = userAux;
+        if(contPers.registerUser(name, password)){
+            this.currentUserName = name;
             return true;
         }
         else
@@ -159,6 +161,6 @@ public class Controller {
     public void logOut() {
         /** Public function: it logs out the current User.
          */
-        currentUser = new User();
+        this.currentUserName = "__default__";
     }
 }

@@ -34,12 +34,12 @@ public class ControllerDriver {
     }
 
     private static void DrivergetCurrentUser(){
-        out.println("The name of the user is "+ controller.getCurrentUser().getName());
+        out.println("The name of the user is "+ controller.getCurrentUser());
     }
 
     private static void DrivergetCurrentGame(){
         out.println("Name: " +controller.getCurrentGame().getGameName());
-        out.println("User: " + controller.getCurrentGame().getCurrentUser().getName());
+        out.println("User: " + controller.getCurrentGame().getCurrentUser());
         out.println("Difficulty: " + Integer.toString(controller.getCurrentGame().getDifficulty()));
         out.println("Score: "+ Integer.toString(controller.getCurrentGame().getScore()));
     }

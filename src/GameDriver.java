@@ -15,15 +15,12 @@ public class GameDriver {
     private static void DriverConstructorCustom(){
         out.println("Enter the name of the user");
         String nameU = in.next();
-        out.println("Enter the password of the user");
-        String pasU = in.next();
-        User u = new User(nameU, pasU);
         out.println("Type 1 if the codebreaker is the IA, type 0 if the codemaker is the IA");
         int b = in.nextInt();
         if(b!=0 && b!=1)
             out.println("You have to enter a 0 or a 1");
         else{
-            game = new Game(b==1, u);
+            game = new Game(b==1, nameU);
             out.println("New Game created");
         }
     }
@@ -49,16 +46,6 @@ public class GameDriver {
         String nameG = in.next();
         game.setGameName(nameG);
         out.println("The name of the game has been setted");
-    }
-
-    private static void DriversetCurrentUser(){
-        out.println("Enter the name of the user");
-        String nameU = in.next();
-        out.println("Enter the password of the user");
-        String pasU = in.next();
-        User u = new User(nameU, pasU);
-        game.setCurrentUser(u);
-        out.println("User setted");
     }
 
     private  static  void DriversetGuessTokensRound(){
@@ -116,7 +103,7 @@ public class GameDriver {
     }
 
     private static void DrivergetCurrentUser(){
-        out.println("The name of the user is "+ game.getCurrentUser().getName());
+        out.println("The name of the user is "+ game.getCurrentUser());
     }
 
     private static void DrivergetRound(){
@@ -225,24 +212,23 @@ public class GameDriver {
             out.println("3: Set the role");
             out.println("4: Set the difficulty");
             out.println("5: Set the name of the game");
-            out.println("6: Set the current user");
-            out.println("7: Set the guess tokens of a round");
-            out.println("8: Get the role of the IA");
-            out.println("9: Get if the game is finished");
-            out.println("10: Get if the game is won");
-            out.println("11: Get the score of the game");
-            out.println("12: Get the difficulty of the game");
-            out.println("13: Get the name of the game");
-            out.println("14: Get the current user");
-            out.println("15: Get a round");
-            out.println("16: Get the current round");
-            out.println("17: Initialize a game");
-            out.println("18: Use a hint");
-            out.println("19: Play a round");
-            out.println("20: Load a game");
-            out.println("21: Save the game");
-            out.println("22: Restart the game");
-            out.println("23: End the game");
+            out.println("6: Set the guess tokens of a round");
+            out.println("7: Get the role of the IA");
+            out.println("8: Get if the game is finished");
+            out.println("9: Get if the game is won");
+            out.println("10: Get the score of the game");
+            out.println("11: Get the difficulty of the game");
+            out.println("12: Get the name of the game");
+            out.println("13: Get the current user");
+            out.println("14: Get a round");
+            out.println("15: Get the current round");
+            out.println("16: Initialize a game");
+            out.println("17: Use a hint");
+            out.println("18: Play a round");
+            out.println("19: Load a game");
+            out.println("20: Save the game");
+            out.println("21: Restart the game");
+            out.println("22: End the game");
             out.println("Press any other key to exit the program");
             if (in.hasNextInt()) {
 
@@ -263,57 +249,54 @@ public class GameDriver {
                         DriverSetGameName();
                         break;
                     case 6:
-                        DriversetCurrentUser();
-                        break;
-                    case 7:
                         DriversetGuessTokensRound();
                         break;
-                    case 8:
+                    case 7:
                         DrivergetRole();
                         break;
-                    case 9:
+                    case 8:
                         DrivergetFinished();
                         break;
-                    case 10:
+                    case 9:
                         DrivergetWin();
                         break;
-                    case 11:
+                    case 10:
                         DrivergetScore();
                         break;
-                    case 12:
+                    case 11:
                         DrivergetDifficulty();
                         break;
-                    case 13:
+                    case 12:
                         DrivergetGameName();
                         break;
-                    case 14:
+                    case 13:
                         DrivergetCurrentUser();
                         break;
-                    case 15:
+                    case 14:
                         DrivergetRound();
                         break;
-                    case 16:
+                    case 15:
                         DrivergetCurrentRound();
                         break;
-                    case 17:
+                    case 16:
                         DriverinitGame();
                         break;
-                    case 18:
+                    case 17:
                         DriveruseHint();
                         break;
-                    case 19:
+                    case 18:
                         DriverplayRound();
                         break;
-                    case 20:
+                    case 19:
                         DriverloadGame();
                         break;
-                    case 21:
+                    case 20:
                         DriversaveGame();
                         break;
-                    case 22:
+                    case 21:
                         DriverrestartGame();
                         break;
-                    case 23:
+                    case 22:
                         DriverendGame();
                         break;
                 }
