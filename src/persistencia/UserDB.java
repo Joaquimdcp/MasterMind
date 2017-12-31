@@ -13,14 +13,17 @@ public class UserDB {
     private String username;
     private String password;
 
-    /* Constructor of UserDB with parameters*/
+
     public UserDB(String username, String password) {
+            /**
+             *  Constructor of UserDB with parameters*/
         this.username = username;
         this.password = password;
     }
 
-    /* Returns true if the user was found in the DB. Returns false otherwise */
     private boolean userExists() {
+        /**
+         *  Returns true if the user was found in the DB. Returns false otherwise */
         List<String> users = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
@@ -33,8 +36,9 @@ public class UserDB {
         return true;
     }
 
-    /* Returns true if the user was correctly authenticated */
     public boolean authUser() {
+    /**
+     *  Returns true if the user was correctly authenticated */
         List<String> users = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
@@ -52,8 +56,9 @@ public class UserDB {
         return false;
     }
 
-    /* Returns true if the user was correctly added to the DB */
     public boolean registerUser() {
+        /**
+         *  Returns true if the user was correctly added to the DB */
         if (!userExists()) {
             String newUser = this.username + "|" + this.password;
             try (FileWriter fw = new FileWriter(fileName, true);
@@ -69,13 +74,15 @@ public class UserDB {
         return false;
     }
 
-    /* Returns the name of the user*/
     public String getUsername() {
+        /**
+         *  Returns the name of the user*/
         return username;
     }
 
-    /*Returns the password of the user*/
     public String getPassword() {
+        /**
+         * Returns the password of the user*/
         return password;
     }
 }
