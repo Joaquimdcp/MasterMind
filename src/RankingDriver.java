@@ -11,7 +11,7 @@ public class RankingDriver {
     }
 
     private static void testUpdateRanking() {
-        Ranking testRanking = new Ranking();
+        Ranking testRanking = new Ranking(3);
         String choice;
         String username;
         int score;
