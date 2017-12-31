@@ -76,7 +76,6 @@ public class Ranking {
         if (rankingMap.size() < this.rankingSize) {
             rankingMap.put(username, score);            
         } else {
-            this.setMin();
             /* If the score is greater than the current minimum score, update the ranking */
             if (this.minimumScore < score) {
                 /* Search for the user with the minimum score and remove it */
@@ -91,35 +90,13 @@ public class Ranking {
                 rankingMap.put(username, score);
                 /* It's necessary to set the minimum score again in case
                     the new score is the lowest */
-                this.setMin();
             }
         }
+        this.setMin();
     }
 
     /* Returns the ranking sorted by score in descending order */
     public LinkedHashMap<String, Integer> getRanking() {
         return this.sortRanking();
     }
-
-    /* For testing purposes 
-    public void printRanking() {
-        for (Map.Entry<String, Integer> entry : this.rankingMap.entrySet()) {
-            String key = entry.getKey();
-            int value = entry.getValue();
-            System.out.println(key + " " + value);
-        }
-    }
-
-    public static void main(String[] args) {
-        Ranking r = new Ranking(5);
-        r.updateRanking("Amanda", 25);
-        r.updateRanking("Jazz", 300);
-        r.updateRanking("Matias", 100);
-        r.updateRanking("Quim", 50);
-        r.sortRanking();
-        r.printRanking();
-        System.out.println(r.getMin());
-        System.out.println(r.getCurrentSize());
-    }
-    */
 }
