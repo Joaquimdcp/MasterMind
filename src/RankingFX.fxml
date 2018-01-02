@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(bg.jpg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.RankingFXController">
+   <children>
+      <Label layoutX="183.0" layoutY="20.0" text="Top 10 High Scores">
+         <font>
+            <Font name="Carter One" size="48.0" />
+         </font>
+      </Label>
+      <Button layoutX="329.0" layoutY="525.0" mnemonicParsing="false" onAction="#showMenu" text="Back to Menu">
+         <font>
+            <Font name="Carter One" size="18.0" />
+         </font>
+      </Button>
+      <GridPane layoutX="100.0" layoutY="285.0" prefWidth="600.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="400.0" prefWidth="58.0">
+               <children>
+                  <Label fx:id="user1" text="1st">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user11" text="2nd">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user12" text="3rd">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user111" text="4th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user13" text="5th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user112" text="6th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user121" text="7th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user1111" text="8th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user1211" text="9th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user11111" text="10th">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="300.0" prefWidth="135.0" GridPane.columnIndex="2">
+               <children>
+                  <Label fx:id="score1" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score2" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score3" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score4" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score5" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score6" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score7" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score8" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score9" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="score10" text="----">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="400.0" prefWidth="303.0" GridPane.columnIndex="1">
+               <children>
+                  <Label fx:id="user1" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user2" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user3" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user4" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user5" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user6" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user7" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user8" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user9" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="user10" text="Empty">
+                     <font>
+                        <Font name="Carter One" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>

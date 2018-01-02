@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane onMouseClicked="#showMenu" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(bg.jpg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DifficultyFXController">
+   <children>
+      <Label layoutX="215.0" layoutY="31.0" text="Select difficulty">
+         <font>
+            <Font name="Carter One" size="48.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="297.0" layoutY="138.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="150.0" text="Easy">
+               <font>
+                  <Font name="Carter One" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Medium">
+               <font>
+                  <Font name="Carter One" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefWidth="150.0" text="Hard">
+               <font>
+                  <Font name="Carter One" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showCustomDifficultySelection" prefWidth="150.0" text="Custom">
+               <font>
+                  <Font name="Carter One" size="24.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#showMenu" prefHeight="64.0" prefWidth="206.0" style="-fx-background-image:url(back.png); -fx-border-color: transparent;-fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
+               <font>
+                  <Font name="Carter One" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
