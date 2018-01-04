@@ -27,4 +27,13 @@ public class Controller {
         window.setScene(rankingScene);
         window.show();
     }
+
+    public void showHowToPlay(ActionEvent event) throws IOException {
+        Parent rankingParent = FXMLLoader.load(getClass().getResource("HowToPlayFX.fxml"));
+        Scene rankingScene = new Scene(rankingParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(rankingScene);
+        window.show();
+    }
 }
