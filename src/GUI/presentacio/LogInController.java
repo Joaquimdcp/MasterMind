@@ -39,8 +39,13 @@ public class LogInController implements Initializable {
             errorImage.setImage(image);
         }
         else if (controller.logIn(username, password)) {
-            Parent logInParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Menu.fxml"));
+            Parent logInParent = loader.load();
             Scene logInScene = new Scene(logInParent);
+
+            MenuController menuController = loader.getController();
+            menuController.setController(this.controller);
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(logInScene);

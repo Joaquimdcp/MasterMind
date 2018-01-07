@@ -16,8 +16,8 @@
       </ImageView>
       <VBox layoutX="295.0" layoutY="216.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#showDifficulty" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codebreakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
-            <Button mnemonicParsing="false" onAction="#showDifficulty" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codemakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+            <Button mnemonicParsing="false" onAction="#showDifficultyBreaker" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codebreakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+            <Button mnemonicParsing="false" onAction="#showDifficultyMaker" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codemakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
             <Button mnemonicParsing="false" onAction="#showMenu" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/back.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
          </children>
       </VBox>

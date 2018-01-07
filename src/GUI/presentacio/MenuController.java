@@ -1,6 +1,5 @@
 package GUI.presentacio;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -9,9 +8,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import domini.Controller;
 
-public class MenuController extends Application {
+public class MenuController {
+    private Controller controller;
 
+    /*
     public static void main(String[] args) {
         launch(args);
     }
@@ -20,10 +22,20 @@ public class MenuController extends Application {
     public void start(Stage primaryStage) {
 
     }
+    */
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
 
     public void newGamePressed(ActionEvent actionEvent) throws IOException {
-        Parent SceneParent = FXMLLoader.load(getClass().getResource("RoleFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RoleFX.fxml"));
+        Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
+
+        RoleFXController roleFXController = loader.getController();
+        roleFXController.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
