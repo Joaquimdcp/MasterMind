@@ -29,9 +29,11 @@ public class Controller {
         this.currentGame.setGameName(name);
     }
 
-    public String setGuessTokensRound(ArrayList<GuessToken> gt){
+    public String setGuessTokensRound(ArrayList<String> st){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
+        ArrayList<GuessToken> gt = new ArrayList<GuessToken>();
+        for(String color: st){ gt.add(new GuessToken(color)); }
         if(!this.currentGame.setGuessTokensRound(gt)){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
