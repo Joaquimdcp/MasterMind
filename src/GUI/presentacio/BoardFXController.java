@@ -1,6 +1,7 @@
 package GUI.presentacio;
 
 import domini.Controller;
+import domini.Game;
 import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,7 +28,7 @@ public class BoardFXController{
     private Label timelabel;
 
     @FXML
-    private Button green, target, blue;
+    private Button green, blue, yellow, orange,red, purple;
 
     private int round = 1;
 
@@ -35,6 +36,7 @@ public class BoardFXController{
     Label lb;
 
     private ControllerPresentacio controller;
+    private int ncolors;
 
 
 
@@ -85,6 +87,15 @@ public class BoardFXController{
 
     public void setController(ControllerPresentacio controller) {
         this.controller = controller;
+        Game cg = this.controller.getCurrentGame();
+        this.ncolors = 4;
+        System.out.println(this.ncolors);
+        if(ncolors<6){ blue.setVisible(false); }
+        if(ncolors<5){ purple.setVisible(false); }
+        if(ncolors<4){ yellow.setVisible(false); }
+        if(ncolors<3){ orange.setVisible(false); }
+        if(ncolors<2){ red.setVisible(false); }
+        if(ncolors<1){ green.setVisible(false); }
     }
 
 
@@ -108,17 +119,17 @@ public class BoardFXController{
             String rnd = String.valueOf(round);
             if( rnd.equals( (but.getId()).replaceAll("\\D+","")) )  {
                 if (str.equals("green")) {
-                    but.setStyle("-fx-background-image:  url(green.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/green.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("blue")) {
-                    but.setStyle("-fx-background-image:  url(blue.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/blue.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("red")) {
-                    but.setStyle("-fx-background-image:  url(red.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/red.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("orange")) {
-                    but.setStyle("-fx-background-image:  url(orange.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/orange.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("yellow")) {
-                    but.setStyle("-fx-background-image:  url(yellow.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/yellow.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("purple")) {
-                    but.setStyle("-fx-background-image:  url(purple.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
+                    but.setStyle("-fx-background-image:  url(/GUI/assets/purple.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 }
             }
         }
@@ -145,10 +156,6 @@ public class BoardFXController{
     public void showHint (ActionEvent event) throws IOException {
         lb.setText("Hint!");
         popup_yesno.show(green.getScene().getWindow());
-
-
-
-
     }
 
     @FXML

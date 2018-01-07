@@ -1,6 +1,7 @@
 package GUI.presentacio;
 
 import domini.Controller;
+import domini.Game;
 import domini.GuessToken;
 import domini.Round;
 
@@ -36,6 +37,10 @@ public class ControllerPresentacio {
         /**Public function that returns an instance of the current round
          */
         return this.contDom.getCurrentRound();
+    }
+
+    public Game getCurrentGame(){
+        return this.contDom.getCurrentGame();
     }
 
     //Other functions

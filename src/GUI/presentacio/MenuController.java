@@ -23,6 +23,7 @@ public class MenuController {
         Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
 
+        controller = new ControllerPresentacio();
         RoleFXController roleFXController = loader.getController();
         roleFXController.setController(this.controller);
 

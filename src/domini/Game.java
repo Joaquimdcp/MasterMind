@@ -14,6 +14,7 @@ public class Game {
     private String gameName;
     private String currentUserName;
     private Board currentBoard;
+    private int ncolors;
 
     public Game() {
         /** Constructor: Public constructor method for Game with default parameters
@@ -86,6 +87,12 @@ public class Game {
         return this.win;
     }
 
+    public int getNcolors(){
+        /** Getter of number of colors
+         */
+        return ncolors;
+    }
+
     public int getScore(){
         /** Getter that returns the score of the currentGame. If the game is not  finished it will always return 0
          */
@@ -128,6 +135,7 @@ public class Game {
     public void initGame(int nColours, int nPositions, int nRounds, int nHints){
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
+        this.ncolors = nColours;
         currentBoard.initGame();
         currentBoard.initDifficulty(nRounds, nHints);
     }

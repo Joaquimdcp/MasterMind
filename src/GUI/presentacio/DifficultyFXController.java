@@ -33,7 +33,7 @@ public class DifficultyFXController {
 
     public void easyGame (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Menu.fxml"));
+        loader.setLocation(getClass().getResource("board.fxml"));
         Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
 
