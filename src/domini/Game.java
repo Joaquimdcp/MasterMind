@@ -64,8 +64,7 @@ public class Game {
     public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        //return this.currentBoard.setGuessTokensRound(gt);
-        return true;
+        return this.currentBoard.setGuessTokensRound(gt);
     }
 
     //Getter
