@@ -21,8 +21,8 @@ public class UserDB {
     }
 
     public UserDB(String username, String password) {
-            /**
-             *  Constructor of UserDB with parameters*/
+        /**
+         *  Constructor of UserDB with parameters*/
         this.username = username;
         this.password = password;
     }
@@ -43,8 +43,8 @@ public class UserDB {
     }
 
     public boolean authUser() {
-    /**
-     *  Returns true if the user was correctly authenticated */
+        /**
+         *  Returns true if the user was correctly authenticated */
         List<String> users = new ArrayList<>();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filename))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
@@ -70,7 +70,7 @@ public class UserDB {
             try (FileWriter fw = new FileWriter(filename, true);
                  BufferedWriter bw = new BufferedWriter(fw);
                  PrintWriter out = new PrintWriter(bw)) {
-                 out.println(newUser);
+                out.println(newUser);
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;

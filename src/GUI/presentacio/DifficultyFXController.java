@@ -1,5 +1,6 @@
 package GUI.presentacio;
 
+import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,9 +12,77 @@ import java.io.IOException;
 
 public class DifficultyFXController {
 
+    private Controller controller;
+
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
     public void showMenu (ActionEvent event) throws IOException {
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(rankingScene);
+        window.show();
+    }
+
+    public void easyGame (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load();
+        Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        controller.initGame(false, 4, 4, 10, 6);
+        /*
+        BoardFXController boardFXController = loader.getController();
+        boardFXController.setController(this.controller);*/
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(rankingScene);
+        window.show();
+    }
+
+    public void mediumGame (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load(); //BoardFX.fxml
+        Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        controller.initGame(false, 6, 6, 10, 4);
+        /*
+        BoardFXController boardFXController = loader.getController();
+        boardFXController.setController(this.controller);*/
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(rankingScene);
+        window.show();
+    }
+
+    public void hardGame (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load(); //BoardFX.fxml
+        Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        controller.initGame(false, 6, 8, 10, 2);
+        /*
+        BoardControllerFX boardFXController = loader.getController();
+        boardFXController.setController(this.controller); */
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
@@ -21,8 +90,13 @@ public class DifficultyFXController {
     }
 
     public void showCustomDifficultySelection (ActionEvent event) throws IOException {
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("CustomFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("CustomFX.fxml"));
+        Parent rankingParent = loader.load(); //BoardFX.fxml
         Scene rankingScene = new Scene(rankingParent);
+
+        CustomFXController customFXController = loader.getController();
+        customFXController.setController(this.controller);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
