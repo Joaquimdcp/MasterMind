@@ -1,6 +1,5 @@
 package GUI.presentacio;
 
-import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
 
-    private Controller controller;
+    private ControllerPresentacio controller;
 
     public TextField usernameText;
     public PasswordField passwordText;
@@ -28,7 +27,7 @@ public class LogInController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        controller = new Controller();
+        controller = new ControllerPresentacio();
     }
 
     public void loginPressed(ActionEvent actionEvent) throws IOException {
@@ -39,13 +38,8 @@ public class LogInController implements Initializable {
             errorImage.setImage(image);
         }
         else if (controller.logIn(username, password)) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Menu.fxml"));
-            Parent logInParent = loader.load();
+            Parent logInParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Scene logInScene = new Scene(logInParent);
-
-            MenuController menuController = loader.getController();
-            menuController.setController(this.controller);
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
             window.setScene(logInScene);
