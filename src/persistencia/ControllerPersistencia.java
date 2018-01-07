@@ -13,7 +13,6 @@ public class ControllerPersistencia {
             return false;
     }
 
-
     public boolean logInUser(String username, String password) {
         /** Public function to logIn as a user: if the user exists it returns true and it sets the user,
          * if not it returns false.

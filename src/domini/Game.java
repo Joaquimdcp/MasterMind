@@ -1,3 +1,5 @@
+package domini;
+
 import java.util.ArrayList;
 
 public class Game {
@@ -25,18 +27,19 @@ public class Game {
         this.currentUserName = "__default__";
         this.currentBoard = new Board();
     }
-     public Game(boolean breakerIA, String currentUser){
-         /** Constructor: Public constructor method for Game with custom parameters
-          */
-         this.breakerIA = breakerIA;
-         this.finished = false;
-         this.win = false;
-         this.score = 0;
-         this.difficulty = 0;
-         this.gameName = "__defaultGameName__";
-         this.currentUserName = currentUser;
-         this.currentBoard = new Board();
-     }
+
+    public Game(boolean breakerIA, String currentUser){
+        /** Constructor: Public constructor method for Game with custom parameters
+        */
+        this.breakerIA = breakerIA;
+        this.finished = false;
+        this.win = false;
+        this.score = 0;
+        this.difficulty = 0;
+        this.gameName = "__defaultGameName__";
+        this.currentUserName = currentUser;
+        this.currentBoard = new Board();
+    }
 
      //Setters
     public void setRole (boolean breakerIA){
@@ -163,6 +166,7 @@ public class Game {
          */
         return this.currentBoard.restartGame();
     }
+
     public void endGame(){
         /** Public function that ends a game
          */

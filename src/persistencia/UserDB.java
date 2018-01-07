@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class UserDB {
-    private String fileName = "users.txt";
+    private String filename = "users.txt";
     private String username;
     private String password;
 
@@ -25,7 +25,7 @@ public class UserDB {
         /**
          *  Returns true if the user was found in the DB. Returns false otherwise */
         List<String> users = new ArrayList<>();
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(filename))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ public class UserDB {
     /**
      *  Returns true if the user was correctly authenticated */
         List<String> users = new ArrayList<>();
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(filename))) {
             users = br.lines().filter(line -> line.startsWith(this.username + "|")).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class UserDB {
          *  Returns true if the user was correctly added to the DB */
         if (!userExists()) {
             String newUser = this.username + "|" + this.password;
-            try (FileWriter fw = new FileWriter(fileName, true);
+            try (FileWriter fw = new FileWriter(filename, true);
                  BufferedWriter bw = new BufferedWriter(fw);
                  PrintWriter out = new PrintWriter(bw)) {
                  out.println(newUser);

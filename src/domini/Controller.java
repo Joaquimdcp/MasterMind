@@ -1,7 +1,9 @@
+package domini;
+
 import persistencia.ControllerPersistencia;
+import persistencia.Ranking;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 public class Controller {
     /**This class is the controller of the domain
@@ -57,12 +59,12 @@ public class Controller {
          */
         return this.currentGame;
     }
-
+    /*
     public Map<String, Integer> getCurrentRanking(){
         /** Getter of the current ranking
-         */
+         *
         return this.currentRanking.getRanking();
-    }
+    }*/
 
     public Round getRound(int n){
         /**Public function that returns an instance of the round number n (where n is the parameter of the function
@@ -100,7 +102,9 @@ public class Controller {
         if(!this.currentGame.playRound()){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
+                this.currentRanking.readRanking(); // Reads from file
                 this.currentRanking.updateRanking(this.currentUserName, this.currentGame.getScore());
+                this.currentRanking.saveRanking(); // Saves to file
                 return "Game won";
             }
             else
@@ -134,24 +138,24 @@ public class Controller {
         this.currentGame = new Game();
     }
 
-    public boolean logIn(String name, String password) {
+    public boolean logIn(String username, String password) {
         /** Public function to logIn as a user: if the user exists it returns true and it sets the user,
          * if not it returns false.
          */
-        if(contPers.logInUser(name, password)){
-            this.currentUserName = name;
+        if(contPers.logInUser(username, password)){
+            this.currentUserName = username;
             return true;
         }
         else
             return false;
     }
 
-    public boolean registerUser(String name, String password) {
+    public boolean registerUser(String username, String password) {
         /** Public function to create a new user: it checks if the user exists, if it does it returns false.
          * If not it sets a new user and returns true.
          */
-        if(contPers.registerUser(name, password)){
-            this.currentUserName = name;
+        if(contPers.registerUser(username, password)){
+            this.currentUserName = username;
             return true;
         }
         else

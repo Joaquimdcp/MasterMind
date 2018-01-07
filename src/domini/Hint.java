@@ -1,6 +1,7 @@
+package domini;
+
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Hint {
     /**
@@ -9,15 +10,12 @@ public class Hint {
      * user used.
      */
 
-
     private String text;
     private int nhints;
     private int score;
     private int attempt;
     private ArrayList<GuessToken> rnd;
     private ArrayList<GuessToken> sl;
-
-
 
     private void soft_hint(){
         /**

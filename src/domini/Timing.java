@@ -1,3 +1,5 @@
+package domini;
+
 public class Timing {
     /**
      *  Manage the timming of the game

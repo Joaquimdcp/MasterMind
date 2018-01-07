@@ -1,5 +1,3 @@
-quim|123
-quim|324
-joaquimdcp|123
-hi|hi
-u2|p2
+Matias|123
+Mastermind|123
+amandrarry|123

@@ -1,8 +1,18 @@
-import java.util.*;
+package persistencia;
 
+import java.util.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.StringTokenizer;
+import java.util.stream.Stream;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.PrintWriter;
 
 public class Ranking {
-    private LinkedHashMap<String, Integer> rankingMap;
+    private String filename = "ranking.txt";
+    private Map<String, Integer> rankingMap;
     private int minimumScore;
     private int rankingSize;
 
@@ -21,7 +31,7 @@ public class Ranking {
     }
 
     /* Sets the minimum score by searching for it in the values of the map */
-    private void setMin() {
+    private void updateMin() {
         this.minimumScore = Collections.min(rankingMap.values());
     }
 
@@ -35,8 +45,8 @@ public class Ranking {
         return this.rankingMap.size();
     }
     
-
-    private LinkedHashMap<String, Integer> sortHashMapByValues(LinkedHashMap<String, Integer> passedMap) {
+    /* Sorts the map */
+    private LinkedHashMap<String, Integer> sortHashMapByValues(Map<String, Integer> passedMap) {
         List<String> mapKeys = new ArrayList<>(passedMap.keySet());
         List<Integer> mapValues = new ArrayList<>(passedMap.values());
         Collections.sort(mapValues);
@@ -66,13 +76,12 @@ public class Ranking {
     }
 
     /* Sets the ranking with a sorted copy by score in descending order of itself */
-    private LinkedHashMap<String, Integer> sortRanking() {
+    private void sortRanking() {
         this.rankingMap = sortHashMapByValues(this.rankingMap);
-        return this.rankingMap;
     }
 
-    /* Updates the ranking with the new entry, if it belongs in */
-    public void updateRanking(String username, int score) {
+    /* Updates the ranking with the new entry, if the score is good enough */
+    public void updateRanking(String username, Integer score) {
         if (rankingMap.size() < this.rankingSize) {
             rankingMap.put(username, score);            
         } else {
@@ -88,15 +97,43 @@ public class Ranking {
                 }
                 /* Add the new user to the map */
                 rankingMap.put(username, score);
-                /* It's necessary to set the minimum score again in case
-                    the new score is the lowest */
             }
         }
-        this.setMin();
+        this.updateMin();
+        this.sortRanking();
     }
 
-    /* Returns the ranking sorted by score in descending order */
-    public LinkedHashMap<String, Integer> getRanking() {
-        return this.sortRanking();
+    public void readRanking() {
+        try (Stream<String> stream = Files.lines(Paths.get(this.filename))) {
+            for (String line : stream.toArray(String[]::new)) {
+                StringTokenizer rankingLine = new StringTokenizer(line, "#");
+                String username = rankingLine.nextToken();
+                Integer score = Integer.parseInt(rankingLine.nextToken());
+                updateRanking(username, score);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveRanking() {
+        try {
+            PrintWriter clear = new PrintWriter(this.filename);
+            clear.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (Map.Entry<String, Integer> entry : this.rankingMap.entrySet()) {
+            String user = entry.getKey();
+            Integer score = entry.getValue();
+            String newScore = user + "#" + score.toString();
+            try (FileWriter fw = new FileWriter(this.filename, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw)) {
+                out.println(newScore);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

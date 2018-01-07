@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.Arrays;
+package domini;
 
 public abstract class Token {
     /**This class is used to represent a token. Tokens are composed of colour**/

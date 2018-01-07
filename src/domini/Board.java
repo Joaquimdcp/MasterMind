@@ -1,5 +1,6 @@
+package domini;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Board {
     private int currentRound;
@@ -52,6 +53,7 @@ public class Board {
         Hint h = new Hint(this.difficulty, currentGuess, solution);
         return h.get_hints();
     }
+
     /* Returns true if the game continues, false if it's the end of the game (either because the code was broken
         or because there are no more rounds to be played. */
     public boolean playRound() {
