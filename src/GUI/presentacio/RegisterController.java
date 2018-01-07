@@ -1,6 +1,5 @@
 package GUI.presentacio;
 
-import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class RegisterController implements Initializable {
-    private Controller controller;
+    private ControllerPresentacio controller;
 
     public TextField usernameText;
     public PasswordField passwordText;
@@ -27,7 +26,7 @@ public class RegisterController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        controller = new Controller();
+        controller = new ControllerPresentacio();
     }
 
     public void registerPressed(ActionEvent actionEvent) throws IOException {

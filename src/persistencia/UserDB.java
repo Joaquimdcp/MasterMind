@@ -9,10 +9,16 @@ import java.util.StringTokenizer;
 import java.util.stream.Collectors;
 
 public class UserDB {
-    private String filename = "users.txt";
+    private String filename = "src/persistencia/users.txt";
     private String username;
     private String password;
 
+    public UserDB() {
+        /**
+         *  Constructor of UserDB with parameters*/
+        this.username = "__defaultUsername__";
+        this.password = "__defaultPassword__";
+    }
 
     public UserDB(String username, String password) {
             /**
