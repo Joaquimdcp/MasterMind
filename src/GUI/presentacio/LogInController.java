@@ -30,6 +30,10 @@ public class LogInController implements Initializable {
         controller = new ControllerPresentacio();
     }
 
+    public void setController(ControllerPresentacio controller) {
+        this.controller = controller;
+    }
+    
     public void loginPressed(ActionEvent actionEvent) throws IOException {
         String username = usernameText.textProperty().get();
         String password = passwordText.textProperty().get();
@@ -38,11 +42,16 @@ public class LogInController implements Initializable {
             errorImage.setImage(image);
         }
         else if (controller.logIn(username, password)) {
-            Parent logInParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-            Scene logInScene = new Scene(logInParent);
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Menu.fxml"));
+            Parent sceneParent = loader.load();
+            Scene scene = new Scene(sceneParent);
+
+            MenuController menuController = loader.getController();
+            menuController.setController(this.controller);
 
             Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-            window.setScene(logInScene);
+            window.setScene(scene);
             window.show();
         }
 
@@ -53,11 +62,16 @@ public class LogInController implements Initializable {
     }
 
     public void registerPressed(ActionEvent actionEvent) throws IOException{
-        Parent logInParent = FXMLLoader.load(getClass().getResource("Register.fxml"));
-        Scene logInScene = new Scene(logInParent);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Register.fxml"));
+        Parent sceneParent = loader.load();
+        Scene scene = new Scene(sceneParent);
+
+        RegisterController regController = loader.getController();
+        regController.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(logInScene);
+        window.setScene(scene);
         window.show();
     }
 }

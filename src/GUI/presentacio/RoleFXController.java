@@ -11,9 +11,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RoleFXController {
-    private Controller controller;
+    private ControllerPresentacio controller;
 
-    public void setController(Controller controller) {
+    public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
 
@@ -32,8 +32,13 @@ public class RoleFXController {
     }
 
     public void showDifficultyMaker (ActionEvent event) throws IOException {
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("DifficultyFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("DifficultyFX.fxml"));
+        Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
+
+        DifficultyFXController difficultyFXController = loader.getController();
+        difficultyFXController.setController(this.controller);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
@@ -41,9 +46,13 @@ public class RoleFXController {
     }
 
     public void showMenu (ActionEvent event) throws IOException {
-
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);

@@ -8,23 +8,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import domini.Controller;
 
 public class MenuController {
-    private Controller controller;
+    private ControllerPresentacio controller;
 
-    /*
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-    @Override
-    public void start(Stage primaryStage) {
-
-    }
-    */
-
-    public void setController(Controller controller) {
+    public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
 
@@ -43,8 +32,13 @@ public class MenuController {
     }
 
     public void loadGamePressed(ActionEvent actionEvent) throws IOException {
-        Parent SceneParent = FXMLLoader.load(getClass().getResource("RoleFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RoleFX.fxml"));
+        Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
+
+        RoleFXController roleFXController = loader.getController();
+        roleFXController.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
@@ -52,8 +46,13 @@ public class MenuController {
     }
 
     public void howToPlayPressed(ActionEvent actionEvent) throws IOException {
-        Parent SceneParent = FXMLLoader.load(getClass().getResource("HowToPlayFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("HowToPlayFX.fxml"));
+        Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
+
+        HowToPlayFXController controller = loader.getController();
+        controller.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
@@ -61,8 +60,13 @@ public class MenuController {
     }
 
     public void rankingPressed(ActionEvent actionEvent) throws IOException {
-        Parent SceneParent = FXMLLoader.load(getClass().getResource("RankingFX.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("RankingFX.fxml"));
+        Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
+
+        RankingFXController controller = loader.getController();
+        controller.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
@@ -70,8 +74,13 @@ public class MenuController {
     }
 
     public void logOutPressed(ActionEvent actionEvent) throws IOException {
-        Parent SceneParent = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("LogIn.fxml"));
+        Parent SceneParent = loader.load();
         Scene SceneToCharge = new Scene(SceneParent);
+
+        LogInController controller = loader.getController();
+        controller.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
