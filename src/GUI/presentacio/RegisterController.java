@@ -29,6 +29,10 @@ public class RegisterController implements Initializable {
         controller = new ControllerPresentacio();
     }
 
+    public void setController(ControllerPresentacio controller) {
+        this.controller = controller;
+    }
+
     public void registerPressed(ActionEvent actionEvent) throws IOException {
         String username = usernameText.textProperty().get();
         String password = passwordText.textProperty().get();
@@ -45,11 +49,16 @@ public class RegisterController implements Initializable {
             }
             else{
                 if (controller.registerUser(username, password)){
-                    Parent logInParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
-                    Scene logInScene = new Scene(logInParent);
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("Menu.fxml"));
+                    Parent sceneParent = loader.load();
+                    Scene scene = new Scene(sceneParent);
+
+                    MenuController menuController = loader.getController();
+                    menuController.setController(this.controller);
 
                     Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-                    window.setScene(logInScene);
+                    window.setScene(scene);
                     window.show();
                 }
                 else {
@@ -63,11 +72,16 @@ public class RegisterController implements Initializable {
     }
 
     public void loginPressed(ActionEvent actionEvent) throws IOException {
-        Parent registerParent = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
-        Scene registerScene = new Scene(registerParent);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("LogIn.fxml"));
+        Parent sceneParent = loader.load();
+        Scene scene = new Scene(sceneParent);
+
+        LogInController logInController= loader.getController();
+        logInController.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        window.setScene(registerScene);
+        window.setScene(scene);
         window.show();
     }
 }

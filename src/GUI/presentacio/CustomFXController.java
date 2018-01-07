@@ -23,7 +23,7 @@ public class CustomFXController implements Initializable{
 
     private ObservableList<Integer> list = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-    private Controller controller;
+    private ControllerPresentacio controller;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -33,7 +33,7 @@ public class CustomFXController implements Initializable{
         rounds.setValue(10);
     }
 
-    public void setController(Controller controller) {
+    public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
 

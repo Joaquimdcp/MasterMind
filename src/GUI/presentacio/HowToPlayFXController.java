@@ -10,9 +10,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HowToPlayFXController {
+
+    private ControllerPresentacio controller;
+
+    public void setController(ControllerPresentacio controller) {
+        this.controller = controller;
+    }
+
     public void showMenu (ActionEvent event) throws IOException {
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);

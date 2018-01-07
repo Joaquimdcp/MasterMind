@@ -1,6 +1,5 @@
 package GUI.presentacio;
 
-import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,9 +11,9 @@ import java.io.IOException;
 
 public class DifficultyFXController {
 
-    private Controller controller;
+    private ControllerPresentacio controller;
 
-    public void setController(Controller controller) {
+    public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
 

@@ -34,7 +34,7 @@ public class BoardFXController{
     final Popup popup_yesno;
     Label lb;
 
-    private domini.Controller controller;
+    private ControllerPresentacio controller;
 
 
 
@@ -83,7 +83,7 @@ public class BoardFXController{
 
     }
 
-    public void setController(Controller controller) {
+    public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
 
