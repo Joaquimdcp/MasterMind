@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/GUI/assets/bg.jpg);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.presentacio.RoleFXController">
+   <children>
+      <ImageView layoutX="139.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/roletitle.png" />
+         </image>
+      </ImageView>
+      <VBox layoutX="295.0" layoutY="216.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#showDifficultyBreaker" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codebreakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+            <Button mnemonicParsing="false" onAction="#showDifficultyMaker" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/codemakerbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+            <Button mnemonicParsing="false" onAction="#showMenu" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/back.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

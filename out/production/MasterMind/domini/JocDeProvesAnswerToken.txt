@@ -1,0 +1,21 @@
+Prova 1
+Descripció: Constructora
+Objectius: Veure podem inicialitzar el color de la fitxa (de resposta) correctament
+
+Altres elements integrats a la prova
+Driver de AnswerToken
+
+Entrada: parametre constructora: 0
+Sortida: White
+Resultat de la prova: ok
+
+Prova 2
+Descripció: Constructora
+Objectius: Veure podem inicialitzar correctament
+
+Altres elements integrats a la prova
+Driver de AnswerToken
+
+Entrada: -
+Sortida: -
+Resultat de la prova: ok
