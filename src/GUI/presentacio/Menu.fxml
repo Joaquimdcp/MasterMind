@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/GUI/assets/bg.jpg)" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.presentacio.MenuController">
+    <children>
+      <ImageView layoutX="308.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="@/GUI/assets/menutitle.png" />
+          </image>
+      </ImageView>
+      <VBox alignment="CENTER" layoutX="0.0" layoutY="111.0" prefHeight="479.0" prefWidth="800.0" spacing="15.0">
+      <children>
+          <Button mnemonicParsing="false" onAction="#newGamePressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/newgame.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+          <Button mnemonicParsing="false" onAction="#loadGamePressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/load.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+          <Button mnemonicParsing="false" onAction="#howToPlayPressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/howtoplay.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+          <Button mnemonicParsing="false" onAction="#rankingPressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/ranking.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+          <Button mnemonicParsing="false" onAction="#logOutPressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/logout.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+          <Button mnemonicParsing="false" onAction="#exitPressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/exit.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

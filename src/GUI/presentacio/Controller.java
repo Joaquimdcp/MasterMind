@@ -9,8 +9,17 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RoleFXController {
-    public void showDifficulty (ActionEvent event) throws IOException {
+public class Controller {
+    public void showRanking(ActionEvent event) throws IOException {
+        Parent rankingParent = FXMLLoader.load(getClass().getResource("RankingFX.fxml"));
+        Scene rankingScene = new Scene(rankingParent);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(rankingScene);
+        window.show();
+    }
+
+    public void showDifficulty(ActionEvent event) throws IOException {
         Parent rankingParent = FXMLLoader.load(getClass().getResource("DifficultyFX.fxml"));
         Scene rankingScene = new Scene(rankingParent);
 
@@ -19,8 +28,8 @@ public class RoleFXController {
         window.show();
     }
 
-    public void showMenu (ActionEvent event) throws IOException {
-        Parent rankingParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+    public void showHowToPlay(ActionEvent event) throws IOException {
+        Parent rankingParent = FXMLLoader.load(getClass().getResource("HowToPlayFX.fxml"));
         Scene rankingScene = new Scene(rankingParent);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
