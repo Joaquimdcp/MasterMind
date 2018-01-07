@@ -12,17 +12,17 @@
    <children>
       <VBox alignment="CENTER" layoutX="295.0" layoutY="127.0" spacing="20.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image:url(/GUI/assets/easy.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
+            <Button mnemonicParsing="false" onAction="#easyGame" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image:url(/GUI/assets/easy.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
                <font>
                   <Font name="Carter One" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/medium.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
+            <Button mnemonicParsing="false" onAction="#mediumGame" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/medium.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
                <font>
                   <Font name="Carter One" size="18.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/hard.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
+            <Button mnemonicParsing="false" onAction="#hardGame" prefHeight="70.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/hard.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;">
                <font>
                   <Font name="Carter One" size="18.0" />
                </font>
