@@ -14,6 +14,7 @@ public class ControllerPersistencia {
     public ControllerPersistencia(){
         users = new UserDB();
         rankig = new Ranking();
+        gS = new GameSaver();
     }
 
     public boolean registerUser(String username, String password) {

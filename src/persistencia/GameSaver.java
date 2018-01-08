@@ -31,7 +31,8 @@ public class GameSaver {
         for(int i=0; i<nRounds; ++i){
             auxG="";
             for (int j=0; j<nPosi;++j){
-                auxG += game.getRound(i).getTokensGuess().get(i).getColour()+" ";
+                ArrayList<GuessToken> gt = game.getRound(i).getTokensGuess();
+                auxG += game.getRound(i).getTokensGuess().get(j).getColour()+" ";
             }
             writer.println(auxG);
         }
@@ -65,21 +66,26 @@ public class GameSaver {
             String[] solu = br.readLine().split(" ");
             ArrayList<GuessToken> solution = new ArrayList<GuessToken>();
             for (int i=0; i<solu.length; ++i){
-                solution.add(new GuessToken(solu[i]));
+                solution.add(new GuessToken(solu[i].toLowerCase()));
             }
             game.setSolution(solution);
             ArrayList<GuessToken> guess = new ArrayList<GuessToken>();
             ArrayList<Round> rounds = new ArrayList<Round>();
-            for(int i=0; i<nRounds; ++i){
-                String[] gS=br.readLine().split(" ");
+            for(int i=0; i<currentR; ++i){
+                String[] gS = br.readLine().split(" ");
+                System.out.println(gS[0]);
                 for (int j=0; j< gS.length;++j){
-                    guess.add(new GuessToken(gS[j]));
+                    guess.add(new GuessToken(gS[j].toLowerCase()));
                 }
-                Round aux = new Round();
-                aux.setGuess(guess, nColors, nPositions);
+
+                Round aux = new Round(i);
+                System.out.println("Afegint a "+aux.getnRound());
+                aux.setGuess((ArrayList<GuessToken>) guess.clone(), nColors, nPositions);
                 aux.setAnswer(solution);
                 rounds.add(aux);
+                guess.clear();
             }
+            game.setRoundLoad(rounds);
 
             File f = new File(user+".txt");
             f.delete();

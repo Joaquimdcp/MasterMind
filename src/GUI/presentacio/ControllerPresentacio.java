@@ -1,9 +1,6 @@
 package GUI.presentacio;
 
-import domini.Controller;
-import domini.Game;
-import domini.GuessToken;
-import domini.Round;
+import domini.*;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -13,6 +10,8 @@ import java.util.Map;
 public class ControllerPresentacio {
     private Controller contDom;
     private Boolean breakerIA = false;
+    private Boolean loaded = false;
+    private int nColors = 0;
 
     //Constructor
     public ControllerPresentacio(){
@@ -51,6 +50,7 @@ public class ControllerPresentacio {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
          */
+        this.nColors = nColours;
 
         this.contDom.initGame(this.breakerIA, nColours, nPositions, nRounds, nHints);
     }
@@ -76,7 +76,12 @@ public class ControllerPresentacio {
     public void loadGame() {
         /**Public function to load a game
          */
+        loaded = true;
         this.contDom.loadGame();
+    }
+
+    public Boolean isLoad(){
+        return this.loaded;
     }
 
     public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {
@@ -105,6 +110,9 @@ public class ControllerPresentacio {
         return this.contDom.registerUser(name, password);
     }
 
+    public int getNColors(){
+        return this.nColors;
+    }
     public void logOut() {
         /** Public function: it logs out the current User.
          */
@@ -113,5 +121,9 @@ public class ControllerPresentacio {
 
     public void setSolution(ArrayList<String> solu){
         this.contDom.setSolution(solu);
+    }
+    
+    public boolean doesSavedExist(String user){
+        return this.contDom.doesSavedExist(user);
     }
 }

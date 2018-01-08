@@ -7,7 +7,9 @@ import javafx.beans.Observable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +29,6 @@ import java.util.Map;
 
 public class BoardFXController{
 
-    Observable timer ;
 
     @FXML
     private Label timelabel;
@@ -37,7 +39,7 @@ public class BoardFXController{
     private int round = 1;
     private boolean first = true;
 
-    final Popup popup_yesno;
+    final Popup popup_yesno, save;
     Label lb;
 
     private ControllerPresentacio controller;
@@ -66,6 +68,12 @@ public class BoardFXController{
         ok.setStyle("-fx-background-image: url(/GUI/assets/acceptbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
         ok.setLayoutX(85);
         ok.setLayoutY(130);
+        ok.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                popup_yesno.hide();
+            }
+        });
+
 
         Button nok = new Button();
         nok.setPrefSize(69,71);
@@ -77,6 +85,7 @@ public class BoardFXController{
                 popup_yesno.hide();
             }
         });
+        nok.setVisible(false);
 
 
         lb = new Label();
@@ -92,13 +101,14 @@ public class BoardFXController{
         vBox.getChildren().add(canvas);
 
         popup_yesno.getContent().addAll(vBox);
+        save = new Popup(); save.setX(800); save.setY(400);
 
     }
 
     public void setController(ControllerPresentacio controller) {
         this.controller = controller;
         Game cg = this.controller.getCurrentGame();
-        this.ncolors = 4;
+        this.ncolors = this.controller.getNColors();
         System.out.println(this.ncolors);
         if(ncolors<6){ orange.setVisible(false); }
         if(ncolors<5){ purple.setVisible(false); }
@@ -106,6 +116,32 @@ public class BoardFXController{
         if(ncolors<3){ green.setVisible(false); }
         if(ncolors<2){ blue.setVisible(false); }
         if(ncolors<1){ red.setVisible(false); }
+
+        if(this.controller.isLoad()){
+            int rounds = this.controller.getCurrentGame().getCurrentRoundNumber();
+            Button bt;
+            for(int i=0; i<rounds; i++){
+                int r = i+1;
+                solution = this.controller.getCurrentGame().getRound(i).getTokensGuessString();
+                Scene sc = green.getScene();
+                if(solution.size()>0) {
+                    bt = (Button) sc.lookup("#second" + r);
+                    setColor(bt, solution.get(0));
+                    bt = (Button) sc.lookup("#third" + r);
+                    setColor(bt, solution.get(1));
+                    bt = (Button) sc.lookup("#forth" + r);
+                    setColor(bt, solution.get(2));
+                    bt = (Button) sc.lookup("#five" + r);
+                    setColor(bt, solution.get(3));
+                    round++;
+                }
+                else{
+                    System.out.println("Solution empty");
+                }
+            }
+
+
+        }
     }
 
 
@@ -178,16 +214,39 @@ public class BoardFXController{
 
     @FXML
     public void saveGame (ActionEvent event) throws IOException {
-        lb.setText("Do you want to save game?");
+        lb.setText("Game saved");
         popup_yesno.show(green.getScene().getWindow());
+        this.controller.saveGame();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent menuParent = loader.load(); //BoardFX.fxml
+        Scene menuScene = new Scene(menuParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(menuScene);
+        window.show();
 
 
     }
 
     @FXML
     public void exitGame (ActionEvent event) throws IOException {
-        lb.setText("Do you want to save\n before exit?");
+        lb.setText("Bye Bye!");
         popup_yesno.show(green.getScene().getWindow());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent menuParent = loader.load(); //BoardFX.fxml
+        Scene menuScene = new Scene(menuParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(menuScene);
+        window.show();
     }
 
     @FXML
@@ -278,10 +337,10 @@ public class BoardFXController{
                 solution = controller.getCurrentRound().getTokensGuessString();
 
                 if (state.equals("Game won")) {
-                    lb.setText("IA WIN");
+                    lb.setText("IA WINS");
                     popup_yesno.show(green.getScene().getWindow());
                 } else if (state.equals("Game ended but not won")) {
-                    lb.setText("IA LOSE");
+                    lb.setText("IA LOSES");
                     popup_yesno.show(green.getScene().getWindow());
                 } else {
                     bt = (Button) sc.lookup("#second"+ round);
@@ -300,6 +359,9 @@ public class BoardFXController{
             }
 
         }
+        Game g = this.controller.getCurrentGame();
+        g.getCurrentRound();
+        timelabel.setText(String.valueOf(this.controller.getCurrentGame().getScore()));
     }
 
     private void setColor(Button but, String str){
