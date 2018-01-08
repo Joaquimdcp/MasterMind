@@ -5,6 +5,8 @@ import domini.Game;
 import domini.GuessToken;
 import domini.Round;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -65,16 +67,16 @@ public class ControllerPresentacio {
         return this.contDom.playRound();
     }
 
-    public boolean loadGame() {
+    public void loadGame() {
         /**Public function to load a game
          */
-        return this.contDom.loadGame();
+        this.contDom.loadGame();
     }
 
-    public boolean saveGame() {
+    public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {
         /**Public function to save a game
          */
-        return this.contDom.saveGame();
+        this.contDom.saveGame();
     }
 
     public void exitGame() {
