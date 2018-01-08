@@ -1,6 +1,5 @@
 package GUI.presentacio;
 
-import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -31,9 +30,7 @@ public class RoleFXController {
         window.show();
     }
 
-
     public void showDifficultyMaker (ActionEvent event) throws IOException {
-        this.controller.setIA(true);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("DifficultyFX.fxml"));
         Parent rankingParent = loader.load();
@@ -41,8 +38,6 @@ public class RoleFXController {
 
         DifficultyFXController difficultyFXController = loader.getController();
         difficultyFXController.setController(this.controller);
-
-
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);

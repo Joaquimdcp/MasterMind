@@ -1,16 +1,14 @@
 package GUI.presentacio;
 
-import domini.*;
+import domini.Controller;
+import domini.GuessToken;
+import domini.Round;
 
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class ControllerPresentacio {
     private Controller contDom;
-    private Boolean breakerIA = false;
-    private Boolean loaded = false;
 
     //Constructor
     public ControllerPresentacio(){
@@ -27,10 +25,10 @@ public class ControllerPresentacio {
         this.contDom.setGameName(name);
     }
 
-    public String setGuessTokensRound(ArrayList<String> st){
+    public String setGuessTokensRound(ArrayList<GuessToken> gt){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        return this.contDom.setGuessTokensRound(st);
+        return this.contDom.setGuessTokensRound(gt);
     }
 
     //Getters
@@ -40,21 +38,12 @@ public class ControllerPresentacio {
         return this.contDom.getCurrentRound();
     }
 
-    public Game getCurrentGame(){
-        return this.contDom.getCurrentGame();
-    }
-
     //Other functions
-    public void initGame( int nColours, int nPositions, int nRounds, int nHints) {
+    public void initGame(boolean breakerIA, int nColours, int nPositions, int nRounds, int nHints) {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
          */
-
-        this.contDom.initGame(this.breakerIA, nColours, nPositions, nRounds, nHints);
-    }
-
-    public void setIA(boolean st){
-        this.breakerIA = st;
+        this.contDom.initGame(breakerIA, nColours, nPositions, nRounds, nHints);
     }
 
     public String useHint() {
@@ -71,21 +60,16 @@ public class ControllerPresentacio {
         return this.contDom.playRound();
     }
 
-    public void loadGame() {
+    public boolean loadGame() {
         /**Public function to load a game
          */
-        loaded = true;
-        this.contDom.loadGame();
+        return this.contDom.loadGame();
     }
 
-    public Boolean isLoad(){
-        return this.loaded;
-    }
-
-    public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {
+    public boolean saveGame() {
         /**Public function to save a game
          */
-        this.contDom.saveGame();
+        return this.contDom.saveGame();
     }
 
     public void exitGame() {
@@ -112,9 +96,5 @@ public class ControllerPresentacio {
         /** Public function: it logs out the current User.
          */
         this.contDom.logOut();
-    }
-
-    public void setSolution(ArrayList<String> solu){
-        this.contDom.setSolution(solu);
     }
 }
