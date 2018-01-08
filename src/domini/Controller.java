@@ -2,6 +2,8 @@ package domini;
 
 import persistencia.ControllerPersistencia;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -29,9 +31,11 @@ public class Controller {
         this.currentGame.setGameName(name);
     }
 
-    public String setGuessTokensRound(ArrayList<GuessToken> gt){
+    public String setGuessTokensRound(ArrayList<String> st){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
+        ArrayList<GuessToken> gt = new ArrayList<GuessToken>();
+        for(String color: st){ gt.add(new GuessToken(color)); }
         if(!this.currentGame.setGuessTokensRound(gt)){
             this.currentGame.endGame();
             if(this.currentGame.getWin()){
@@ -108,30 +112,34 @@ public class Controller {
             return "Round played normally";
     }
 
-    public boolean loadGame() {
+    public void loadGame() {
         /**Public function to load a game
          */
-        return this.currentGame.loadGame();
+        this.currentGame = this.contPers.loadGame(this.currentGame.getCurrentUser());
     }
 
-    public boolean saveGame() {
+    public boolean doesSavedExist(String user){
+        return this.contPers.doesSavedExist(user);
+    }
+
+    public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {
         /**Public function to save a game
          */
-        Boolean allGood = this.currentGame.saveGame();
-        exitGame();
-        return allGood;
-    }
-
-    public boolean restartGame(){
-        /**Public function to restart a game
-         */
-        return this.currentGame.restartGame();
+        this.contPers.saveGame(this.currentGame);
     }
 
     public void exitGame() {
         /** Public function to exit a game: it will erase the current game
          */
         this.currentGame = new Game();
+    }
+
+    public void setSolution(ArrayList<String> sol){
+        ArrayList<GuessToken> gt = new ArrayList<GuessToken>();
+        for(String color: sol){ gt.add(new GuessToken(color)); }
+
+        this.currentGame.setSolution(gt);
+
     }
 
     public boolean logIn(String name, String password) {
