@@ -128,7 +128,8 @@ public class Game {
     public int getNcolors(){
         /** Getter of number of colors
          */
-        return ncolors;
+
+        return this.ncolors;
     }
 
     public int getScore(){
