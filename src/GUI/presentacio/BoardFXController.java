@@ -178,8 +178,9 @@ public class BoardFXController{
 
     @FXML
     public void saveGame (ActionEvent event) throws IOException {
-        lb.setText("Do you want to save game?");
+        lb.setText("Game saved");
         popup_yesno.show(green.getScene().getWindow());
+        this.controller.saveGame();
 
 
     }
@@ -278,10 +279,10 @@ public class BoardFXController{
                 solution = controller.getCurrentRound().getTokensGuessString();
 
                 if (state.equals("Game won")) {
-                    lb.setText("IA WIN");
+                    lb.setText("IA WINS");
                     popup_yesno.show(green.getScene().getWindow());
                 } else if (state.equals("Game ended but not won")) {
-                    lb.setText("IA LOSE");
+                    lb.setText("IA LOSES");
                     popup_yesno.show(green.getScene().getWindow());
                 } else {
                     bt = (Button) sc.lookup("#second"+ round);

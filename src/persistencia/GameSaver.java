@@ -70,8 +70,9 @@ public class GameSaver {
             game.setSolution(solution);
             ArrayList<GuessToken> guess = new ArrayList<GuessToken>();
             ArrayList<Round> rounds = new ArrayList<Round>();
-            for(int i=0; i<nRounds; ++i){
-                String[] gS=br.readLine().split(" ");
+            for(int i=0; i<currentR; ++i){
+                String[] gS = br.readLine().split(" ");
+                System.out.println(gS[0]);
                 for (int j=0; j< gS.length;++j){
                     guess.add(new GuessToken(gS[j]));
                 }

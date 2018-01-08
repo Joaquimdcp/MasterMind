@@ -34,12 +34,13 @@ public class MenuController {
 
     public void loadGamePressed(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("RoleFX.fxml"));
+        loader.setLocation(getClass().getResource("board.fxml"));
         Parent SceneParent = loader.load();
+        this.controller.loadGame();
         Scene SceneToCharge = new Scene(SceneParent);
 
-        RoleFXController roleFXController = loader.getController();
-        roleFXController.setController(this.controller);
+        BoardFXController boardFXController= loader.getController();
+        boardFXController.setController(this.controller);
 
         Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(SceneToCharge);
