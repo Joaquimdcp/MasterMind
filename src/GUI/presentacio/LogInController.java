@@ -33,7 +33,7 @@ public class LogInController implements Initializable {
     public void setController(ControllerPresentacio controller) {
         this.controller = controller;
     }
-
+    
     public void loginPressed(ActionEvent actionEvent) throws IOException {
         String username = usernameText.textProperty().get();
         String password = passwordText.textProperty().get();

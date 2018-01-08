@@ -21,15 +21,16 @@ public class CustomFXController implements Initializable{
     @FXML
     private ChoiceBox colors, rounds;
 
-    private ObservableList<Integer> list = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    private ObservableList<Integer> listRounds = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+    private ObservableList<Integer> listColors = FXCollections.observableArrayList(1, 2, 3, 4, 5, 6);
 
     private ControllerPresentacio controller;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        colors.setItems(list);
+        colors.setItems(listColors);
         colors.setValue(6);
-        rounds.setItems(list);
+        rounds.setItems(listRounds);
         rounds.setValue(10);
     }
 
