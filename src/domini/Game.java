@@ -1,5 +1,6 @@
 package domini;
 
+import java.sql.Time;
 import java.util.ArrayList;
 
 public class Game {
@@ -133,6 +134,7 @@ public class Game {
     public int getScore(){
         /** Getter that returns the score of the currentGame. If the game is not  finished it will always return 0
          */
+        this.score = this.currentBoard.getScore();
         return this.score;
     }
 

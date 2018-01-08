@@ -65,7 +65,7 @@
         <Image url="/GUI/assets/score.png" />
       </image>
     </ImageView>
-    <Label id="timelabel" layoutX="667.0" layoutY="31.0" text="56">
+    <Label fx:id = "timelabel" id="timelabel" layoutX="667.0" layoutY="31.0" text="56">
       <font>
         <Font name="Carter One" size="22.0" />
       </font>

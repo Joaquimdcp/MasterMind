@@ -148,7 +148,7 @@ public class Board {
     public int getScore() {
         int score = this.difficulty.difficulty();
         int time = (int)this.time.time();
-        return score / time;
+        return score;
     }
 
     public int getnHints(){

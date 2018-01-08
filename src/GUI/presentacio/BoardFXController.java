@@ -327,6 +327,9 @@ public class BoardFXController{
             }
 
         }
+        Game g = this.controller.getCurrentGame();
+        g.getCurrentRound();
+        timelabel.setText(String.valueOf(this.controller.getCurrentGame().getScore()));
     }
 
     private void setColor(Button but, String str){
