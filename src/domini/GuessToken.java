@@ -27,12 +27,12 @@ public class GuessToken extends Token {
          * Constructor: Public constructor method for token with custom params
          */
         super(0);
-        if(colour == "Red") super.colour = 0;
-        else if (colour=="Blue") super.colour = 1;
-        else if (colour=="Green") super.colour = 2;
-        else if (colour=="Yellow") super.colour = 3;
-        else if (colour=="Purple") super.colour = 4;
-        else if (colour=="Orange") super.colour = 5;
+        if(colour == "red") super.colour = 0;
+        else if (colour=="blue") super.colour = 1;
+        else if (colour=="green") super.colour = 2;
+        else if (colour=="yellow") super.colour = 3;
+        else if (colour=="purple") super.colour = 4;
+        else if (colour=="orange") super.colour = 5;
     }
 
     //Getters

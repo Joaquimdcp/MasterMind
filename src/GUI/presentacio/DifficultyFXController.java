@@ -33,17 +33,14 @@ public class DifficultyFXController {
 
     public void easyGame (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Menu.fxml"));
+        loader.setLocation(getClass().getResource("board.fxml"));
         Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
 
-        MenuController menuController = loader.getController();
-        menuController.setController(this.controller);
+        BoardFXController boardFXController = loader.getController();
+        boardFXController.setController(this.controller);
 
         controller.initGame(false, 4, 4, 10, 6);
-        /*
-        BoardFXController boardFXController = loader.getController();
-        boardFXController.setController(this.controller);*/
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
