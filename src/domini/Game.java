@@ -181,7 +181,7 @@ public class Game {
         /** Public function that returns a hint (if the player has used less hints that it is permitted)
          * and increments the counter of number of hints
          */
-        if(!this.currentBoard.useHint())
+        if(this.currentBoard.useHint())
             return this.currentBoard.newHint(); //Entenc que retorna hint com un string
         else
             return "You've used all your hints";
@@ -219,6 +219,6 @@ public class Game {
         this.win = this.currentBoard.hasPlayerWon();
         this.score = this.currentBoard.getScore();
         this.difficulty = this.currentBoard.getDifficulty().difficulty();
-        this.currentBoard = new Board();
+        //this.currentBoard = new Board();
     }
 }

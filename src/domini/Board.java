@@ -49,7 +49,7 @@ public class Board {
     }
 
     public String newHint() {
-        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound-1)).getTokensGuess();
         Hint h = new Hint(this.difficulty, currentGuess, solution);
         return h.get_hints();
     }
@@ -77,7 +77,7 @@ public class Board {
     }
 
     public boolean setGuessTokensRound(ArrayList<GuessToken> gt) {
-        if (this.currentRound <= this.difficulty.getN_rounds()) {
+        if (this.currentRound < this.difficulty.getN_rounds()) {
             // Create new Round
             Round r = new Round(currentRound+1);
             // If the guess is valid
