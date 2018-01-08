@@ -14,9 +14,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         /**Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
-        primaryStage.setTitle("Mastermind");
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.show();**/
+         primaryStage.setTitle("Mastermind");
+         primaryStage.setScene(new Scene(root, 800, 600));
+         primaryStage.show();**/
 
         FXMLLoader loader = new FXMLLoader((getClass().getResource("LogIn.fxml")));
         AnchorPane flowPane = loader.load();

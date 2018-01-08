@@ -1,5 +1,6 @@
 package GUI.presentacio;
 
+import domini.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,7 +34,7 @@ public class DifficultyFXController {
 
     public void easyGame (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("board.fxml"));
+        loader.setLocation(getClass().getResource("Menu.fxml"));
         Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
 
@@ -59,7 +60,6 @@ public class DifficultyFXController {
 
         MenuController menuController = loader.getController();
         menuController.setController(this.controller);
-
 
         /*
         BoardFXController boardFXController = loader.getController();
