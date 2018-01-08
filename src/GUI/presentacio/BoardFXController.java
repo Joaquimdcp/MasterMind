@@ -217,6 +217,17 @@ public class BoardFXController{
         lb.setText("Game saved");
         popup_yesno.show(green.getScene().getWindow());
         this.controller.saveGame();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Menu.fxml"));
+        Parent menuParent = loader.load(); //BoardFX.fxml
+        Scene menuScene = new Scene(menuParent);
+
+        MenuController menuController = loader.getController();
+        menuController.setController(this.controller);
+
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(menuScene);
+        window.show();
 
 
     }
