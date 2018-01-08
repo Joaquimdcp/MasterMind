@@ -2,6 +2,8 @@ package domini;
 
 import persistencia.ControllerPersistencia;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -110,24 +112,20 @@ public class Controller {
             return "Round played normally";
     }
 
-    public boolean loadGame() {
+    public void loadGame() {
         /**Public function to load a game
          */
-        return this.currentGame.loadGame();
+        this.currentGame = this.contPers.loadGame(this.currentGame.getCurrentUser());
     }
 
-    public boolean saveGame() {
+    public boolean doesSavedExist(String user){
+        return this.contPers.doesSavedExist(user);
+    }
+
+    public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {
         /**Public function to save a game
          */
-        Boolean allGood = this.currentGame.saveGame();
-        exitGame();
-        return allGood;
-    }
-
-    public boolean restartGame(){
-        /**Public function to restart a game
-         */
-        return this.currentGame.restartGame();
+        this.contPers.saveGame(this.currentGame);
     }
 
     public void exitGame() {

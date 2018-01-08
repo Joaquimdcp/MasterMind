@@ -22,6 +22,14 @@ public class AnswerToken extends Token {
         super(colour);
     }
 
+    public AnswerToken(String colour) {
+        /**
+         * Constructor: Public constructor method for token with custom params
+         */
+        super(0);
+        if(colour == "White") super.colour = 0;
+        else if (colour=="Black") super.colour = 1;
+    }
     //Getters
     public String getColour() {
         return nameColours.get(super.colour);

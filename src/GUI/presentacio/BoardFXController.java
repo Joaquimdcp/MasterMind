@@ -56,19 +56,19 @@ public class BoardFXController{
         // Vbox for group
         VBox vBox   = new VBox();
         Pane canvas = new Pane();
-        canvas.setStyle("-fx-background-image: url(panelpopup.png);");
+        canvas.setStyle("-fx-background-image: url(/GUI/assets/panelpopup.png);");
         canvas.setPrefSize(359,179);
 
 
         Button ok = new Button();
         ok.setPrefSize(69,71);
-        ok.setStyle("-fx-background-image: url(acceptbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+        ok.setStyle("-fx-background-image: url(/GUI/assets/acceptbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
         ok.setLayoutX(85);
         ok.setLayoutY(130);
 
         Button nok = new Button();
         nok.setPrefSize(69,71);
-        nok.setStyle("-fx-background-image: url(cancelbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+        nok.setStyle("-fx-background-image: url(/GUI/assets/cancelbutton.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
         nok.setLayoutX(200);
         nok.setLayoutY(130);
         nok.setOnAction(new EventHandler<ActionEvent>() {
@@ -175,7 +175,7 @@ public class BoardFXController{
 
     @FXML
     public void showHint (ActionEvent event) throws IOException {
-        lb.setText("Hint!");
+        lb.setText(controller.useHint());
         popup_yesno.show(green.getScene().getWindow());
     }
 

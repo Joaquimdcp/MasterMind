@@ -26,9 +26,9 @@ public class Board {
     }
 
     /* Initializes the difficulty of the game */
-    public void initDifficulty(int nRounds, int nHints) {
+    public void initDifficulty(int nRounds, int nHints, int nColors, int nPositions) {
         this.nHints = nHints;
-        this.difficulty = new Difficulty(nRounds);
+        this.difficulty = new Difficulty(nRounds, nColors, nPositions);
     }
     /* Initializes all the basic attributes of the class to play a game */
     public void initGame() {
@@ -37,7 +37,6 @@ public class Board {
         this.codeBreaker = new CodeBreaker();
         this.codeMaker = new CodeMaker();
         this.solution = this.codeMaker.make_code();
-        this.time.set_saved_time();
     }
 
     /* Returns true if the hint was used, false if all the hints available have been used already */
@@ -50,7 +49,7 @@ public class Board {
     }
 
     public String newHint() {
-        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound)).getTokensGuess();
+        ArrayList<GuessToken> currentGuess = (rounds.get(currentRound-1)).getTokensGuess();
         Hint h = new Hint(this.difficulty, currentGuess, solution);
         return h.get_hints();
     }
@@ -126,6 +125,10 @@ public class Board {
         this.time = time;
     }
 
+    public void setRoundLoad(ArrayList<Round> rounds){
+        this.rounds = rounds;
+    }
+
     /* Returns the round with number 'round' */
     public Round getRound(int round) {
         return this.rounds.get(round);
@@ -144,10 +147,25 @@ public class Board {
     /* Returns the current score of the game */
     public int getScore() {
         int score = this.difficulty.difficulty();
-        int time = (int)this.time.set_saved_time();
+        int time = (int)this.time.time();
         return score / time;
     }
 
+    public int getnHints(){
+        return this.nHints;
+    }
+
+    public int getHintsUsed(){
+        return this.hintsUsed;
+    }
+
+    public long getTime(){
+        return this.time.time();
+    }
+
+    public int getCurrentRoundNumber(){
+        return this.currentRound;
+    }
     //public boolean loadGame(Board board, Difficulty difficulty, List<Round> rounds, Player breaker, Player maker)
     public boolean loadGame() {
         return true;
@@ -162,6 +180,17 @@ public class Board {
     }
 
     public long endGame() {
-        return this.time.set_saved_time();
+        return this.time.time();
+    }
+
+    public ArrayList<GuessToken> getSolution() {
+        return this.solution;
+    }
+
+    public void setterOfLoad(int hintsUsed, long time, int currentRound) {
+        this.hintsUsed = hintsUsed;
+        this.currentRound = currentRound;
+        this.time = new Timing();
+        this.time.set_saved_time(time);
     }
 }

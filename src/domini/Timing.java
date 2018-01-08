@@ -9,7 +9,7 @@ public class Timing {
 
     // Constructor
     public Timing() {
-        this.savedTime = -1;
+        this.savedTime = 0;
         this.startTime = System.currentTimeMillis() / 1000L;
     }
 
@@ -19,10 +19,8 @@ public class Timing {
         return System.currentTimeMillis()-this.startTime+savedTime;
     }
 
-    public long set_saved_time() {
-        this.savedTime = System.currentTimeMillis()-this.startTime+savedTime;
-        this.startTime = 0;
-        return this.savedTime;
+    public void set_saved_time(long savedTime) {
+        this.savedTime = savedTime;
     }
 
 }

@@ -21,13 +21,13 @@ public class Difficulty {
         this.n_rounds = 10;
     }
 
-    public Difficulty(int n_rounds) {
+    public Difficulty(int n_rounds, int n_colors, int n_positions) {
         /**
          * Constructor: Public constructor method for difficulty with custom params
          */
         this.n_rounds = n_rounds;
-        this.n_colors = 6;
-        this.n_positions = 4;
+        this.n_colors = n_colors;
+        this.n_positions = n_positions;
     }
 
     // Getters
