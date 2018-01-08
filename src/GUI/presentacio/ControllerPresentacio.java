@@ -1,9 +1,6 @@
 package GUI.presentacio;
 
-import domini.Controller;
-import domini.Game;
-import domini.GuessToken;
-import domini.Round;
+import domini.*;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -13,6 +10,7 @@ import java.util.Map;
 public class ControllerPresentacio {
     private Controller contDom;
     private Boolean breakerIA = false;
+    private Boolean loaded = false;
 
     //Constructor
     public ControllerPresentacio(){
@@ -76,7 +74,12 @@ public class ControllerPresentacio {
     public void loadGame() {
         /**Public function to load a game
          */
+        loaded = true;
         this.contDom.loadGame();
+    }
+
+    public Boolean isLoad(){
+        return this.loaded;
     }
 
     public void saveGame() throws FileNotFoundException, UnsupportedEncodingException {

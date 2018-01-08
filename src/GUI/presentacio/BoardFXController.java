@@ -106,6 +106,32 @@ public class BoardFXController{
         if(ncolors<3){ green.setVisible(false); }
         if(ncolors<2){ blue.setVisible(false); }
         if(ncolors<1){ red.setVisible(false); }
+
+        if(this.controller.isLoad()){
+            int rounds = this.controller.getCurrentGame().getCurrentRoundNumber();
+            Button bt;
+            for(int i=0; i<rounds; i++){
+                int r = i+1;
+                solution = this.controller.getCurrentGame().getRound(i).getTokensGuessString();
+                Scene sc = green.getScene();
+                if(solution.size()>0) {
+                    bt = (Button) sc.lookup("#second" + r);
+                    setColor(bt, solution.get(0));
+                    bt = (Button) sc.lookup("#third" + r);
+                    setColor(bt, solution.get(1));
+                    bt = (Button) sc.lookup("#forth" + r);
+                    setColor(bt, solution.get(2));
+                    bt = (Button) sc.lookup("#five" + r);
+                    setColor(bt, solution.get(3));
+                    round++;
+                }
+                else{
+                    System.out.println("Solution empty");
+                }
+            }
+
+
+        }
     }
 
 
