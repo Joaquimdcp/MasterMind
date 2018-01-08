@@ -88,6 +88,12 @@ public class Round {
         return tokensGuess;
     }
 
+    public ArrayList<String> getTokensGuessString(){
+        ArrayList<String> resp = new ArrayList<>();
+        for(GuessToken gt: tokensGuess){ resp.add(gt.getColour().toLowerCase()); }
+        return resp;
+    }
+
     //Setters
 
     public void setNRound(int nRound) {

@@ -40,7 +40,7 @@ public class DifficultyFXController {
         BoardFXController boardFXController = loader.getController();
         boardFXController.setController(this.controller);
 
-        controller.initGame(false, 4, 4, 10, 6);
+        controller.initGame( 4, 4, 10, 6);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
@@ -56,7 +56,7 @@ public class DifficultyFXController {
         MenuController menuController = loader.getController();
         menuController.setController(this.controller);
 
-        controller.initGame(false, 6, 6, 10, 4);
+        controller.initGame( 6, 6, 10, 4);
         /*
         BoardFXController boardFXController = loader.getController();
         boardFXController.setController(this.controller);*/
@@ -75,7 +75,7 @@ public class DifficultyFXController {
         MenuController menuController = loader.getController();
         menuController.setController(this.controller);
 
-        controller.initGame(false, 6, 8, 10, 2);
+        controller.initGame( 6, 8, 10, 2);
         /*
         BoardControllerFX boardFXController = loader.getController();
         boardFXController.setController(this.controller); */
