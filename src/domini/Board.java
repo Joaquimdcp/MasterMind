@@ -20,6 +20,7 @@ public class Board {
     }
 
     public Board(int hintsUsed, int currentRound) {
+        rounds.add(new Round());
         this.hintsUsed = hintsUsed;
         this.currentRound = currentRound;
     }
@@ -66,7 +67,7 @@ public class Board {
                 // Get guess from codeBreaker
                 r.setAnswer(this.solution);
                 // Set the answer, add the round to the list of rounds, check if the codeBreaker won
-                rounds.add(this.currentRound+1, r);
+                rounds.add(this.currentRound, r);
                 this.currentRound++;
                 this.victory = r.isFinalRound();
                 return !this.victory;
@@ -82,7 +83,7 @@ public class Board {
             // If the guess is valid
             if (r.setGuess(gt, this.difficulty.getN_colors(), this.difficulty.getN_positions())) {
                 r.setAnswer(this.solution);
-                rounds.add(this.currentRound+1, r);
+                rounds.add(r);
                 this.currentRound++;
                 this.victory = r.isFinalRound();
                 return !this.victory;
@@ -135,7 +136,7 @@ public class Board {
 
     /* Returns the current Round */
     public Round getCurrentRound() {
-        return this.rounds.get(this.currentRound);
+        return this.rounds.get(this.currentRound-1);
     }
 
     /* Returns the difficulty of the Board */

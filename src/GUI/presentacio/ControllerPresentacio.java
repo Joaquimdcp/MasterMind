@@ -1,6 +1,7 @@
 package GUI.presentacio;
 
 import domini.Controller;
+import domini.Game;
 import domini.GuessToken;
 import domini.Round;
 
@@ -27,10 +28,10 @@ public class ControllerPresentacio {
         this.contDom.setGameName(name);
     }
 
-    public String setGuessTokensRound(ArrayList<GuessToken> gt){
+    public String setGuessTokensRound(ArrayList<String> st){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        return this.contDom.setGuessTokensRound(gt);
+        return this.contDom.setGuessTokensRound(st);
     }
 
     //Getters
@@ -38,6 +39,10 @@ public class ControllerPresentacio {
         /**Public function that returns an instance of the current round
          */
         return this.contDom.getCurrentRound();
+    }
+
+    public Game getCurrentGame(){
+        return this.contDom.getCurrentGame();
     }
 
     //Other functions
