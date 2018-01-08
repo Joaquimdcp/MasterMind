@@ -8,12 +8,12 @@ public class CodeMaker {
 
     }
 
-    public ArrayList<GuessToken> make_code() {
+    public ArrayList<GuessToken> make_code(int n_colors) {
         ArrayList<GuessToken> result = new ArrayList<>();
         Random rand = new Random();
 
         for (int i=0; i<4; i++) {
-            GuessToken t = new GuessToken(rand.nextInt(5));
+            GuessToken t = new GuessToken(rand.nextInt(n_colors));
             result.add(t);
         }
         return result;

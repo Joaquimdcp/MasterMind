@@ -36,7 +36,7 @@ public class Board {
         this.victory = false;
         this.codeBreaker = new CodeBreaker();
         this.codeMaker = new CodeMaker();
-        this.solution = this.codeMaker.make_code();
+        this.solution = this.codeMaker.make_code(this.difficulty.getN_colors());
     }
 
     /* Returns true if the hint was used, false if all the hints available have been used already */
