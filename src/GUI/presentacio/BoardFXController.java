@@ -195,67 +195,78 @@ public class BoardFXController{
 
     @FXML
     public void playRound (ActionEvent event) throws IOException {
-        controller.setGuessTokensRound(solution);
 
-        ArrayList<AnswerToken> resp = controller.getCurrentRound().getTokensAnswer();
-        Node source = (Node) event.getSource();
-        Scene sc = source.getScene();
+        String state = controller.setGuessTokensRound(solution);
 
-        Button bt;
-        String color;
+        System.out.println(state);
+        if (state.equals("Game won")) {
+            lb.setText("You win");
+            popup_yesno.show(green.getScene().getWindow());
+        } else if (state.equals("Game ended but not won")) {
+            lb.setText("You lose");
+            popup_yesno.show(green.getScene().getWindow());
+        } else {
+
+            ArrayList<AnswerToken> resp = controller.getCurrentRound().getTokensAnswer();
+            Node source = (Node) event.getSource();
+            Scene sc = source.getScene();
+
+            Button bt;
+            String color;
 
 
-        if(resp.size()>0) {
-            String id1 = "#round" + round + "1";
-            ;
-            bt = (Button) sc.lookup(id1);
-            color = resp.get(0).getColour();
-            System.out.println(color);
-            if (color == "White")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else if (color == "Black")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else
-                bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+            if (resp.size() > 0) {
+                String id1 = "#round" + round + "1";
+                ;
+                bt = (Button) sc.lookup(id1);
+                color = resp.get(0).getColour();
+                System.out.println(color);
+                if (color == "White")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else if (color == "Black")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else
+                    bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+            }
+
+            if (resp.size() > 1) {
+                String id2 = "#round" + round + "2";
+                bt = (Button) sc.lookup(id2);
+                color = resp.get(1).getColour();
+                if (color == "White")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else if (color == "Black")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else
+                    bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+            }
+
+            if (resp.size() > 2) {
+                String id3 = "#round" + round + "3";
+                bt = (Button) sc.lookup(id3);
+                color = resp.get(2).getColour();
+                if (color == "White")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else if (color == "Black")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else
+                    bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+            }
+
+            if (resp.size() > 3) {
+                String id4 = "#round" + round + "4";
+                bt = (Button) sc.lookup(id4);
+                color = resp.get(3).getColour();
+                if (color == "White")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else if (color == "Black")
+                    bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+                else
+                    bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
+            }
+            round++;
+
         }
-
-        if(resp.size()>1) {
-            String id2 = "#round" + round + "2";
-            bt = (Button) sc.lookup(id2);
-            color = resp.get(1).getColour();
-            if (color == "White")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else if (color == "Black")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else
-                bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-        }
-
-        if(resp.size()>2) {
-            String id3 = "#round" + round + "3";
-            bt = (Button) sc.lookup(id3);
-            color = resp.get(2).getColour();
-            if (color == "White")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else if (color == "Black")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else
-                bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-        }
-
-        if(resp.size()>3) {
-            String id4 = "#round" + round + "4";
-            bt = (Button) sc.lookup(id4);
-            color = resp.get(3).getColour();
-            if (color == "White")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/whitedot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else if (color == "Black")
-                bt.setStyle("-fx-background-image: url(/GUI/assets/blackdot.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-            else
-                bt.setStyle("-fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;");
-        }
-        round++;
-
     }
 
 
