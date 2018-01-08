@@ -51,7 +51,6 @@ public class ControllerPresentacio {
          * to play
          */
         this.nColors = nColours;
-
         this.contDom.initGame(this.breakerIA, nColours, nPositions, nRounds, nHints);
     }
 
@@ -93,7 +92,7 @@ public class ControllerPresentacio {
     public void exitGame() {
         /** Public function to exit a game: it will erase the current game
          */
-        this.contDom = new domini.Controller(); 
+        this.contDom = new domini.Controller();
     }
 
     public boolean logIn(String name, String password) {

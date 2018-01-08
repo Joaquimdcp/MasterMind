@@ -37,10 +37,11 @@ public class DifficultyFXController {
         Parent rankingParent = loader.load();
         Scene rankingScene = new Scene(rankingParent);
 
+        controller.initGame( 4, 4, 10, 6);
+
         BoardFXController boardFXController = loader.getController();
         boardFXController.setController(this.controller);
 
-        controller.initGame( 4, 4, 10, 6);
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(rankingScene);
