@@ -77,6 +77,7 @@ public class ControllerPresentacio {
          */
         loaded = true;
         this.contDom.loadGame();
+        this.nColors = 4;
     }
 
     public Boolean isLoad(){

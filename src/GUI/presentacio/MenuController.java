@@ -40,11 +40,11 @@ public class MenuController {
     public void loadGamePressed(ActionEvent actionEvent) throws IOException {
         if (this.controller.doesSavedExist(this.controller.getCurrentGame().getCurrentUser())) {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("RoleFX.fxml"));
+            loader.setLocation(getClass().getResource("board.fxml"));
             Parent SceneParent = loader.load();
             Scene SceneToCharge = new Scene(SceneParent);
 
-            RoleFXController roleFXController = loader.getController();
+            BoardFXController roleFXController = loader.getController();
             roleFXController.setController(this.controller);
 
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
