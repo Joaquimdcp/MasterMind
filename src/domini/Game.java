@@ -63,11 +63,48 @@ public class Game {
     public boolean setGuessTokensRound(ArrayList<GuessToken> gt){
         /**Setter of the guess tokens of the next round. It returns false if something has gone wrong
          */
-        //return this.currentBoard.setGuessTokensRound(gt);
-        return true;
+        return this.currentBoard.setGuessTokensRound(gt);
+    }
+
+    public void setterOfLoad(int hintsUsed, long time, int currentRound){
+        this.currentBoard.setterOfLoad(hintsUsed, time, currentRound);
+    }
+
+    public void setSolution(ArrayList<GuessToken> solution) {
+        this.currentBoard.setSolution(solution);
+    }
+
+    public void setRoundLoad(ArrayList<Round> rounds){
+        this.currentBoard.setRoundLoad(rounds);
     }
 
     //Getter
+    public int getnHints(){
+        return this.currentBoard.getnHints();
+    }
+
+    public int getHintsUsed(){
+        return this.currentBoard.getHintsUsed();
+    }
+
+    public long getTime(){
+        return this.currentBoard.getTime();
+    }
+
+    public int getCurrentRoundNumber(){
+        return this.currentBoard.getCurrentRoundNumber();
+    }
+
+    public ArrayList<GuessToken> getSolution() {
+        return this.currentBoard.getSolution();
+    }
+
+    public Difficulty getDifficultyC(){
+        /** Getter of the instance of difficulty of the game
+         */
+        return this.currentBoard.getDifficulty();
+    }
+
     public boolean getRole(){
         /** Getter of the role of the human player
          */
@@ -129,7 +166,7 @@ public class Game {
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
         currentBoard.initGame();
-        currentBoard.initDifficulty(nRounds, nHints);
+        currentBoard.initDifficulty(nRounds, nHints, nColours, nPositions);
     }
 
     public String useHint(){

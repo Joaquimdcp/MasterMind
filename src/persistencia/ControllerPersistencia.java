@@ -1,9 +1,15 @@
 package persistencia;
 
+import domini.Game;
+
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 public class ControllerPersistencia {
 
     private UserDB users;
     private Ranking rankig;
+    private GameSaver gS;
 
     public ControllerPersistencia(){
         users = new UserDB();
@@ -43,5 +49,21 @@ public class ControllerPersistencia {
 
     public void saveRanking() {
         this.rankig.saveRanking();
+    }
+
+    public void saveGame(Game game) throws FileNotFoundException, UnsupportedEncodingException {
+        try {
+            this.gS.saveGame(game);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean doesSavedExist(String user){
+        return this.gS.doesSavedExist(user);
+    }
+
+    public Game loadGame(String user){
+        return this.gS.loadGame(user);
     }
 }
