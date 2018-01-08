@@ -173,7 +173,7 @@ public class Game {
         /** Public function that initiates the Board and all the classes needed to play the first round
          */
         this.ncolors = nColours;
-        currentBoard.initGame();
+        currentBoard.initGame(nColours);
         currentBoard.initDifficulty(nRounds, nHints, nColours, nPositions);
     }
 

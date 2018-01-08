@@ -66,7 +66,7 @@ public class GameSaver {
             String[] solu = br.readLine().split(" ");
             ArrayList<GuessToken> solution = new ArrayList<GuessToken>();
             for (int i=0; i<solu.length; ++i){
-                solution.add(new GuessToken(solu[i]));
+                solution.add(new GuessToken(solu[i].toLowerCase()));
             }
             game.setSolution(solution);
             ArrayList<GuessToken> guess = new ArrayList<GuessToken>();

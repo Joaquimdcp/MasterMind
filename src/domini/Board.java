@@ -31,12 +31,12 @@ public class Board {
         this.difficulty = new Difficulty(nRounds, nColors, nPositions);
     }
     /* Initializes all the basic attributes of the class to play a game */
-    public void initGame() {
+    public void initGame(int nColors) {
         this.time = new Timing();
         this.victory = false;
         this.codeBreaker = new CodeBreaker();
         this.codeMaker = new CodeMaker();
-        this.solution = this.codeMaker.make_code(this.difficulty.getN_colors());
+        this.solution = this.codeMaker.make_code(nColors);
     }
 
     /* Returns true if the hint was used, false if all the hints available have been used already */
