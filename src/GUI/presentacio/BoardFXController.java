@@ -126,6 +126,7 @@ public class BoardFXController{
             Button  but = (Button) objectiu;
             System.out.println("ID "+ but.getId());
             String rnd = String.valueOf(round);
+            System.out.println("RONDA " + rnd);
             if( rnd.equals( (but.getId()).replaceAll("\\D+","")) )  {
                 String position = (but.getId()).replaceAll("[^A-Za-z]+", "");
 
