@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ControllerPresentacio {
-    private Controller contDom;
+    private domini.Controller contDom;
     private Boolean breakerIA = false;
     private Boolean loaded = false;
     private int nColors = 0;
@@ -18,7 +18,7 @@ public class ControllerPresentacio {
         /** Constructor: Public constructor method for the controller of the presentation
          *  with default parameters
          */
-        contDom = new Controller();
+        contDom = new domini.Controller();
     }
 
     //Setters
@@ -93,7 +93,7 @@ public class ControllerPresentacio {
     public void exitGame() {
         /** Public function to exit a game: it will erase the current game
          */
-        this.contDom = new Controller();
+        this.contDom = new domini.Controller();
     }
 
     public boolean logIn(String name, String password) {

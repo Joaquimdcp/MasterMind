@@ -7,14 +7,14 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/GUI/assets/bg.jpg)" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.presentacio.MenuController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(/GUI/assets/bg.jpg)" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.presentacio.MenuController">
     <children>
       <ImageView layoutX="308.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
           <image>
               <Image url="@/GUI/assets/menutitle.png" />
           </image>
       </ImageView>
-      <VBox alignment="CENTER" layoutX="0.0" layoutY="111.0" prefHeight="479.0" prefWidth="800.0" spacing="15.0">
+      <VBox alignment="CENTER" layoutX="282.0" layoutY="127.0" prefHeight="473.0" prefWidth="210.0" spacing="15.0">
       <children>
           <Button mnemonicParsing="false" onAction="#newGamePressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/newgame.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
           <Button mnemonicParsing="false" onAction="#loadGamePressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/load.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
@@ -24,5 +24,6 @@
           <Button mnemonicParsing="false" onAction="#exitPressed" prefHeight="69.0" prefWidth="210.0" style="-fx-background-image: url(/GUI/assets/exit.png); -fx-border-color: transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent;" />
       </children>
     </VBox>
+      <ImageView fx:id="noSavedGame" fitHeight="21.0" fitWidth="159.0" layoutX="492.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true" />
   </children>
 </AnchorPane>
