@@ -99,12 +99,12 @@ public class BoardFXController{
         Game cg = this.controller.getCurrentGame();
         this.ncolors = 4;
         System.out.println(this.ncolors);
-        if(ncolors<6){ blue.setVisible(false); }
+        if(ncolors<6){ orange.setVisible(false); }
         if(ncolors<5){ purple.setVisible(false); }
         if(ncolors<4){ yellow.setVisible(false); }
-        if(ncolors<3){ orange.setVisible(false); }
-        if(ncolors<2){ red.setVisible(false); }
-        if(ncolors<1){ green.setVisible(false); }
+        if(ncolors<3){ green.setVisible(false); }
+        if(ncolors<2){ blue.setVisible(false); }
+        if(ncolors<1){ red.setVisible(false); }
     }
 
 
@@ -122,18 +122,14 @@ public class BoardFXController{
         String str = ev.getDragboard().getString();
         Object objectiu = ev.getSource();
         if (objectiu instanceof Button) {
-
             Button  but = (Button) objectiu;
             System.out.println("ID "+ but.getId());
             String rnd = String.valueOf(round);
             System.out.println("RONDA " + rnd);
             if( rnd.equals( (but.getId()).replaceAll("\\D+","")) )  {
                 String position = (but.getId()).replaceAll("[^A-Za-z]+", "");
-
                 int pos = (int) numbers.get(position);
-                System.out.println(pos);
                 if (str.equals("green")) {
-
                     solution.set(pos-1,"green");
                     but.setStyle("-fx-background-image:  url(/GUI/assets/green.png); -fx-border-color:  transparent; -fx-border-width: 0; -fx-background-radius: 0; -fx-background-color: transparent; ");
                 } else if (str.equals("blue")) {
@@ -197,6 +193,8 @@ public class BoardFXController{
     public void playRound (ActionEvent event) throws IOException {
 
         String state = controller.setGuessTokensRound(solution);
+
+        System.out.println("TESTING");
 
         System.out.println(state);
         if (state.equals("Game won")) {
