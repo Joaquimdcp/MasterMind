@@ -219,6 +219,6 @@ public class Game {
         this.win = this.currentBoard.hasPlayerWon();
         this.score = this.currentBoard.getScore();
         this.difficulty = this.currentBoard.getDifficulty().difficulty();
-        this.currentBoard = new Board();
+        //this.currentBoard = new Board();
     }
 }

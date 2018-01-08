@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class ControllerPresentacio {
     private Controller contDom;
+    private Boolean breakerIA = false;
 
     //Constructor
     public ControllerPresentacio(){
@@ -46,11 +47,16 @@ public class ControllerPresentacio {
     }
 
     //Other functions
-    public void initGame(boolean breakerIA, int nColours, int nPositions, int nRounds, int nHints) {
+    public void initGame( int nColours, int nPositions, int nRounds, int nHints) {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
          */
-        this.contDom.initGame(breakerIA, nColours, nPositions, nRounds, nHints);
+
+        this.contDom.initGame(this.breakerIA, nColours, nPositions, nRounds, nHints);
+    }
+
+    public void setIA(boolean st){
+        this.breakerIA = st;
     }
 
     public String useHint() {
@@ -103,5 +109,9 @@ public class ControllerPresentacio {
         /** Public function: it logs out the current User.
          */
         this.contDom.logOut();
+    }
+
+    public void setSolution(ArrayList<String> solu){
+        this.contDom.setSolution(solu);
     }
 }

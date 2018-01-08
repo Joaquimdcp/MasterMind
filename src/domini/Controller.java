@@ -134,6 +134,14 @@ public class Controller {
         this.currentGame = new Game();
     }
 
+    public void setSolution(ArrayList<String> sol){
+        ArrayList<GuessToken> gt = new ArrayList<GuessToken>();
+        for(String color: sol){ gt.add(new GuessToken(color)); }
+
+        this.currentGame.setSolution(gt);
+
+    }
+
     public boolean logIn(String name, String password) {
         /** Public function to logIn as a user: if the user exists it returns true and it sets the user,
          * if not it returns false.
