@@ -108,7 +108,7 @@ public class BoardFXController{
     public void setController(ControllerPresentacio controller) {
         this.controller = controller;
         Game cg = this.controller.getCurrentGame();
-        this.ncolors = 4;
+        this.ncolors = this.controller.getNColors();
         System.out.println(this.ncolors);
         if(ncolors<6){ orange.setVisible(false); }
         if(ncolors<5){ purple.setVisible(false); }

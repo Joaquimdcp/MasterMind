@@ -11,6 +11,7 @@ public class ControllerPresentacio {
     private Controller contDom;
     private Boolean breakerIA = false;
     private Boolean loaded = false;
+    private int nColors = 0;
 
     //Constructor
     public ControllerPresentacio(){
@@ -49,6 +50,7 @@ public class ControllerPresentacio {
         /** Public function to initialize a Game. It initializes the Game, the Board and all the other classes needed
          * to play
          */
+        this.nColors = nColours;
 
         this.contDom.initGame(this.breakerIA, nColours, nPositions, nRounds, nHints);
     }
@@ -108,6 +110,9 @@ public class ControllerPresentacio {
         return this.contDom.registerUser(name, password);
     }
 
+    public int getNColors(){
+        return this.nColors;
+    }
     public void logOut() {
         /** Public function: it logs out the current User.
          */
