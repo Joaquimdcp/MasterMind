@@ -122,7 +122,7 @@ public class ControllerPresentacio {
     public void setSolution(ArrayList<String> solu){
         this.contDom.setSolution(solu);
     }
-    
+
     public boolean doesSavedExist(String user){
         return this.contDom.doesSavedExist(user);
     }
